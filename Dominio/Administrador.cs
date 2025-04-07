@@ -1,0 +1,68 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Dominio
+{
+    public class Administrador
+    {
+        private string _apodo;
+        private string _correo;
+        private string _password;
+
+
+        public string Apodo
+        {
+            get { return _apodo; }
+        }
+        public string Correo
+        {
+            get { return _correo; }
+        }
+        public string Password
+        {
+            get { return _password; }
+        }
+
+
+        public Administrador(string apodo, string correo, string password)
+        {
+            _apodo = apodo;
+            _correo = correo;
+            _password = password;
+        }
+
+
+        public void Validar()
+        {
+            ValidarApodo();
+            ValidarCorreo();
+            ValidarPassword();
+        }
+        public void ValidarApodo()
+        {
+            if (string.IsNullOrEmpty(_apodo))
+            {
+                throw new Exception("El apodo no puede ser nulo");
+            }
+        }
+        public void ValidarCorreo()
+        {
+            if (string.IsNullOrEmpty(_correo))
+            {
+                throw new Exception("El correo no puede nulo");
+            }
+
+        }
+        public void ValidarPassword()
+        {
+            if (string.IsNullOrEmpty(_password))
+            {
+                throw new Exception("La contraseña no puede ser nula");
+            }
+        }
+    }
+}
+
