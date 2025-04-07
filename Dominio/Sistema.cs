@@ -19,7 +19,7 @@ namespace Dominio
 
 
 
-        private void PrecargarDatos()
+        public void PrecargarDatos()
         {
             PrecargarClientes();
             PrecargarAdmin();
