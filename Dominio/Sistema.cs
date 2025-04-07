@@ -19,7 +19,7 @@ namespace Dominio
 
 
 
-        public void PrecargarDatos()
+         private void PrecargarDatos()
         {
             PrecargarClientes();
             PrecargarAdmin();
@@ -31,6 +31,7 @@ namespace Dominio
 
         private void PrecargarClientes()
         {
+
 
         }
         private void PrecargarAdmin()
