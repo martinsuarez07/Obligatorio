@@ -54,7 +54,7 @@ namespace Dominio
         }
          private void ValidarCi()
         {
-            if (string.IsNullOrEmpty(_ci) || _ci.Length > 8)
+            if (string.IsNullOrEmpty(_ci) || _ci.Length != 8)
             {
                 throw new Exception("La cedula es incorrecta , ingresela nuevamente");
             }

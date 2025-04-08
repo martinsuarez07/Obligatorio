@@ -40,10 +40,10 @@ namespace Dominio
         {
             get { return _regalos; }
         }
-         public Ocacional(string ci , string nombre, string correo, string password, string nacionalidad, bool regalos) : base ( ci,  nombre,  correo,  password,  nacionalidad)
+        public Ocacional(string ci, string nombre, string correo, string password, string nacionalidad, bool regalos) : base(ci, nombre, correo, password, nacionalidad)
         {
 
-           
+
             _regalos = regalos;
         }
 
@@ -96,9 +96,9 @@ namespace Dominio
 
         private void ValidarRegalo()
         {
-            if(_regalos == null)
+            if (_regalos != true && _regalos != false)
             {
-                throw new Exception("No puede ser nulo");
+                throw new Exception("El valor de regalos es inválido");
             }
         }
     }
