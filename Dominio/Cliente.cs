@@ -89,6 +89,10 @@ namespace Dominio
             }
         }
 
-
+        public override bool Equals(object? obj)
+        {
+            Cliente cliente = obj as Cliente;
+            return cliente != null && _ci == cliente.Ci;
+        }
     }
 }

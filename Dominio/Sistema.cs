@@ -49,6 +49,20 @@ namespace Dominio
         private void PrecargarRutas()
         {
         }
+
+        public void AgregarCliente(Cliente cliente)
+        {
+            if(cliente == null)
+            {
+                throw new Exception("No puede ser nulo");
+            }
+            cliente.Validar();
+            if (_clientes.Contains(cliente))
+            {
+                throw new Exception("El cliente ya existe");
+            }
+            _clientes.Add(cliente);
+        }
     }
 }
 
