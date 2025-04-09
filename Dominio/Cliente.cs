@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    public  abstract class Cliente
+    public  abstract class Cliente :Usuario
     {
         private string _ci;
         private string _nombre;
@@ -36,12 +36,10 @@ namespace Dominio
             get { return _nacionalidad; }
         }
 
-        public Cliente(string ci, string nombre, string correo, string password, string nacionalidad)
+        public Cliente(string ci, string nombre, string correo, string password, string nacionalidad) : base(correo, password)
         {
             _ci = ci;
             _nombre = nombre;
-            _correo = correo;
-            _password = password;
             _nacionalidad = nacionalidad;
         }
         public void Validar()
@@ -94,5 +92,6 @@ namespace Dominio
             Cliente cliente = obj as Cliente;
             return cliente != null && _ci == cliente.Ci;
         }
+
     }
 }

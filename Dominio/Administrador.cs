@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    public class Administrador
+    public class Administrador: Usuario
     {
         private string _apodo;
         private string _correo;
@@ -27,11 +27,10 @@ namespace Dominio
         }
 
 
-        public Administrador(string apodo, string correo, string password)
+        public Administrador(string apodo, string correo, string password): base( correo, password)
         {
             _apodo = apodo;
-            _correo = correo;
-            _password = password;
+           
         }
 
 
