@@ -29,7 +29,7 @@ namespace Dominio
 
         public Administrador(string apodo, string correo, string password): base( correo, password)
         {
-            _apodo = apodo;
+            _apodo = apodo.ToLower();
            
         }
 

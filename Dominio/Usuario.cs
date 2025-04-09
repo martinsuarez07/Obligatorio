@@ -26,24 +26,24 @@ namespace Dominio
 
         public Usuario( string correo , string password)
         {
-            _correo = correo;
+            _correo = correo.ToLower();
             _password = password;
         }
 
 
-        public  void Validar()
+        public virtual void Validar()
         {
             ValidarCorreo();
             ValidarPassword();
         }
-        private void ValidarCorreo()
+        public virtual void ValidarCorreo()
         {
             if (string.IsNullOrEmpty(_correo))
             {
                 throw new Exception("Ingrese correo");
             }
         }
-        private void ValidarPassword()
+        public virtual void ValidarPassword()
         {
             if (string.IsNullOrEmpty(_password))
             {

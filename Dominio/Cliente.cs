@@ -39,53 +39,69 @@ namespace Dominio
         public Cliente(string ci, string nombre, string correo, string password, string nacionalidad) : base(correo, password)
         {
             _ci = ci;
-            _nombre = nombre;
+            _nombre = nombre.ToLower();
             _nacionalidad = nacionalidad;
         }
-        public void Validar()
-        {
-            ValidarCi();
-            ValidarNombre();
-            ValidarCorreo();
-            ValidarPassword();
-            ValidarNacionalidad();
-        }
-         private void ValidarCi()
+
+        public virtual void Validar()
         {
             if (string.IsNullOrEmpty(_ci) || _ci.Length != 8)
             {
-                throw new Exception("La cedula es incorrecta , ingresela nuevamente");
+              throw new Exception("La cedula es incorrecta , ingresela nuevamente");
             }
-        }
-        private  void ValidarNombre()
-        {
             if (string.IsNullOrEmpty(_nombre))
             {
                 throw new Exception("Ingrese nombre");
-            }
-        }
-
-        private void ValidarCorreo()
-        {
-            if (string.IsNullOrEmpty(_correo))
-            {
-                throw new Exception("Ingrese correo");
-            }
-        }
-        private void ValidarPassword()
-        {
-            if (string.IsNullOrEmpty(_password))
-            {
-                throw new Exception("Ingrese password");
-            }
-        }
-        private void ValidarNacionalidad()
-        {
+           }
             if (string.IsNullOrEmpty(_nacionalidad))
-            {
-                throw new Exception("Ingrese nacionalidad");
-            }
+           {
+              throw new Exception("Ingrese nacionalidad");
+          }
         }
+        //public void Validar()
+        //{
+        //    ValidarCi();
+        //    ValidarNombre();
+        //    ValidarCorreo();
+        //    ValidarPassword();
+        //    ValidarNacionalidad();
+        //}
+        // public virtual void ValidarCi()
+        //{
+        //    if (string.IsNullOrEmpty(_ci) || _ci.Length != 8)
+        //    {
+        //        throw new Exception("La cedula es incorrecta , ingresela nuevamente");
+        //    }
+        //}
+        //public virtual void ValidarNombre()
+        //{
+        //    if (string.IsNullOrEmpty(_nombre))
+        //    {
+        //        throw new Exception("Ingrese nombre");
+        //    }
+        //}
+
+        //public virtual void ValidarCorreo()
+        //{
+        //    if (string.IsNullOrEmpty(_correo))
+        //    {
+        //        throw new Exception("Ingrese correo");
+        //    }
+        //}
+        //public  void ValidarPassword()
+        //{
+        //    if (string.IsNullOrEmpty(_password))
+        //    {
+        //        throw new Exception("Ingrese password");
+        //    }
+        //}
+        //public virtual  void ValidarNacionalidad()
+        //{
+        //    if (string.IsNullOrEmpty(_nacionalidad))
+        //    {
+        //        throw new Exception("Ingrese nacionalidad");
+        //    }
+        //}
 
         public override bool Equals(object? obj)
         {

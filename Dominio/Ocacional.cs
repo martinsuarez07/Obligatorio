@@ -46,60 +46,67 @@ namespace Dominio
 
             _regalos = regalos;
         }
-
-
-        public void Validar()
+        public override void Validar()
         {
-            ValidarCi();
-            ValidarNombre();
-            ValidarCorreo();
-            ValidarPassword();
-            ValidarNacionalidad();
-            ValidarRegalo();
-        }
-        private void ValidarCi()
-        {
-            if (string.IsNullOrEmpty(_ci) || _ci.Length > 8)
-            {
-                throw new Exception("La cedula es incorrecta , ingresela nuevamente");
-            }
-        }
-        private void ValidarNombre()
-        {
-            if (string.IsNullOrEmpty(_nombre))
-            {
-                throw new Exception("Ingrese nombre");
-            }
-        }
-
-        private void ValidarCorreo()
-        {
-            if (string.IsNullOrEmpty(_correo))
-            {
-                throw new Exception("Ingrese correo");
-            }
-        }
-        private void ValidarPassword()
-        {
-            if (string.IsNullOrEmpty(_password))
-            {
-                throw new Exception("Ingrese password");
-            }
-        }
-        private void ValidarNacionalidad()
-        {
-            if (string.IsNullOrEmpty(_nacionalidad))
-            {
-                throw new Exception("Ingrese nacionalidad");
-            }
-        }
-
-        private void ValidarRegalo()
-        {
+            base.Validar();
             if (_regalos != true && _regalos != false)
-            {
+           {
                 throw new Exception("El valor de regalos es inválido");
-            }
+           }
         }
+
+        //public void Validar()
+        //{
+        //    ValidarCi();
+        //    ValidarNombre();
+        //    ValidarCorreo();
+        //    ValidarPassword();
+        //    ValidarNacionalidad();
+        //    ValidarRegalo();
+        //}
+        //private void ValidarCi()
+        //{
+        //    if (string.IsNullOrEmpty(_ci) || _ci.Length > 8)
+        //    {
+        //        throw new Exception("La cedula es incorrecta , ingresela nuevamente");
+        //    }
+        //}
+        //private void ValidarNombre()
+        //{
+        //    if (string.IsNullOrEmpty(_nombre))
+        //    {
+        //        throw new Exception("Ingrese nombre");
+        //    }
+        //}
+
+        //private void ValidarCorreo()
+        //{
+        //    if (string.IsNullOrEmpty(_correo))
+        //    {
+        //        throw new Exception("Ingrese correo");
+        //    }
+        //}
+        //private void ValidarPassword()
+        //{
+        //    if (string.IsNullOrEmpty(_password))
+        //    {
+        //        throw new Exception("Ingrese password");
+        //    }
+        //}
+        //private void ValidarNacionalidad()
+        //{
+        //    if (string.IsNullOrEmpty(_nacionalidad))
+        //    {
+        //        throw new Exception("Ingrese nacionalidad");
+        //    }
+        //}
+
+        //private void ValidarRegalo()
+        //{
+        //    if (_regalos != true && _regalos != false)
+        //    {
+        //        throw new Exception("El valor de regalos es inválido");
+        //    }
+        //}
     }
 }
