@@ -58,7 +58,7 @@ namespace Dominio
               throw new Exception("Ingrese nacionalidad");
           }
         }
-        //public void Validar()
+        //public  virtual void Validar()
         //{
         //    ValidarCi();
         //    ValidarNombre();

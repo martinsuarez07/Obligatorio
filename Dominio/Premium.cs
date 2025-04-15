@@ -14,7 +14,6 @@ namespace Dominio
         private string _correo;
         private string _password;
         private string _nacionalidad;
-        private string _ventaja;
         private int _puntos;
 
 
@@ -38,19 +37,15 @@ namespace Dominio
         {
             get { return _nacionalidad; }
         }
-        public string Ventaja
-        {
-            get { return _ventaja; }
-        }
+       
         public int Punto
         {
             get { return _puntos; }
         }
 
-        public Premium(string ci, string nombre, string correo, string password, string nacionalidad, string ventaja, int punto) : base(ci, nombre, correo, password, nacionalidad)
+        public Premium(string ci, string nombre, string correo, string password, string nacionalidad, int punto) : base(ci, nombre, correo, password, nacionalidad)
         {
           
-            _ventaja = ventaja;
             _puntos = punto;
         }
         public override void Validar()
