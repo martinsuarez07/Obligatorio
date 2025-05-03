@@ -57,7 +57,7 @@ namespace Dominio
 
         private void ValidarDistancia()
         {
-            if(_distancia == 0  || _distancia == null)
+            if(_distancia <= 0  )
             {
                 throw new Exception("Error");
             }

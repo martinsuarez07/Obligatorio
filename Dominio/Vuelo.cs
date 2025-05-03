@@ -58,6 +58,11 @@ namespace Dominio
             {
                 throw new Exception("No puede ser nulo");
             }
+            var regex = new System.Text.RegularExpressions.Regex(@"^[A-Z]{2}\d{1,4}$");
+             if (!regex.IsMatch(_numeroVuelo))
+            {
+                throw new Exception("El número de vuelo debe tener 2 letras seguidas de 1 a 4 dígitos.");
+            }
         }
         private void ValidarRuta()
         {
@@ -72,6 +77,10 @@ namespace Dominio
             {
                 throw new Exception("No puede ser nulo");
             }
+            if (_ruta != null && _avion.Alcance < _ruta.Distancia)
+            {
+                throw new Exception("El avión no tiene el alcance necesario para cubrir la ruta.");
+            }
         }
         private void ValidarFrecuencia()
         {
@@ -80,5 +89,10 @@ namespace Dominio
                 throw new Exception("No puede ser cero");
             }
         }
+
+       
+           
+        
+
     }
 }
