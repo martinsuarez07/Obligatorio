@@ -89,11 +89,27 @@ namespace Dominio
         }
         private void ValidarFrecuencia()
         {
-            if (_frecuencia == 0)
+            if (_frecuencia<=0)
             {
-                throw new Exception("No puede ser cero");
+                throw new Exception("La frecuencia debe ser mayor a 0");
             }
         }
 
+        public decimal CalcularCostoPorAsiento()
+        {
+            if (_ruta == null || _avion == null)
+            {
+                throw new Exception("La ruta o el avión no pueden ser nulos.");
+            }
+
+            // Cálculo del costo por asiento
+            decimal costoOperacionRuta = _ruta.AeropuertoOrigen.CostoOperacion + _ruta.AeropuertoDestino.CostoOperacion;
+            decimal costoPorKmAvion = _avion.CostoPorKM * _ruta.Distancia;
+
+            decimal costoTotal = costoPorKmAvion + costoOperacionRuta;
+            decimal costoPorAsiento = costoTotal / _avion.CantidadAsientos;
+
+            return costoPorAsiento;
+        }
     }
 }

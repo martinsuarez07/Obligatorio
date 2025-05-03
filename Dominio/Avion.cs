@@ -72,26 +72,26 @@ namespace Dominio
 
         private void ValidarCantidadAsientos()
         {
-            if (_cantidadAsientos == 0)
+            if (_cantidadAsientos <=0)
             {
-                throw new Exception("No puede ser cero");
+                throw new Exception("La cantidad de asientos debe ser mayor que cero.");
             }
         }
 
         private void ValidarAlcance()
         {
-            if (_alcance == 0)
+            if (_alcance<=0)
             {
-                throw new Exception("No puede ser 0");
+                throw new Exception("El alcance del avión debe ser mayor que cero.");
             }
         }
 
         private void ValidarCostoPorKM()
 
         {
-            if (_costoPorKm == 0)
+            if (_costoPorKm<=0)
             {
-                throw new Exception("No puede ser 0 ");
+                throw new Exception("El costo por km debe ser mayor que cero.");
             }
         }
     }
