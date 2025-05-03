@@ -48,6 +48,7 @@ namespace Dominio
             ValidarRuta();
             ValidarAvion();
             ValidarFrecuencia();
+            ValidarDistanciaAvion();
         }
 
       
@@ -77,6 +78,10 @@ namespace Dominio
             {
                 throw new Exception("No puede ser nulo");
             }
+            
+        }
+        private void ValidarDistanciaAvion()
+        {
             if (_ruta != null && _avion.Alcance < _ruta.Distancia)
             {
                 throw new Exception("El avión no tiene el alcance necesario para cubrir la ruta.");

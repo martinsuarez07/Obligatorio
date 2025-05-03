@@ -102,7 +102,10 @@ namespace Dominio
         //        throw new Exception("Ingrese nacionalidad");
         //    }
         //}
-
+        public virtual string Info()
+        {
+            return $"Nombre: {Nombre}, Correo: {Correo}, Nacionalidad: {Nacionalidad}";
+        }
         public override bool Equals(object? obj)
         {
             Cliente cliente = obj as Cliente;

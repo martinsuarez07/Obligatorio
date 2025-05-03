@@ -532,8 +532,17 @@ namespace Dominio
             _pasajes.Add(pasaje);
         }
 
-        //---------------------------------------- FIN METODOS AGREGAR----------------------------------------------
+        
+        //---------------------------------------- FIN METODOS AGREGAR //-------
+       
+
+        public List<Cliente> RetornarLista()
+        {
+            return _clientes;
+        }
+
     }
+
 }
 
 

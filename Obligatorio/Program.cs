@@ -23,7 +23,7 @@ namespace Obligatorio
                             flag = true;
                             break;
                         case 1:
-                            //METODO 1
+                            ListarClientes();
                             break;
                         case 2:
                             //METODO 2
@@ -86,6 +86,25 @@ namespace Obligatorio
 
 
             return numero;
+        }
+
+        private static void ListarClientes()
+        {
+            Console.WriteLine("\nListado de todos los clientes:\n");
+
+            List<Cliente> lista = sistema.RetornarLista();
+
+            if (lista == null || lista.Count == 0)
+            {
+                Console.WriteLine("No hay clientes cargados en el sistema.");
+                return;
+            }
+
+            for (int i = 0; i < lista.Count; i++)
+            {
+                Cliente c = lista[i];
+                Console.WriteLine(c.Info()); // Método polimórfico
+            }
         }
     }
 }
