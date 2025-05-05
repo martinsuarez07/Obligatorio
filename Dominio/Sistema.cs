@@ -150,94 +150,65 @@ namespace Dominio
         }
         private void PrecargarRutas()
         {
-            Ruta ruta1 = new Ruta(1, new Aeropuerto("mv2", "Montevideo", 4000, 120), 1500);
+            Ruta ruta1 = new Ruta(1, _aeropuertos[0], _aeropuertos[1], 3200);
             AgregarRuta(ruta1);
-
-            Ruta ruta2 = new Ruta(2, new Aeropuerto("ba1", "Buenos Aires", 5000, 150), 300);
+            Ruta ruta2 = new Ruta(2, _aeropuertos[1], _aeropuertos[2], 3300);
             AgregarRuta(ruta2);
-
-            Ruta ruta3 = new Ruta(3, new Aeropuerto("scl", "Santiago", 6000, 180), 2000);
+            Ruta ruta3 = new Ruta(3, _aeropuertos[2], _aeropuertos[3], 3500);
             AgregarRuta(ruta3);
-
-            Ruta ruta4 = new Ruta(4, new Aeropuerto("bog", "Bogotá", 5500, 160), 4000);
+            Ruta ruta4 = new Ruta(4, _aeropuertos[3], _aeropuertos[4], 3700);
             AgregarRuta(ruta4);
-
-            Ruta ruta5 = new Ruta(5, new Aeropuerto("lim", "Lima", 4500, 140), 2500);
+            Ruta ruta5 = new Ruta(5, _aeropuertos[4], _aeropuertos[5], 3000);
             AgregarRuta(ruta5);
-
-            Ruta ruta6 = new Ruta(6, new Aeropuerto("ccs", "Caracas", 4000, 130), 3500);
+            Ruta ruta6 = new Ruta(6, _aeropuertos[5], _aeropuertos[6], 3100);
             AgregarRuta(ruta6);
-
-            Ruta ruta7 = new Ruta(7, new Aeropuerto("qro", "Querétaro", 3800, 110), 1500);
+            Ruta ruta7 = new Ruta(7, _aeropuertos[6], _aeropuertos[7], 2950);
             AgregarRuta(ruta7);
-
-            Ruta ruta8 = new Ruta(8, new Aeropuerto("rio", "Río de Janeiro", 4900, 145), 3500);
+            Ruta ruta8 = new Ruta(8, _aeropuertos[7], _aeropuertos[8], 3400);
             AgregarRuta(ruta8);
-
-            Ruta ruta9 = new Ruta(9, new Aeropuerto("grs", "Granada", 4700, 135), 4500);
+            Ruta ruta9 = new Ruta(9, _aeropuertos[8], _aeropuertos[9], 3300);
             AgregarRuta(ruta9);
-
-            Ruta ruta10 = new Ruta(10, new Aeropuerto("mex", "México DF", 7000, 200), 5000);
+            Ruta ruta10 = new Ruta(10, _aeropuertos[9], _aeropuertos[10], 3600);
             AgregarRuta(ruta10);
-
-            Ruta ruta11 = new Ruta(11, new Aeropuerto("sao", "São Paulo", 6500, 190), 6000);
+            Ruta ruta11 = new Ruta(11, _aeropuertos[10], _aeropuertos[11], 3900);
             AgregarRuta(ruta11);
-
-            Ruta ruta12 = new Ruta(12, new Aeropuerto("mar", "Maracaibo", 3800, 100), 1500);
+            Ruta ruta12 = new Ruta(12, _aeropuertos[11], _aeropuertos[12], 2800);
             AgregarRuta(ruta12);
-
-            Ruta ruta13 = new Ruta(13, new Aeropuerto("sdu", "São Duprat", 4000, 120), 2000);
+            Ruta ruta13 = new Ruta(13, _aeropuertos[12], _aeropuertos[13], 3100);
             AgregarRuta(ruta13);
-
-            Ruta ruta14 = new Ruta(14, new Aeropuerto("mzt", "Mazatlán", 3600, 115), 2500);
+            Ruta ruta14 = new Ruta(14, _aeropuertos[13], _aeropuertos[14], 2700);
             AgregarRuta(ruta14);
-
-            Ruta ruta15 = new Ruta(15, new Aeropuerto("asr", "Asunción", 4200, 125), 3000);
+            Ruta ruta15 = new Ruta(15, _aeropuertos[14], _aeropuertos[15], 2900);
             AgregarRuta(ruta15);
-
-            Ruta ruta16 = new Ruta(16, new Aeropuerto("gua", "Guatemala", 4600, 145), 4000);
+            Ruta ruta16 = new Ruta(16, _aeropuertos[15], _aeropuertos[16], 3500);
             AgregarRuta(ruta16);
-
-            Ruta ruta17 = new Ruta(17, new Aeropuerto("bvs", "Boca del Río", 3900, 110), 2500);
+            Ruta ruta17 = new Ruta(17, _aeropuertos[16], _aeropuertos[17], 2800);
             AgregarRuta(ruta17);
-
-            Ruta ruta18 = new Ruta(18, new Aeropuerto("mcz", "Macapá", 3500, 100), 3500);
+            Ruta ruta18 = new Ruta(18, _aeropuertos[17], _aeropuertos[18], 2600);
             AgregarRuta(ruta18);
-
-            Ruta ruta19 = new Ruta(19, new Aeropuerto("mde", "Medellín", 4800, 160), 4000);
+            Ruta ruta19 = new Ruta(19, _aeropuertos[18], _aeropuertos[19], 3700);
             AgregarRuta(ruta19);
-
-            Ruta ruta20 = new Ruta(20, new Aeropuerto("cdr", "Córdoba", 4200, 120), 3000);
+            Ruta ruta20 = new Ruta(20, _aeropuertos[19], _aeropuertos[0], 3000);
             AgregarRuta(ruta20);
-
-            Ruta ruta21 = new Ruta(21, new Aeropuerto("grb", "Gran Buenos Aires", 4600, 140), 3200);
+            Ruta ruta21 = new Ruta(21, _aeropuertos[0], _aeropuertos[2], 3400);
             AgregarRuta(ruta21);
-
-            Ruta ruta22 = new Ruta(22, new Aeropuerto("bqq", "Buenos Aires Quilmes", 5500, 170), 3300);
+            Ruta ruta22 = new Ruta(22, _aeropuertos[1], _aeropuertos[3], 3300);
             AgregarRuta(ruta22);
-
-            Ruta ruta23 = new Ruta(23, new Aeropuerto("mon", "Montevideo Oeste", 3900, 120), 1000);
+            Ruta ruta23 = new Ruta(23, _aeropuertos[2], _aeropuertos[4], 3500);
             AgregarRuta(ruta23);
-
-            Ruta ruta24 = new Ruta(24, new Aeropuerto("fsa", "Foz do Iguaçu", 4800, 150), 2600);
+            Ruta ruta24 = new Ruta(24, _aeropuertos[3], _aeropuertos[5], 3100);
             AgregarRuta(ruta24);
-
-            Ruta ruta25 = new Ruta(25, new Aeropuerto("mcd", "Mar del Plata", 3800, 110), 2000);
+            Ruta ruta25 = new Ruta(25, _aeropuertos[4], _aeropuertos[6], 3700);
             AgregarRuta(ruta25);
-
-            Ruta ruta26 = new Ruta(26, new Aeropuerto("clo", "Córdoba Norte", 4200, 125), 2200);
+            Ruta ruta26 = new Ruta(26, _aeropuertos[5], _aeropuertos[7], 2800);
             AgregarRuta(ruta26);
-
-            Ruta ruta27 = new Ruta(27, new Aeropuerto("sal", "Salta", 4500, 130), 1800);
+            Ruta ruta27 = new Ruta(27, _aeropuertos[6], _aeropuertos[8], 3000);
             AgregarRuta(ruta27);
-
-            Ruta ruta28 = new Ruta(28, new Aeropuerto("mzo", "Mendoza", 4600, 135), 2500);
+            Ruta ruta28 = new Ruta(28, _aeropuertos[7], _aeropuertos[9], 3600);
             AgregarRuta(ruta28);
-
-            Ruta ruta29 = new Ruta(29, new Aeropuerto("rsp", "Rosario", 4300, 140), 3000);
+            Ruta ruta29 = new Ruta(29, _aeropuertos[8], _aeropuertos[10], 3100);
             AgregarRuta(ruta29);
-
-            Ruta ruta30 = new Ruta(30, new Aeropuerto("tuc", "Tucumán", 4400, 145), 2800);
+            Ruta ruta30 = new Ruta(30, _aeropuertos[9], _aeropuertos[11], 3300);
             AgregarRuta(ruta30);
         }
         private void PrecargarAviones()
