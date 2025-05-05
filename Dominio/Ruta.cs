@@ -86,6 +86,10 @@ namespace Dominio
             }
         }
 
-      
+      public decimal costoOperacion()
+        {
+            decimal costoOperacion = _aeropuertoOrigen.CostoOperacion + _aeropuertoDestino.CostoOperacion;
+            return costoOperacion;
+        }
     }
 }

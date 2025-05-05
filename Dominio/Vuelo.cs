@@ -103,7 +103,7 @@ namespace Dominio
             }
 
             // Cálculo del costo por asiento
-            decimal costoOperacionRuta = _ruta.AeropuertoOrigen.CostoOperacion + _ruta.AeropuertoDestino.CostoOperacion;
+            decimal costoOperacionRuta = _ruta.costoOperacion();
             decimal costoPorKmAvion = _avion.CostoPorKM * _ruta.Distancia;
 
             decimal costoTotal = costoPorKmAvion + costoOperacionRuta;
