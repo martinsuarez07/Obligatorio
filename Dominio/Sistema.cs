@@ -294,79 +294,55 @@ namespace Dominio
 
         private void PrecargarPasaje()
         {
-            Pasaje pasaje1 = new Pasaje(1, new Vuelo("V001", new Ruta(1, new Aeropuerto("mv2", "Montevideo", 4000, 120), 1500), new Avion("Agustin", "ax1", 23, 3000, 15000), 5), new DateTime(2025, 4, 15), new Ocacional("51244125", "Jorge", "jorge@gmail.com", "abc123", "Uruguayo", true), TipoEquipaje.ligth, 1500);
+            Pasaje pasaje1 = new Pasaje(1,_vuelos[1], new DateTime(2025, 4, 16), _clientes[1], TipoEquipaje.cabina, 12);
             AgregarPasaje(pasaje1);
-
-            Pasaje pasaje2 = new Pasaje(2, new Vuelo("V002", new Ruta(2, new Aeropuerto("ba1", "Buenos Aires", 5000, 150), 300), new Avion("Carlos", "bx1", 25, 3200, 20000), 7), new DateTime(2025, 4, 16), new Premium("61234456", "Ana", "ana@gmail.com", "def123", "Argentina", "Descuento", 1200), TipoEquipaje.cabina, 3000);
+            Pasaje pasaje2 = new Pasaje(2, _vuelos[1], new DateTime(2025, 4, 2), _clientes[1], TipoEquipaje.bodega, 14);
             AgregarPasaje(pasaje2);
-
-            Pasaje pasaje3 = new Pasaje(3, new Vuelo("V003", new Ruta(3, new Aeropuerto("scl", "Santiago", 6000, 180), 2000), new Avion("Lucas", "cx1", 22, 2800, 18000), 4), new DateTime(2025, 4, 17), new Ocacional("43214567", "Pedro", "pedro@gmail.com", "ghi123", "Chileno", true), TipoEquipaje.bodega, 2000);
+            Pasaje pasaje3 = new Pasaje(3, _vuelos[2], new DateTime(2025, 4, 3), _clientes[2], TipoEquipaje.ligth, 11);
             AgregarPasaje(pasaje3);
-
-            Pasaje pasaje4 = new Pasaje(4, new Vuelo("V004", new Ruta(4, new Aeropuerto("bog", "Bogotá", 5500, 160), 4000), new Avion("Maria", "dx1", 24, 3500, 22000), 6), new DateTime(2025, 4, 18), new Premium("71234467", "Carlos", "carlos@gmail.com", "jkl123", "Colombiano", "Acceso VIP", 1500), TipoEquipaje.cabina, 3500);
+            Pasaje pasaje4 = new Pasaje(4, _vuelos[3], new DateTime(2025, 4, 4), _clientes[3], TipoEquipaje.bodega, 10);
             AgregarPasaje(pasaje4);
-
-            Pasaje pasaje5 = new Pasaje(5, new Vuelo("V005", new Ruta(5, new Aeropuerto("lim", "Lima", 4500, 140), 2500), new Avion("Juan", "ex1", 21, 2600, 16000), 3), new DateTime(2025, 4, 19), new Ocacional("81234478", "Luis", "luis@gmail.com", "mno123", "Peruano", false), TipoEquipaje.ligth, 2500);
+            Pasaje pasaje5 = new Pasaje(5, _vuelos[4], new DateTime(2025, 4, 5), _clientes[4], TipoEquipaje.cabina, 13);
             AgregarPasaje(pasaje5);
-
-            Pasaje pasaje6 = new Pasaje(6, new Vuelo("V006", new Ruta(6, new Aeropuerto("ccs", "Caracas", 4000, 130), 3500), new Avion("Ricardo", "fx1", 20, 3100, 19500), 8), new DateTime(2025, 4, 20), new Premium("91234489", "Sofia", "sofia@gmail.com", "pqr123", "Venezolana", "Prioridad", 2000), TipoEquipaje.bodega, 2000);
+            Pasaje pasaje6 = new Pasaje(6, _vuelos[5], new DateTime(2025, 4, 6), _clientes[5], TipoEquipaje.ligth, 15);
             AgregarPasaje(pasaje6);
-
-            Pasaje pasaje7 = new Pasaje(7, new Vuelo("V007", new Ruta(7, new Aeropuerto("qro", "Querétaro", 3800, 110), 1500), new Avion("Diego", "gx1", 26, 2900, 17000), 2), new DateTime(2025, 4, 21), new Ocacional("31234490", "Mariana", "mariana@gmail.com", "stu123", "Mexicana", true), TipoEquipaje.ligth, 1500);
+            Pasaje pasaje7 = new Pasaje(7, _vuelos[6], new DateTime(2025, 4, 7), _clientes[6], TipoEquipaje.cabina, 12);
             AgregarPasaje(pasaje7);
-
-            Pasaje pasaje8 = new Pasaje(8, new Vuelo("V008", new Ruta(8, new Aeropuerto("ba1", "Buenos Aires", 5000, 150), 3500), new Avion("Andrés", "hx1", 28, 3300, 21000), 6), new DateTime(2025, 4, 22), new Premium("11234491", "Lucía", "lucia@gmail.com", "vwx123", "Brasileña", "Beneficio extra", 1800), TipoEquipaje.cabina, 3000);
+            Pasaje pasaje8 = new Pasaje(8, _vuelos[7], new DateTime(2025, 4, 8), _clientes[7], TipoEquipaje.bodega, 16);
             AgregarPasaje(pasaje8);
-
-            Pasaje pasaje9 = new Pasaje(9, new Vuelo("V009", new Ruta(9, new Aeropuerto("grs", "Granada", 4700, 135), 4500), new Avion("Sofia", "ix1", 22, 3400, 20000), 5), new DateTime(2025, 4, 23), new Ocacional("51234502", "Ignacio", "ignacio@gmail.com", "abc987", "Español", false), TipoEquipaje.bodega, 2200);
+            Pasaje pasaje9 = new Pasaje(9, _vuelos[8], new DateTime(2025, 4, 9), _clientes[8], TipoEquipaje.ligth, 13);
             AgregarPasaje(pasaje9);
-
-            Pasaje pasaje10 = new Pasaje(10, new Vuelo("V010", new Ruta(10, new Aeropuerto("mex", "México DF", 7000, 200), 5000), new Avion("Gabriel", "jx1", 25, 3600, 23000), 7), new DateTime(2025, 4, 24), new Premium("21234493", "Esteban", "esteban@gmail.com", "abc123", "Mexicano", "Asientos premium", 2500), TipoEquipaje.cabina, 3500);
+            Pasaje pasaje10 = new Pasaje(10, _vuelos[9], new DateTime(2025, 4, 10), _clientes[9], TipoEquipaje.bodega, 11);
             AgregarPasaje(pasaje10);
-
-            Pasaje pasaje11 = new Pasaje(11, new Vuelo("V011", new Ruta(11, new Aeropuerto("sao", "São Paulo", 6500, 190), 6000), new Avion("Fernanda", "kx1", 24, 3400, 20500), 4), new DateTime(2025, 4, 25), new Ocacional("91234504", "Camila", "camila@gmail.com", "ghi345", "Brasileña", true), TipoEquipaje.ligth, 2300);
+            Pasaje pasaje11 = new Pasaje(11, _vuelos[10], new DateTime(2025, 4, 11), _clientes[0], TipoEquipaje.cabina, 14);
             AgregarPasaje(pasaje11);
-
-            Pasaje pasaje12 = new Pasaje(12, new Vuelo("V012", new Ruta(12, new Aeropuerto("mar", "Maracaibo", 3800, 100), 1500), new Avion("Pedro", "lx1", 23, 2800, 17500), 8), new DateTime(2025, 4, 26), new Premium("61234505", "Ricardo", "ricardo@gmail.com", "jkl456", "Venezolano", "Fast track", 2200), TipoEquipaje.bodega, 2700);
+            Pasaje pasaje12 = new Pasaje(12, _vuelos[11], new DateTime(2025, 4, 12), _clientes[1], TipoEquipaje.ligth, 10);
             AgregarPasaje(pasaje12);
-
-            Pasaje pasaje13 = new Pasaje(13, new Vuelo("V013", new Ruta(13, new Aeropuerto("sdu", "São Duprat", 4000, 120), 2000), new Avion("Carolina", "mx1", 22, 2900, 18000), 5), new DateTime(2025, 4, 27), new Ocacional("31234506", "Julian", "julian@gmail.com", "stu789", "Argentino", false), TipoEquipaje.ligth, 2400);
+            Pasaje pasaje13 = new Pasaje(13, _vuelos[12], new DateTime(2025, 4, 13), _clientes[2], TipoEquipaje.cabina, 15);
             AgregarPasaje(pasaje13);
-
-            Pasaje pasaje14 = new Pasaje(14, new Vuelo("V014", new Ruta(14, new Aeropuerto("mzt", "Mazatlán", 3600, 115), 2500), new Avion("Javier", "nx1", 21, 2700, 16000), 3), new DateTime(2025, 4, 28), new Premium("11234507", "Rosa", "rosa@gmail.com", "uvw123", "Mexicana", "Maletero prioritario", 2700), TipoEquipaje.cabina, 3000);
+            Pasaje pasaje14 = new Pasaje(14, _vuelos[13], new DateTime(2025, 4, 14), _clientes[3], TipoEquipaje.bodega, 13);
             AgregarPasaje(pasaje14);
-
-            Pasaje pasaje15 = new Pasaje(15, new Vuelo("V015", new Ruta(15, new Aeropuerto("luc", "Lucía", 4200, 125), 3000), new Avion("Ricardo", "tx1", 23, 3300, 20000), 6), new DateTime(2025, 4, 29), new Ocacional("51234508", "Joaquín", "joaquin@gmail.com", "xyz123", "Paraguayo", true), TipoEquipaje.bodega, 2600);
+            Pasaje pasaje15 = new Pasaje(15, _vuelos[14], new DateTime(2025, 4, 15), _clientes[4], TipoEquipaje.ligth, 12);
             AgregarPasaje(pasaje15);
-
-            Pasaje pasaje16 = new Pasaje(16, new Vuelo("V016", new Ruta(16, new Aeropuerto("gua", "Guatemala", 4600, 145), 4000), new Avion("Antonio", "px1", 27, 3100, 20000), 7), new DateTime(2025, 4, 30), new Premium("71234509", "Carlos", "carlos@gmail.com", "rst789", "Guatemalteco", "WiFi gratis", 1900), TipoEquipaje.cabina, 2500);
+            Pasaje pasaje16 = new Pasaje(16, _vuelos[15], new DateTime(2025, 4, 16), _clientes[5], TipoEquipaje.bodega, 14);
             AgregarPasaje(pasaje16);
-
-            Pasaje pasaje17 = new Pasaje(17, new Vuelo("V017", new Ruta(17, new Aeropuerto("bvs", "Boca del Río", 3900, 110), 2500), new Avion("Claudia", "qx1", 29, 3300, 21500), 2), new DateTime(2025, 5, 1), new Ocacional("31234510", "Teresa", "teresa@gmail.com", "opq123", "Argentina", false), TipoEquipaje.ligth, 2200);
+            Pasaje pasaje17 = new Pasaje(17, _vuelos[16], new DateTime(2025, 4, 17), _clientes[6], TipoEquipaje.ligth, 11);
             AgregarPasaje(pasaje17);
-
-            Pasaje pasaje18 = new Pasaje(18, new Vuelo("V018", new Ruta(18, new Aeropuerto("pcm", "Punta Cana", 5000, 160), 3500), new Avion("Martín", "tx2", 20, 3100, 18000), 4), new DateTime(2025, 5, 2), new Premium("51234511", "Patricia", "patricia@gmail.com", "stu432", "Dominicana", "Prioridad de embarque", 2800), TipoEquipaje.bodega, 3000);
+            Pasaje pasaje18 = new Pasaje(18, _vuelos[17], new DateTime(2025, 4, 18), _clientes[7], TipoEquipaje.bodega, 10);
             AgregarPasaje(pasaje18);
-
-            Pasaje pasaje19 = new Pasaje(19, new Vuelo("V019", new Ruta(19, new Aeropuerto("mty", "Monterrey", 4200, 130), 3000), new Avion("Alfredo", "ax2", 26, 3200, 20000), 5), new DateTime(2025, 5, 3), new Ocacional("31234512", "Fernando", "fernando@gmail.com", "hij789", "Mexicano", true), TipoEquipaje.ligth, 2500);
+            Pasaje pasaje19 = new Pasaje(19, _vuelos[18], new DateTime(2025, 4, 19), _clientes[8], TipoEquipaje.cabina, 13);
             AgregarPasaje(pasaje19);
-
-            Pasaje pasaje20 = new Pasaje(20, new Vuelo("V020", new Ruta(20, new Aeropuerto("rga", "Rosario", 4600, 170), 3500), new Avion("Eduardo", "bx2", 24, 3300, 21000), 3), new DateTime(2025, 5, 4), new Premium("61234513", "Julieta", "julieta@gmail.com", "klm123", "Argentina", "Asientos exclusivos", 3000), TipoEquipaje.cabina, 3200);
+            Pasaje pasaje20 = new Pasaje(20, _vuelos[19], new DateTime(2025, 4, 20), _clientes[9], TipoEquipaje.bodega, 12);
             AgregarPasaje(pasaje20);
-
-            Pasaje pasaje21 = new Pasaje(21, new Vuelo("V021", new Ruta(21, new Aeropuerto("ccl", "Curitiba", 4300, 140), 3000), new Avion("Paula", "lz1", 27, 3300, 21500), 6), new DateTime(2025, 5, 5), new Ocacional("51234514", "Marta", "marta@gmail.com", "pqr123", "Brasilera", true), TipoEquipaje.bodega, 2600);
+            Pasaje pasaje21 = new Pasaje(21, _vuelos[20], new DateTime(2025, 4, 21), _clientes[5], TipoEquipaje.ligth, 10);
             AgregarPasaje(pasaje21);
-
-            Pasaje pasaje22 = new Pasaje(22, new Vuelo("V022", new Ruta(22, new Aeropuerto("equ", "Ecuador", 4000, 125), 2000), new Avion("Ricardo", "ux1", 29, 3100, 21000), 5), new DateTime(2025, 5, 6), new Premium("71234515", "Gabriela", "gabriela@gmail.com", "abc234", "Ecuatoriana", "Exclusivo", 3500), TipoEquipaje.ligth, 2700);
+            Pasaje pasaje22 = new Pasaje(22, _vuelos[21], new DateTime(2025, 4, 22), _clientes[1], TipoEquipaje.bodega, 14);
             AgregarPasaje(pasaje22);
-
-            Pasaje pasaje23 = new Pasaje(23, new Vuelo("V023", new Ruta(23, new Aeropuerto("bja", "Bahía Blanca", 4600, 130), 4000), new Avion("Gabriel", "ey1", 24, 3200, 20500), 2), new DateTime(2025, 5, 7), new Ocacional("91234516", "Hernán", "hernan@gmail.com", "rst890", "Argentino", false), TipoEquipaje.bodega, 2500);
+            Pasaje pasaje23 = new Pasaje(23, _vuelos[22], new DateTime(2025, 4, 23), _clientes[2], TipoEquipaje.cabina, 11);
             AgregarPasaje(pasaje23);
-
-            Pasaje pasaje24 = new Pasaje(24, new Vuelo("V024", new Ruta(24, new Aeropuerto("mtv", "Montevideo", 4200, 150), 3500), new Avion("Carla", "zx1", 22, 3000, 19500), 4), new DateTime(2025, 5, 8), new Premium("11234517", "Javier", "javier@gmail.com", "opq567", "Uruguayo", "Pasaporte rápido", 2900), TipoEquipaje.ligth, 2800);
+            Pasaje pasaje24 = new Pasaje(24, _vuelos[23], new DateTime(2025, 4, 24), _clientes[3], TipoEquipaje.bodega, 13);
             AgregarPasaje(pasaje24);
-
-            Pasaje pasaje25 = new Pasaje(25, new Vuelo("V025", new Ruta(25, new Aeropuerto("rcu", "Río Cuarto", 4700, 180), 2000), new Avion("Natalia", "zx2", 25, 3100, 22000), 6), new DateTime(2025, 5, 9), new Ocacional("31234518", "Miguel", "miguel@gmail.com", "rst789", "Argentino", true), TipoEquipaje.bodega, 2600);
+            Pasaje pasaje25 = new Pasaje(25, _vuelos[24], new DateTime(2025, 4, 25), _clientes[4], TipoEquipaje.ligth, 12);
             AgregarPasaje(pasaje25);
         }
 
