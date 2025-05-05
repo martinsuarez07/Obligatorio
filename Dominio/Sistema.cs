@@ -229,98 +229,69 @@ namespace Dominio
         {
 
         
-            Vuelo vuelo1 = new Vuelo("V001", new Ruta(1, new Aeropuerto("mv2", "Montevideo", 4000, 120), 1500), new Avion("Agustin", "ax1", 23, 3000, 15000), 5);
+            Vuelo vuelo1 = new Vuelo("V001", _rutas[1], _aviones[1], 5);
             AgregarVuelo(vuelo1);
-
-            Vuelo vuelo2 = new Vuelo("V002", new Ruta(2, new Aeropuerto("ba1", "Buenos Aires", 5000, 150), 300), new Avion("Carlos", "bx1", 25, 3200, 20000), 7);
+            Vuelo vuelo2 = new Vuelo("V002", _rutas[2], _aviones[1], 6);
             AgregarVuelo(vuelo2);
-
-            Vuelo vuelo3 = new Vuelo("V003", new Ruta(3, new Aeropuerto("scl", "Santiago", 6000, 180), 2000), new Avion("Lucas", "cx1", 22, 2800, 18000), 4);
+            Vuelo vuelo3 = new Vuelo("V003", _rutas[3], _aviones[2], 7);
             AgregarVuelo(vuelo3);
-
-            Vuelo vuelo4 = new Vuelo("V004", new Ruta(4, new Aeropuerto("bog", "Bogotá", 5500, 160), 4000), new Avion("Maria", "dx1", 24, 3500, 22000), 6);
+            Vuelo vuelo4 = new Vuelo("V004", _rutas[4], _aviones[1], 5);
             AgregarVuelo(vuelo4);
-
-            Vuelo vuelo5 = new Vuelo("V005", new Ruta(5, new Aeropuerto("lim", "Lima", 4500, 140), 2500), new Avion("Juan", "ex1", 21, 2600, 16000), 3);
+            Vuelo vuelo5 = new Vuelo("V005", _rutas[5], _aviones[2], 6);
             AgregarVuelo(vuelo5);
-
-            Vuelo vuelo6 = new Vuelo("V006", new Ruta(6, new Aeropuerto("ccs", "Caracas", 4000, 130), 3500), new Avion("Ricardo", "fx1", 20, 3100, 19500), 8);
+            Vuelo vuelo6 = new Vuelo("V006", _rutas[6], _aviones[0], 7);
             AgregarVuelo(vuelo6);
-
-            Vuelo vuelo7 = new Vuelo("V007", new Ruta(7, new Aeropuerto("qro", "Querétaro", 3800, 110), 1500), new Avion("Diego", "gx1", 26, 2900, 17000), 2);
+            Vuelo vuelo7 = new Vuelo("V007", _rutas[7], _aviones[2], 5);
             AgregarVuelo(vuelo7);
-
-            Vuelo vuelo8 = new Vuelo("V008", new Ruta(8, new Aeropuerto("rio", "Río de Janeiro", 4900, 145), 3500), new Avion("Andrés", "hx1", 28, 3300, 21000), 6);
+            Vuelo vuelo8 = new Vuelo("V008", _rutas[3], _aviones[0], 6);
             AgregarVuelo(vuelo8);
-
-            Vuelo vuelo9 = new Vuelo("V009", new Ruta(9, new Aeropuerto("grs", "Granada", 4700, 135), 4500), new Avion("Sofia", "ix1", 22, 3400, 20000), 5);
+            Vuelo vuelo9 = new Vuelo("V009", _rutas[2], _aviones[1], 7);
             AgregarVuelo(vuelo9);
-
-            Vuelo vuelo10 = new Vuelo("V010", new Ruta(10, new Aeropuerto("mex", "México DF", 7000, 200), 5000), new Avion("Gabriel", "jx1", 25, 3600, 23000), 7);
+            Vuelo vuelo10 = new Vuelo("V010", _rutas[0], _aviones[1], 5);
             AgregarVuelo(vuelo10);
-
-            Vuelo vuelo11 = new Vuelo("V011", new Ruta(11, new Aeropuerto("sao", "São Paulo", 6500, 190), 6000), new Avion("Fernanda", "kx1", 24, 3400, 20500), 4);
+            Vuelo vuelo11 = new Vuelo("V011", _rutas[1], _aviones[2], 6);
             AgregarVuelo(vuelo11);
-
-            Vuelo vuelo12 = new Vuelo("V012", new Ruta(12, new Aeropuerto("mar", "Maracaibo", 3800, 100), 1500), new Avion("Pedro", "lx1", 23, 2800, 17500), 8);
+            Vuelo vuelo12 = new Vuelo("V012", _rutas[2], _aviones[0], 7);
             AgregarVuelo(vuelo12);
-
-            Vuelo vuelo13 = new Vuelo("V013", new Ruta(13, new Aeropuerto("sdu", "São Duprat", 4000, 120), 2000), new Avion("Carolina", "mx1", 22, 2900, 18000), 5);
+            Vuelo vuelo13 = new Vuelo("V013", _rutas[6], _aviones[1], 5);
             AgregarVuelo(vuelo13);
-
-            Vuelo vuelo14 = new Vuelo("V014", new Ruta(14, new Aeropuerto("mzt", "Mazatlán", 3600, 115), 2500), new Avion("Javier", "nx1", 21, 2700, 16000), 3);
+            Vuelo vuelo14 = new Vuelo("V014", _rutas[6], _aviones[2], 6);
             AgregarVuelo(vuelo14);
-
-            Vuelo vuelo15 = new Vuelo("V015", new Ruta(15, new Aeropuerto("asr", "Asunción", 4200, 125), 3000), new Avion("Lucía", "ox1", 26, 3200, 21000), 6);
+            Vuelo vuelo15 = new Vuelo("V015", _rutas[8], _aviones[0], 7);
             AgregarVuelo(vuelo15);
-
-            Vuelo vuelo16 = new Vuelo("V016", new Ruta(16, new Aeropuerto("gua", "Guatemala", 4600, 145), 4000), new Avion("Antonio", "px1", 27, 3100, 20000), 7);
+            Vuelo vuelo16 = new Vuelo("V016", _rutas[10], _aviones[2], 5);
             AgregarVuelo(vuelo16);
-
-            Vuelo vuelo17 = new Vuelo("V017", new Ruta(17, new Aeropuerto("bvs", "Boca del Río", 3900, 110), 2500), new Avion("Claudia", "qx1", 29, 3300, 21500), 2);
+            Vuelo vuelo17 = new Vuelo("V017", _rutas[11], _aviones[0], 6);
             AgregarVuelo(vuelo17);
-
-            Vuelo vuelo18 = new Vuelo("V018", new Ruta(18, new Aeropuerto("mcz", "Macapá", 3500, 100), 3500), new Avion("Esteban", "rx1", 20, 2700, 16000), 4);
+            Vuelo vuelo18 = new Vuelo("V018", _rutas[12], _aviones[1], 7);
             AgregarVuelo(vuelo18);
-
-            Vuelo vuelo19 = new Vuelo("V019", new Ruta(19, new Aeropuerto("mde", "Medellín", 4800, 160), 4000), new Avion("Martín", "sx1", 24, 3200, 21000), 5);
+            Vuelo vuelo19 = new Vuelo("V019", _rutas[0], _aviones[0], 5);
             AgregarVuelo(vuelo19);
-
-            Vuelo vuelo20 = new Vuelo("V020", new Ruta(20, new Aeropuerto("cdr", "Córdoba", 4200, 120), 3000), new Avion("Ricardo", "tx1", 23, 3300, 20000), 8);
+            Vuelo vuelo20 = new Vuelo("V020", _rutas[1], _aviones[1], 6);
             AgregarVuelo(vuelo20);
-
-            Vuelo vuelo21 = new Vuelo("V021", new Ruta(21, new Aeropuerto("grb", "Gran Buenos Aires", 4600, 140), 3200), new Avion("Gustavo", "ux1", 28, 3100, 19000), 6);
+            Vuelo vuelo21 = new Vuelo("V021", _rutas[2], _aviones[2], 7);
             AgregarVuelo(vuelo21);
-
-            Vuelo vuelo22 = new Vuelo("V022", new Ruta(22, new Aeropuerto("bqq", "Buenos Aires Quilmes", 5500, 170), 3300), new Avion("Marta", "vx1", 24, 3300, 21000), 7);
+            Vuelo vuelo22 = new Vuelo("V022", _rutas[22], _aviones[1], 5);
             AgregarVuelo(vuelo22);
-
-            Vuelo vuelo23 = new Vuelo("V023", new Ruta(23, new Aeropuerto("mon", "Montevideo Oeste", 3900, 120), 1000), new Avion("David", "wx1", 26, 2800, 17500), 3);
+            Vuelo vuelo23 = new Vuelo("V023", _rutas[23], _aviones[2], 6);
             AgregarVuelo(vuelo23);
-
-            Vuelo vuelo24 = new Vuelo("V024", new Ruta(24, new Aeropuerto("fsa", "Foz do Iguaçu", 4800, 150), 2600), new Avion("Julia", "yx1", 21, 2900, 18000), 4);
+            Vuelo vuelo24 = new Vuelo("V024", _rutas[24], _aviones[0], 7);
             AgregarVuelo(vuelo24);
-
-            Vuelo vuelo25 = new Vuelo("V025", new Ruta(25, new Aeropuerto("mcd", "Mar del Plata", 3800, 110), 2000), new Avion("Beatriz", "zz1", 23, 2600, 17000), 5);
+            Vuelo vuelo25 = new Vuelo("V025", _rutas[26], _aviones[2], 5);
             AgregarVuelo(vuelo25);
-
-            Vuelo vuelo26 = new Vuelo("V026", new Ruta(26, new Aeropuerto("clo", "Córdoba Norte", 4200, 125), 2200), new Avion("Raúl", "a01", 25, 3000, 18500), 6);
+            Vuelo vuelo26 = new Vuelo("V026", _rutas[26], _aviones[0], 6);
             AgregarVuelo(vuelo26);
-
-            Vuelo vuelo27 = new Vuelo("V027", new Ruta(27, new Aeropuerto("sal", "Salta", 4500, 130), 1800), new Avion("Adriana", "b01", 27, 3200, 19000), 4);
+            Vuelo vuelo27 = new Vuelo("V027", _rutas[27], _aviones[1], 7);
             AgregarVuelo(vuelo27);
-
-            Vuelo vuelo28 = new Vuelo("V028", new Ruta(28, new Aeropuerto("mzo", "Mendoza", 4600, 135), 2500), new Avion("Carlos", "c01", 29, 3300, 20000), 8);
+            Vuelo vuelo28 = new Vuelo("V028", _rutas[28], _aviones[0], 5);
             AgregarVuelo(vuelo28);
-
-            Vuelo vuelo29 = new Vuelo("V029", new Ruta(29, new Aeropuerto("rsp", "Rosario", 4300, 140), 3000), new Avion("Lorena", "d01", 24, 3100, 19500), 7);
+            Vuelo vuelo29 = new Vuelo("V029", _rutas[29], _aviones[1], 6);
             AgregarVuelo(vuelo29);
-
-            Vuelo vuelo30 = new Vuelo("V030", new Ruta(30, new Aeropuerto("tuc", "Tucumán", 4400, 145), 2800), new Avion("Elena", "e01", 25, 3400, 21000), 6);
+            Vuelo vuelo30 = new Vuelo("V030", _rutas[30], _aviones[2], 7);
             AgregarVuelo(vuelo30);
 
         }
-       
+
         private void PrecargarPasaje()
         {
             Pasaje pasaje1 = new Pasaje(1, new Vuelo("V001", new Ruta(1, new Aeropuerto("mv2", "Montevideo", 4000, 120), 1500), new Avion("Agustin", "ax1", 23, 3000, 15000), 5), new DateTime(2025, 4, 15), new Ocacional("51244125", "Jorge", "jorge@gmail.com", "abc123", "Uruguayo", true), TipoEquipaje.ligth, 1500);
