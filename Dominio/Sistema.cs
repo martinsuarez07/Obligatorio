@@ -228,7 +228,7 @@ namespace Dominio
         {
 
         
-            Vuelo vuelo1 = new Vuelo("VN001", _rutas[1], _aviones[1], 5);
+            Vuelo vuelo1 = new Vuelo("VN001", _rutas[1], _aviones[1], new List<DayOfWeek>{ DayOfWeek.Monday,DayOfWeek.Saturday});
             AgregarVuelo(vuelo1);
             Vuelo vuelo2 = new Vuelo("VD002", _rutas[2], _aviones[1], 6);
             AgregarVuelo(vuelo2);
@@ -343,6 +343,8 @@ namespace Dominio
             AgregarPasaje(pasaje24);
             Pasaje pasaje25 = new Pasaje(25, _vuelos[24], new DateTime(2025, 4, 25), _clientes[4], TipoEquipaje.ligth, 12);
             AgregarPasaje(pasaje25);
+
+            //vuelo.Frecuencia.conteins(pasaje.fecha.dayoftheweek)
         }
 
        

@@ -11,7 +11,7 @@ namespace Dominio
         private string _numeroVuelo;
         private Ruta _ruta;
         private Avion _avion;
-        private int _frecuencia;
+        private List<DayOfWeek> _frecuencia;
 
         public string NumeroVuelo
         {
@@ -28,13 +28,13 @@ namespace Dominio
             get { return _avion; }
             set { _avion = value; }
         }
-        public int Frecuencia
-        {
-            get { return _frecuencia; }
-            set { _frecuencia = value; }
-        }
+        //public int Frecuencia
+        //{
+        //    get { return _frecuencia; }
+        //    set { _frecuencia = value; }
+        //}
 
-        public Vuelo(string numeroVuelo, Ruta ruta, Avion avion, int frecuencia)
+        public Vuelo(string numeroVuelo, Ruta ruta, Avion avion, List<DayOfWeek> frecuencia)
         {
             _numeroVuelo = numeroVuelo;
             _ruta = ruta;
@@ -89,10 +89,10 @@ namespace Dominio
         }
         private void ValidarFrecuencia()
         {
-            if (_frecuencia<=0)
-            {
-                throw new Exception("La frecuencia debe ser mayor a 0");
-            }
+            //if (_frecuencia<=0)
+            //{
+            //    throw new Exception("La frecuencia debe ser mayor a 0");
+            //}
         }
 
         public decimal CalcularCostoPorAsiento()
