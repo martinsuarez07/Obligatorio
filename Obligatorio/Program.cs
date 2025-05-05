@@ -7,6 +7,7 @@ namespace Obligatorio
         static Sistema sistema = new Sistema();
         static void Main(string[] args)
         {
+            sistema.PrecargarDatos();
             int opcion;
             bool flag = false;
             while (!flag)
@@ -54,6 +55,7 @@ namespace Obligatorio
                 Console.Clear();
             }
         }
+
         public static void OpcionesMenu()
         {
             Console.WriteLine("Menu\n");
@@ -87,9 +89,10 @@ namespace Obligatorio
 
             return numero;
         }
-
+        
         private static void ListarClientes()
         {
+            
             Console.WriteLine("\nListado de todos los clientes:\n");
 
             List<Cliente> lista = sistema.RetornarLista();

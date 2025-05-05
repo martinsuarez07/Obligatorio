@@ -9,15 +9,14 @@ namespace Dominio
     public class Sistema
 
     {
-        private List<Administrador> _administradores;
-        private List<Cliente> _clientes;
-        private List<Aeropuerto> _aeropuertos;
-        private List<Avion> _aviones;
-        private List<Pasaje> _pasajes;
-        private List<Ruta> _rutas;
-        private List<Vuelo> _vuelos;
-        private List<Premium> _premiums;
-        private List<Ocacional> _ocacionales;
+        private List<Administrador> _administradores = new List<Administrador>();
+        private List<Cliente> _clientes = new List<Cliente>();
+        private List<Aeropuerto> _aeropuertos = new List<Aeropuerto>();
+        private List<Avion> _aviones = new List<Avion>();
+        private List<Pasaje> _pasajes = new List<Pasaje>();
+        private List<Ruta> _rutas = new List<Ruta>();
+        private List<Vuelo> _vuelos = new List<Vuelo>();
+        
 
         public List<Administrador> Administrador { get { return new List<Administrador>(_administradores); } }
         public List<Cliente> Cliente { get { return new List<Cliente>(_clientes); } }
@@ -28,19 +27,19 @@ namespace Dominio
         public List<Ruta> Ruta { get { return new List<Ruta>(_rutas); } }
         public List<Vuelo> Vuelo { get { return new List<Vuelo>(_vuelos); } }
 
-        public List<Premium> Premium { get { return new List<Premium>(_premiums); } }
-        public List<Ocacional> Ocacional { get { return new List<Ocacional>(_ocacionales); } }
+    
 
         //-------------------------------------------- PRECARGAS------------------------------------------------------
         public void PrecargarDatos()
         {
             PrecargarClientes();
             PrecargarAdmin();
+            PrecargarAeropuerto();
+            PrecargarRutas();
+
+            PrecargarAviones();
             PrecargarVuelos();
             PrecargarPasaje();
-            PrecargarRutas();
-            PrecargarAviones();
-            PrecargarAeropuerto();
         }
 
         
@@ -213,81 +212,81 @@ namespace Dominio
         }
         private void PrecargarAviones()
         {
-            Avion av1 = new Avion("Agustin", "ax1", 23, 3000, 15000);
+            Avion av1 = new Avion("Agustin", "ax1", 23, 300000, 150000);
             AgregarAvion(av1);
 
-            Avion av2 = new Avion("Belgrano", "bx1", 30, 3500, 18000);
+            Avion av2 = new Avion("Belgrano", "bx1", 30, 3500000, 180000);
             AgregarAvion(av2);
 
-            Avion av3 = new Avion("Libertad", "cx1", 40, 4000, 20000);
+            Avion av3 = new Avion("Libertad", "cx1", 40, 4000000, 200000);
             AgregarAvion(av3);
 
-            Avion av4 = new Avion("Condor", "dx1", 50, 4500, 25000);
+            Avion av4 = new Avion("Condor", "dx1", 50, 45000000, 250000);
             AgregarAvion(av4);
         }
         private void PrecargarVuelos()
         {
 
         
-            Vuelo vuelo1 = new Vuelo("V001", _rutas[1], _aviones[1], 5);
+            Vuelo vuelo1 = new Vuelo("VN001", _rutas[1], _aviones[1], 5);
             AgregarVuelo(vuelo1);
-            Vuelo vuelo2 = new Vuelo("V002", _rutas[2], _aviones[1], 6);
+            Vuelo vuelo2 = new Vuelo("VD002", _rutas[2], _aviones[1], 6);
             AgregarVuelo(vuelo2);
-            Vuelo vuelo3 = new Vuelo("V003", _rutas[3], _aviones[2], 7);
+            Vuelo vuelo3 = new Vuelo("VG003", _rutas[3], _aviones[2], 7);
             AgregarVuelo(vuelo3);
-            Vuelo vuelo4 = new Vuelo("V004", _rutas[4], _aviones[1], 5);
+            Vuelo vuelo4 = new Vuelo("VA004", _rutas[4], _aviones[1], 5);
             AgregarVuelo(vuelo4);
-            Vuelo vuelo5 = new Vuelo("V005", _rutas[5], _aviones[2], 6);
+            Vuelo vuelo5 = new Vuelo("VS005", _rutas[5], _aviones[2], 6);
             AgregarVuelo(vuelo5);
-            Vuelo vuelo6 = new Vuelo("V006", _rutas[6], _aviones[0], 7);
+            Vuelo vuelo6 = new Vuelo("VE006", _rutas[6], _aviones[0], 7);
             AgregarVuelo(vuelo6);
-            Vuelo vuelo7 = new Vuelo("V007", _rutas[7], _aviones[2], 5);
+            Vuelo vuelo7 = new Vuelo("VT007", _rutas[7], _aviones[2], 5);
             AgregarVuelo(vuelo7);
-            Vuelo vuelo8 = new Vuelo("V008", _rutas[3], _aviones[0], 6);
+            Vuelo vuelo8 = new Vuelo("VY008", _rutas[3], _aviones[0], 6);
             AgregarVuelo(vuelo8);
-            Vuelo vuelo9 = new Vuelo("V009", _rutas[2], _aviones[1], 7);
+            Vuelo vuelo9 = new Vuelo("VU009", _rutas[2], _aviones[1], 7);
             AgregarVuelo(vuelo9);
-            Vuelo vuelo10 = new Vuelo("V010", _rutas[0], _aviones[1], 5);
+            Vuelo vuelo10 = new Vuelo("VI010", _rutas[0], _aviones[1], 5);
             AgregarVuelo(vuelo10);
-            Vuelo vuelo11 = new Vuelo("V011", _rutas[1], _aviones[2], 6);
+            Vuelo vuelo11 = new Vuelo("VA011", _rutas[1], _aviones[2], 6);
             AgregarVuelo(vuelo11);
-            Vuelo vuelo12 = new Vuelo("V012", _rutas[2], _aviones[0], 7);
+            Vuelo vuelo12 = new Vuelo("VB012", _rutas[2], _aviones[0], 7);
             AgregarVuelo(vuelo12);
-            Vuelo vuelo13 = new Vuelo("V013", _rutas[6], _aviones[1], 5);
+            Vuelo vuelo13 = new Vuelo("VB013", _rutas[6], _aviones[1], 5);
             AgregarVuelo(vuelo13);
-            Vuelo vuelo14 = new Vuelo("V014", _rutas[6], _aviones[2], 6);
+            Vuelo vuelo14 = new Vuelo("VA014", _rutas[6], _aviones[2], 6);
             AgregarVuelo(vuelo14);
-            Vuelo vuelo15 = new Vuelo("V015", _rutas[8], _aviones[0], 7);
+            Vuelo vuelo15 = new Vuelo("VA015", _rutas[8], _aviones[0], 7);
             AgregarVuelo(vuelo15);
-            Vuelo vuelo16 = new Vuelo("V016", _rutas[10], _aviones[2], 5);
+            Vuelo vuelo16 = new Vuelo("VA016", _rutas[10], _aviones[2], 5);
             AgregarVuelo(vuelo16);
-            Vuelo vuelo17 = new Vuelo("V017", _rutas[11], _aviones[0], 6);
+            Vuelo vuelo17 = new Vuelo("VA017", _rutas[11], _aviones[0], 6);
             AgregarVuelo(vuelo17);
-            Vuelo vuelo18 = new Vuelo("V018", _rutas[12], _aviones[1], 7);
+            Vuelo vuelo18 = new Vuelo("VA018", _rutas[12], _aviones[1], 7);
             AgregarVuelo(vuelo18);
-            Vuelo vuelo19 = new Vuelo("V019", _rutas[0], _aviones[0], 5);
+            Vuelo vuelo19 = new Vuelo("VA019", _rutas[0], _aviones[0], 5);
             AgregarVuelo(vuelo19);
-            Vuelo vuelo20 = new Vuelo("V020", _rutas[1], _aviones[1], 6);
+            Vuelo vuelo20 = new Vuelo("VA020", _rutas[1], _aviones[1], 6);
             AgregarVuelo(vuelo20);
-            Vuelo vuelo21 = new Vuelo("V021", _rutas[2], _aviones[2], 7);
+            Vuelo vuelo21 = new Vuelo("VA021", _rutas[2], _aviones[2], 7);
             AgregarVuelo(vuelo21);
-            Vuelo vuelo22 = new Vuelo("V022", _rutas[22], _aviones[1], 5);
+            Vuelo vuelo22 = new Vuelo("VA022", _rutas[22], _aviones[1], 5);
             AgregarVuelo(vuelo22);
-            Vuelo vuelo23 = new Vuelo("V023", _rutas[23], _aviones[2], 6);
+            Vuelo vuelo23 = new Vuelo("VA023", _rutas[23], _aviones[2], 6);
             AgregarVuelo(vuelo23);
-            Vuelo vuelo24 = new Vuelo("V024", _rutas[24], _aviones[0], 7);
+            Vuelo vuelo24 = new Vuelo("VA024", _rutas[24], _aviones[0], 7);
             AgregarVuelo(vuelo24);
-            Vuelo vuelo25 = new Vuelo("V025", _rutas[26], _aviones[2], 5);
+            Vuelo vuelo25 = new Vuelo("VA025", _rutas[26], _aviones[2], 5);
             AgregarVuelo(vuelo25);
-            Vuelo vuelo26 = new Vuelo("V026", _rutas[26], _aviones[0], 6);
+            Vuelo vuelo26 = new Vuelo("VA026", _rutas[26], _aviones[0], 6);
             AgregarVuelo(vuelo26);
-            Vuelo vuelo27 = new Vuelo("V027", _rutas[27], _aviones[1], 7);
+            Vuelo vuelo27 = new Vuelo("VA027", _rutas[27], _aviones[1], 7);
             AgregarVuelo(vuelo27);
-            Vuelo vuelo28 = new Vuelo("V028", _rutas[28], _aviones[0], 5);
+            Vuelo vuelo28 = new Vuelo("VA028", _rutas[28], _aviones[0], 5);
             AgregarVuelo(vuelo28);
-            Vuelo vuelo29 = new Vuelo("V029", _rutas[29], _aviones[1], 6);
+            Vuelo vuelo29 = new Vuelo("VA029", _rutas[29], _aviones[1], 6);
             AgregarVuelo(vuelo29);
-            Vuelo vuelo30 = new Vuelo("V030", _rutas[30], _aviones[2], 7);
+            Vuelo vuelo30 = new Vuelo("VA030", _rutas[29], _aviones[2], 7);
             AgregarVuelo(vuelo30);
 
         }

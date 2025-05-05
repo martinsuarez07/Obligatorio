@@ -10,8 +10,7 @@ namespace Dominio
     {
         private string _ci;
         private string _nombre;
-        private string _correo;
-        private string _password;
+     
         private string _nacionalidad;
 
 
@@ -25,11 +24,11 @@ namespace Dominio
         }
         public string Correo
         {
-            get { return _correo; }
+            get { return base.Correo; }
         }
         public string Password
         {
-            get { return _password; }
+            get { return base.Password; }
         }
         public string Nacionalidad
         {

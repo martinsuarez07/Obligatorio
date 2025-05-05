@@ -9,33 +9,29 @@ namespace Dominio
      public class Premium : Cliente
     {
 
-        private string _ci;
-        private string _nombre;
-        private string _correo;
-        private string _password;
-        private string _nacionalidad;
+       
         private int _puntos;
 
 
         public string Ci
         {
-            get { return _ci; }
+            get { return base.Ci; }
         }
         public string Nombre
         {
-            get { return _nombre; }
+            get { return base.Nombre; }
         }
         public string Correo
         {
-            get { return _correo; }
+            get { return base.Correo; }
         }
         public string Password
         {
-            get { return _password; }
+            get { return base.Password; }
         }
         public string Nacionalidad
         {
-            get { return _nacionalidad; }
+            get { return base.Nacionalidad; }
         }
        
         public int Punto

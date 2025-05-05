@@ -9,8 +9,7 @@ namespace Dominio
     public class Administrador: Usuario
     {
         private string _apodo;
-        private string _correo;
-        private string _password;
+        
 
 
         public string Apodo
@@ -19,11 +18,11 @@ namespace Dominio
         }
         public string Correo
         {
-            get { return _correo; }
+            get { return base.Correo; }
         }
         public string Password
         {
-            get { return _password; }
+            get { return base.Password; }
         }
 
 
@@ -49,7 +48,7 @@ namespace Dominio
         }
         public void ValidarCorreo()
         {
-            if (string.IsNullOrEmpty(_correo))
+            if (string.IsNullOrEmpty(base.Correo))
             {
                 throw new Exception("El correo no puede nulo");
             }
@@ -57,7 +56,7 @@ namespace Dominio
         }
         public void ValidarPassword()
         {
-            if (string.IsNullOrEmpty(_password))
+            if (string.IsNullOrEmpty(base.Password))
             {
                 throw new Exception("La contraseña no puede ser nula");
             }

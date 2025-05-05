@@ -18,23 +18,23 @@ namespace Dominio
 
         public string Ci
         {
-            get { return _ci; }
+            get { return base.Ci; }
         }
         public string Nombre
         {
-            get { return _nombre; }
+            get { return base.Nombre; }
         }
         public string Correo
         {
-            get { return _correo; }
+            get { return base.Correo; }
         }
         public string Password
         {
-            get { return _password; }
+            get { return base.Password; }
         }
         public string Nacionalidad
         {
-            get { return _nacionalidad; }
+            get { return base.Nacionalidad; }
         }
         public bool Regalos
         {
