@@ -16,7 +16,7 @@ namespace Dominio
         private List<Pasaje> _pasajes = new List<Pasaje>();
         private List<Ruta> _rutas = new List<Ruta>();
         private List<Vuelo> _vuelos = new List<Vuelo>();
-        
+
 
         public List<Administrador> Administrador { get { return new List<Administrador>(_administradores); } }
         public List<Cliente> Cliente { get { return new List<Cliente>(_clientes); } }
@@ -27,7 +27,7 @@ namespace Dominio
         public List<Ruta> Ruta { get { return new List<Ruta>(_rutas); } }
         public List<Vuelo> Vuelo { get { return new List<Vuelo>(_vuelos); } }
 
-    
+
 
         //-------------------------------------------- PRECARGAS------------------------------------------------------
         public void PrecargarDatos()
@@ -42,11 +42,11 @@ namespace Dominio
             PrecargarPasaje();
         }
 
-        
+
 
         private void PrecargarClientes()
         {
-            Ocacional o1 = new Ocacional("51244125", "Jorge", "jorge@gmail.com","abc123","Uruguayo",true);
+            Ocacional o1 = new Ocacional("51244125", "Jorge", "jorge@gmail.com", "abc123", "Uruguayo", true);
             AgregarCliente(o1);
 
             Ocacional o2 = new Ocacional("51244126", "Ana", "ana@gmail.com", "def456", "Argentina", false);
@@ -61,7 +61,7 @@ namespace Dominio
             Ocacional o5 = new Ocacional("51244129", "Felipe", "felipe@gmail.com", "mno345", "Colombiano", true);
             AgregarCliente(o5);
 
-            Premium p1 = new Premium("61244125", "Martín", "martin@gmail.com", "xyz123", "Uruguayo",  150);
+            Premium p1 = new Premium("61244125", "Martín", "martin@gmail.com", "xyz123", "Uruguayo", 150);
             AgregarCliente(p1);
 
             Premium p2 = new Premium("61244126", "Laura", "laura@gmail.com", "abc789", "Argentina", 200);
@@ -70,16 +70,16 @@ namespace Dominio
             Premium p3 = new Premium("61244127", "Ricardo", "ricardo@gmail.com", "def456", "Chileno", 250);
             AgregarCliente(p3);
 
-            Premium p4 = new Premium("61244128", "Sofia", "sofia@gmail.com", "ghi012", "Peruana",  300);
+            Premium p4 = new Premium("61244128", "Sofia", "sofia@gmail.com", "ghi012", "Peruana", 300);
             AgregarCliente(p4);
 
-            Premium p5 = new Premium("61244129", "Esteban", "esteban@gmail.com", "jkl345", "Colombiano",  400);
+            Premium p5 = new Premium("61244129", "Esteban", "esteban@gmail.com", "jkl345", "Colombiano", 400);
             AgregarCliente(p5);
         }
 
         private void PrecargarAdmin()
         {
-            Administrador a1 = new Administrador("Nano","nano1891@gmail.com","abc321");
+            Administrador a1 = new Administrador("Nano", "nano1891@gmail.com", "abc321");
             AgregarAdmin(a1);
             Administrador a2 = new Administrador("Titi", "titi@gmail.com", "abc123");
             AgregarAdmin(a2);
@@ -87,7 +87,7 @@ namespace Dominio
 
         private void PrecargarAeropuerto()
         {
-            Aeropuerto ap1 = new Aeropuerto("mv2","Montevideo",4000,120);
+            Aeropuerto ap1 = new Aeropuerto("mv2", "Montevideo", 4000, 120);
             AgregarAeropuerto(ap1);
             Aeropuerto ap2 = new Aeropuerto("ba1", "Buenos Aires", 5000, 150);
             AgregarAeropuerto(ap2);
@@ -227,8 +227,8 @@ namespace Dominio
         private void PrecargarVuelos()
         {
 
-        
-            Vuelo vuelo1 = new Vuelo("VN001", _rutas[1], _aviones[1], new List<DayOfWeek>{ DayOfWeek.Monday,DayOfWeek.Saturday});
+
+            Vuelo vuelo1 = new Vuelo("VN001", _rutas[1], _aviones[1], new List<DayOfWeek> { DayOfWeek.Monday });
             AgregarVuelo(vuelo1);
             Vuelo vuelo2 = new Vuelo("VD002", _rutas[2], _aviones[1], new List<DayOfWeek> { DayOfWeek.Tuesday });
             AgregarVuelo(vuelo2);
@@ -293,7 +293,7 @@ namespace Dominio
 
         private void PrecargarPasaje()
         {
-            Pasaje pasaje1 = new Pasaje(1,_vuelos[1], new DateTime(2025, 4, 16), _clientes[1], TipoEquipaje.cabina, 12);
+            Pasaje pasaje1 = new Pasaje(1, _vuelos[1], new DateTime(2025, 4, 16), _clientes[1], TipoEquipaje.cabina, 12);
             AgregarPasaje(pasaje1);
             Pasaje pasaje2 = new Pasaje(2, _vuelos[1], new DateTime(2025, 4, 2), _clientes[1], TipoEquipaje.bodega, 14);
             AgregarPasaje(pasaje2);
@@ -347,10 +347,10 @@ namespace Dominio
             //vuelo.Frecuencia.conteins(pasaje.fecha.dayoftheweek)
         }
 
-       
+
         //---------------------------------- FIN PRECARGAS------------------------------------------------------
-        
-      //  --------------------------------METODOS AGREGAR --------------------------------------------------
+
+        //  --------------------------------METODOS AGREGAR --------------------------------------------------
         public void AgregarCliente(Cliente cliente)
         {
             if (cliente is Ocacional ocacional)
@@ -451,17 +451,36 @@ namespace Dominio
             _pasajes.Add(pasaje);
         }
 
-        
+
         //---------------------------------------- FIN METODOS AGREGAR //-------
-       
+
 
         public List<Cliente> RetornarLista()
         {
             return _clientes;
         }
 
+        public void AltaClienteOcacional(Cliente cliente)
+        {
+            if (cliente == null)
+            {
+                throw new Exception("el cliente no puede ser nulo");
+            }
+            cliente.Validar();
+            if (_clientes.Contains(cliente))
+            {
+                throw new Exception("el cliente ya existe");
+            }
+            foreach (Cliente c in _clientes)
+            {
+                if(c is Ocacional)
+                {
+                    _clientes.Add(c);
+                }
+            }
+        }
+        //averiguar bien estemetodo 
     }
-
 }
 
 
