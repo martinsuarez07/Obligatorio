@@ -30,8 +30,12 @@ namespace Obligatorio
                             //METODO 2
                             break;
                         case 3:
-                            //METODO 3
-                            AltaClienteOcacional();
+                            //Nuevo ayuda de chat nano 07/05/1:21am VER
+                            Ocacional nuevoCliente = CrearClienteOcacional();
+                            AltaClienteOcacional(nuevoCliente);
+                            Console.WriteLine("Cliente ocasional agregado con éxito.");
+                            break;
+
                             break;
                         case 4:
                             //METODO 4
@@ -56,6 +60,31 @@ namespace Obligatorio
                 Console.Clear();
             }
         }
+         //Nuevo ayuda de chat nano 07/05/1:21am VER
+        private static Ocacional CrearClienteOcacional()
+        {
+            Console.WriteLine("Ingrese cédula:");
+            string ci = Console.ReadLine();
+
+            Console.WriteLine("Ingrese nombre:");
+            string nombre = Console.ReadLine();
+
+            Console.WriteLine("Ingrese correo electrónico:");
+            string correo = Console.ReadLine();
+
+            Console.WriteLine("Ingrese contraseña:");
+            string password = Console.ReadLine();
+
+            Console.WriteLine("Ingrese nacionalidad:");
+            string nacionalidad = Console.ReadLine();
+
+            Console.WriteLine("¿Desea recibir regalos? (s/n):");
+            string respuesta = Console.ReadLine().ToLower();
+            bool regalos = respuesta == "s";
+
+            return new Ocacional(ci, nombre, correo, password, nacionalidad, regalos);
+        }
+
 
         public static void OpcionesMenu()
         {
@@ -110,7 +139,7 @@ namespace Obligatorio
                 Console.WriteLine(c.Info()); // Método polimórfico
             }
         }
-        public void AltaClienteOcacional(Ocacional cliente)
+        public static void AltaClienteOcacional(Ocacional cliente)
         {
             List<Cliente> lista = sistema.RetornarLista();
             if (cliente == null)
