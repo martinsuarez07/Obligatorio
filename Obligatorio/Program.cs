@@ -31,6 +31,7 @@ namespace Obligatorio
                             break;
                         case 3:
                             //METODO 3
+                            AltaClienteOcacional();
                             break;
                         case 4:
                             //METODO 4
@@ -108,6 +109,20 @@ namespace Obligatorio
                 Cliente c = lista[i];
                 Console.WriteLine(c.Info()); // Método polimórfico
             }
+        }
+        public void AltaClienteOcacional(Ocacional cliente)
+        {
+            List<Cliente> lista = sistema.RetornarLista();
+            if (cliente == null)
+            {
+                throw new Exception("el cliente no puede ser nulo");
+            }
+            cliente.Validar();
+            if (lista.Contains(cliente))
+            {
+                throw new Exception("el cliente ya existe");
+            }
+            lista.Add(cliente);
         }
     }
 }

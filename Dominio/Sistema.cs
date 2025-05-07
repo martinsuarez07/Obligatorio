@@ -460,25 +460,7 @@ namespace Dominio
             return _clientes;
         }
 
-        public void AltaClienteOcacional(Cliente cliente)
-        {
-            if (cliente == null)
-            {
-                throw new Exception("el cliente no puede ser nulo");
-            }
-            cliente.Validar();
-            if (_clientes.Contains(cliente))
-            {
-                throw new Exception("el cliente ya existe");
-            }
-            foreach (Cliente c in _clientes)
-            {
-                if(c is Ocacional)
-                {
-                    _clientes.Add(c);
-                }
-            }
-        }
+      
         //averiguar bien estemetodo 
     }
 }
