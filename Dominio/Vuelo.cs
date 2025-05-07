@@ -28,11 +28,11 @@ namespace Dominio
             get { return _avion; }
             set { _avion = value; }
         }
-        //public int Frecuencia
-        //{
-        //    get { return _frecuencia; }
-        //    set { _frecuencia = value; }
-        //}
+        public List<DayOfWeek> Frecuencia
+        {
+           get { return _frecuencia; }
+            set { _frecuencia = value; }
+        }
 
         public Vuelo(string numeroVuelo, Ruta ruta, Avion avion, List<DayOfWeek> frecuencia)
         {
@@ -51,8 +51,8 @@ namespace Dominio
             ValidarDistanciaAvion();
         }
 
-      
 
+        
         private void ValidarNumeroVuelo()
         {
             if (string.IsNullOrEmpty(_numeroVuelo))

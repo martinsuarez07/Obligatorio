@@ -131,6 +131,8 @@ namespace Obligatorio
             lista.Add(cliente);
         }
         //Nuevo ayuda de chat nano 07/05/1:21am VER
+
+       
         private static Ocacional CrearClienteOcacional()
         {
             Console.WriteLine("Ingrese cédula:");
