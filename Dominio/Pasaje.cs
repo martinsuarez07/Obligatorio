@@ -62,7 +62,7 @@ namespace Dominio
             ValidarCliente();
             ValidarTipo();
             ValidarPrecio();
-            ValidarFrecuenciaVuelo();
+            //ValidarFrecuenciaVuelo();
         }
        
         private void ValidarId()
@@ -110,13 +110,13 @@ namespace Dominio
         }
 
         //nuevo
-        public void ValidarFrecuenciaVuelo()
-        {
-            if (!_vuelo.Frecuencia.Contains(_fecha.DayOfWeek))
-            {
-                throw new Exception("La fecha seleccionada no coincide con la frecuencia del vuelo.");
-            }
-        }
+        //public void ValidarFrecuenciaVuelo()
+        //{
+        //    if (!_vuelo.Frecuencia.Contains(_fecha.DayOfWeek))
+        //    {
+        //        throw new Exception("La fecha seleccionada no coincide con la frecuencia del vuelo.");
+        //    }
+        //}
 
     }
 }
