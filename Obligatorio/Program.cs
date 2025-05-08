@@ -60,7 +60,7 @@ namespace Obligatorio
                 Console.Clear();
             }
         }
-        
+
 
 
         public static void OpcionesMenu()
@@ -96,10 +96,10 @@ namespace Obligatorio
 
             return numero;
         }
-        
+
         private static void ListarClientes()
         {
-            
+
             Console.WriteLine("\nListado de todos los clientes:\n");
 
             List<Cliente> lista = sistema.RetornarLista();
@@ -132,7 +132,7 @@ namespace Obligatorio
         }
         //Nuevo ayuda de chat nano 07/05/1:21am VER
 
-       
+
         private static Ocacional CrearClienteOcacional()
         {
             Console.WriteLine("Ingrese cédula:");
@@ -150,11 +150,18 @@ namespace Obligatorio
             Console.WriteLine("Ingrese nacionalidad:");
             string nacionalidad = Console.ReadLine();
 
-            Console.WriteLine("¿Desea recibir regalos? (s/n):");
-            string respuesta = Console.ReadLine().ToLower();
-            bool regalos = respuesta == "s";
+            bool regalos = GenerarElegibilidadRegalos();
 
+            
             return new Ocacional(ci, nombre, correo, password, nacionalidad, regalos);
+        }
+
+       //nuevo verificar
+        private static bool GenerarElegibilidadRegalos()
+        {
+            Random rand = new Random();
+            return rand.Next(2) == 0; // Devuelve 'true' o 'false' aleatoriamente
         }
     }
 }
+
