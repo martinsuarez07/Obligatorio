@@ -27,7 +27,7 @@ namespace Obligatorio
                             ListarClientes();
                             break;
                         case 2:
-                            //METODO 2
+                            EjecutarConsultaRutasPorCodigoIATA();
                             break;
                         case 3:
                             //Nuevo ayuda de chat nano 07/05/1:21am VER
@@ -162,6 +162,42 @@ namespace Obligatorio
             Random rand = new Random();
             return rand.Next(2) == 0; // Devuelve 'true' o 'false' aleatoriamente
         }
+
+        // dado un codigo de aeropuerto listar todos los codigos que lo incluyen codIATA 
+        private static void EjecutarConsultaRutasPorCodigoIATA()
+        {
+            Console.WriteLine("Ingrese el código IATA del aeropuerto:");
+            string cod = Console.ReadLine();
+
+            try
+            {
+                if (string.IsNullOrEmpty(cod)) 
+                {
+
+                    throw new Exception ("Debe ingresar un codigo.");
+                }
+
+                List<Vuelo> vuelos = sistema.VuelosFiltrados(cod);
+
+                if (vuelos.Count == 0)
+                {
+                    Console.WriteLine("No se encontraron vuelos para el código IATA ingresado.");
+                }
+                else
+                {
+                    Console.WriteLine("Rutas encontradas:");
+                    foreach (Vuelo v in vuelos)
+                    {
+                        Console.WriteLine(v);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error: " + ex.Message);
+            }
+        }
+
     }
 }
 

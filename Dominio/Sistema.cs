@@ -460,7 +460,23 @@ namespace Dominio
             return _clientes;
         }
 
-      
+        public List<Vuelo> VuelosFiltrados(string codIATA)
+        {
+            List<Vuelo> resultado = new List<Vuelo>();
+
+            foreach (Vuelo v in _vuelos)
+            {
+                if (v.ContieneAeropuerto(codIATA.ToLower()))
+                {
+                    resultado.Add(v);
+                }
+
+            }
+
+            return resultado;
+        }
+
+
         //averiguar bien estemetodo 
     }
 }

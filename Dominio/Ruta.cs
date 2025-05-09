@@ -91,5 +91,20 @@ namespace Dominio
             decimal costoOperacion = _aeropuertoOrigen.CostoOperacion + _aeropuertoDestino.CostoOperacion;
             return costoOperacion;
         }
+
+        public bool ContieneAeropuerto(string codIata)
+        {
+            bool contiene= false;   
+            if (_aeropuertoDestino.CodigoIATA == codIata || _aeropuertoOrigen.CodigoIATA == codIata)
+            {
+                contiene = true;    
+
+            }
+            return contiene;
+        }
+        public override string ToString()
+        {
+            return $"Ruta {_aeropuertoOrigen.CodigoIATA}-{_aeropuertoDestino.CodigoIATA}";
+        }
     }
 }

@@ -77,5 +77,7 @@ namespace Dominio
                 throw new Exception("Error");
             }
         }
+
+        public string DevolverCodIATA() { return _codigoIATA; }    
     }
 }

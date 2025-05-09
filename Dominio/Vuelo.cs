@@ -111,5 +111,21 @@ namespace Dominio
 
             return costoPorAsiento;
         }
+
+        public bool ContieneAeropuerto(string codIata)
+        {
+           return _ruta.ContieneAeropuerto(codIata);
+        }
+
+        public override string ToString()
+        {
+            string mensaje = $"Numero de vuelo {_numeroVuelo}, Modelo del Avion {_avion.Modelo}, {_ruta.ToString()} y Frecuencia ";
+
+            foreach (DayOfWeek d in _frecuencia)
+            {
+                mensaje += $" {d} - " ;    
+            }
+            return mensaje; 
+        }
     }
 }
