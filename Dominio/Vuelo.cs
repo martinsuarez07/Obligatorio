@@ -52,7 +52,18 @@ namespace Dominio
         }
 
 
-        
+        public bool contieneFrecuencia(DayOfWeek d)
+        {
+            bool contiene = false;
+            foreach(DayOfWeek dia in _frecuencia )
+            {
+                if ( dia == d) { 
+                    contiene = true;
+                    break;
+                }
+            }
+            return contiene;
+        }
         private void ValidarNumeroVuelo()
         {
             if (string.IsNullOrEmpty(_numeroVuelo))

@@ -36,7 +36,6 @@ namespace Obligatorio
                             Console.WriteLine("Cliente ocasional agregado con éxito.");
                             break;
 
-                            break;
                         case 4:
                             //METODO 4
                             break;
@@ -150,13 +149,28 @@ namespace Obligatorio
             Console.WriteLine("Ingrese nacionalidad:");
             string nacionalidad = Console.ReadLine();
 
-           
 
-            
+
+
             return new Ocacional(ci, nombre, correo, password, nacionalidad);
         }
 
-      
+        //public static void  listarPasajeEntreFechas()
+        //{
+        //    Console.WriteLine("Fecha Inicio");
+        //    DateTime fecha1 = Console.ReadLine();
+
+        //    Console.WriteLine("Fecha Inicio");
+        //    DateTime fecha2 = Console.ReadLine();
+        //    try
+        //    {
+        //        if ()
+        //        {
+
+        //        }
+        //    }
+        //    return new Pasaje(id ,  vuelo,fecha, cliente,precio);
+        //}
 
         // dado un codigo de aeropuerto listar todos los codigos que lo incluyen codIATA 
         private static void EjecutarConsultaRutasPorCodigoIATA()
@@ -166,10 +180,10 @@ namespace Obligatorio
 
             try
             {
-                if (string.IsNullOrEmpty(cod)) 
+                if (string.IsNullOrEmpty(cod))
                 {
 
-                    throw new Exception ("Debe ingresar un codigo.");
+                    throw new Exception("Debe ingresar un codigo.");
                 }
 
                 List<Vuelo> vuelos = sistema.VuelosFiltrados(cod);
