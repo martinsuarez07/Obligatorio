@@ -59,51 +59,7 @@ namespace Dominio
         }
 
 
-        //public  virtual void Validar()
-        //{
-        //    ValidarCi();
-        //    ValidarNombre();
-        //    ValidarCorreo();
-        //    ValidarPassword();
-        //    ValidarNacionalidad();
-        //}
-        // public virtual void ValidarCi()
-        //{
-        //    if (string.IsNullOrEmpty(_ci) || _ci.Length != 8)
-        //    {
-        //        throw new Exception("La cedula es incorrecta , ingresela nuevamente");
-        //    }
-        //}
-        //public virtual void ValidarNombre()
-        //{
-        //    if (string.IsNullOrEmpty(_nombre))
-        //    {
-        //        throw new Exception("Ingrese nombre");
-        //    }
-        //}
-
-        //public virtual void ValidarCorreo()
-        //{
-        //    if (string.IsNullOrEmpty(_correo))
-        //    {
-        //        throw new Exception("Ingrese correo");
-        //    }
-        //}
-        //public  void ValidarPassword()
-        //{
-        //    if (string.IsNullOrEmpty(_password))
-        //    {
-        //        throw new Exception("Ingrese password");
-        //    }
-        //}
-        //public virtual  void ValidarNacionalidad()
-        //{
-        //    if (string.IsNullOrEmpty(_nacionalidad))
-        //    {
-        //        throw new Exception("Ingrese nacionalidad");
-        //    }
-        //}
-        public virtual string Info()
+        public override string ToString()
         {
             return $"Nombre: {Nombre}, Correo: {Correo}, Nacionalidad: {Nacionalidad}";
         }

@@ -40,73 +40,36 @@ namespace Dominio
         {
             get { return _regalos; }
         }
-        public Ocacional(string ci, string nombre, string correo, string password, string nacionalidad, bool regalos) : base(ci, nombre, correo, password, nacionalidad)
+        public Ocacional(string ci, string nombre, string correo, string password, string nacionalidad) : base(ci, nombre, correo, password, nacionalidad)
         {
 
 
-            _regalos = regalos;
+            _regalos = GenerarElegibilidadRegalos();
         }
         public override void Validar()
         {
             base.Validar();
             if (_regalos != true && _regalos != false)
-           {
+            {
                 throw new Exception("El valor de regalos es inválido");
-           }
+            }
         }
 
-        //public void Validar()
-        //{
-        //    ValidarCi();
-        //    ValidarNombre();
-        //    ValidarCorreo();
-        //    ValidarPassword();
-        //    ValidarNacionalidad();
-        //    ValidarRegalo();
-        //}
-        //private void ValidarCi()
-        //{
-        //    if (string.IsNullOrEmpty(_ci) || _ci.Length > 8)
-        //    {
-        //        throw new Exception("La cedula es incorrecta , ingresela nuevamente");
-        //    }
-        //}
-        //private void ValidarNombre()
-        //{
-        //    if (string.IsNullOrEmpty(_nombre))
-        //    {
-        //        throw new Exception("Ingrese nombre");
-        //    }
-        //}
+        public override string ToString()
+        {
+            string regalo = "no";
+            if (_regalos) {
+                regalo = "si";
+            }
+            return base.ToString() +$" Tiene regalo { regalo}";
+        }
 
-        //private void ValidarCorreo()
-        //{
-        //    if (string.IsNullOrEmpty(_correo))
-        //    {
-        //        throw new Exception("Ingrese correo");
-        //    }
-        //}
-        //private void ValidarPassword()
-        //{
-        //    if (string.IsNullOrEmpty(_password))
-        //    {
-        //        throw new Exception("Ingrese password");
-        //    }
-        //}
-        //private void ValidarNacionalidad()
-        //{
-        //    if (string.IsNullOrEmpty(_nacionalidad))
-        //    {
-        //        throw new Exception("Ingrese nacionalidad");
-        //    }
-        //}
+        //nuevo verificar
+        private bool GenerarElegibilidadRegalos()
+        {
+            Random rand = new Random();
+            return rand.Next(2) == 0; // Devuelve 'true' o 'false' aleatoriamente
+        }
 
-        //private void ValidarRegalo()
-        //{
-        //    if (_regalos != true && _regalos != false)
-        //    {
-        //        throw new Exception("El valor de regalos es inválido");
-        //    }
-        //}
     }
 }

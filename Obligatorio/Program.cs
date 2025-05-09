@@ -113,7 +113,7 @@ namespace Obligatorio
             for (int i = 0; i < lista.Count; i++)
             {
                 Cliente c = lista[i];
-                Console.WriteLine(c.Info()); // Método polimórfico
+                Console.WriteLine(c.ToString()); // Método polimórfico
             }
         }
         public static void AltaClienteOcacional(Ocacional cliente)
@@ -150,18 +150,13 @@ namespace Obligatorio
             Console.WriteLine("Ingrese nacionalidad:");
             string nacionalidad = Console.ReadLine();
 
-            bool regalos = GenerarElegibilidadRegalos();
+           
 
             
-            return new Ocacional(ci, nombre, correo, password, nacionalidad, regalos);
+            return new Ocacional(ci, nombre, correo, password, nacionalidad);
         }
 
-       //nuevo verificar
-        private static bool GenerarElegibilidadRegalos()
-        {
-            Random rand = new Random();
-            return rand.Next(2) == 0; // Devuelve 'true' o 'false' aleatoriamente
-        }
+      
 
         // dado un codigo de aeropuerto listar todos los codigos que lo incluyen codIATA 
         private static void EjecutarConsultaRutasPorCodigoIATA()

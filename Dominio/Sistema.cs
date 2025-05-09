@@ -46,19 +46,19 @@ namespace Dominio
 
         private void PrecargarClientes()
         {
-            Ocacional o1 = new Ocacional("51244125", "Jorge", "jorge@gmail.com", "abc123", "Uruguayo", true);
+            Ocacional o1 = new Ocacional("51244125", "Jorge", "jorge@gmail.com", "abc123", "Uruguayo");
             AgregarCliente(o1);
 
-            Ocacional o2 = new Ocacional("51244126", "Ana", "ana@gmail.com", "def456", "Argentina", false);
+            Ocacional o2 = new Ocacional("51244126", "Ana", "ana@gmail.com", "def456", "Argentina");
             AgregarCliente(o2);
 
-            Ocacional o3 = new Ocacional("51244127", "Carlos", "carlos@gmail.com", "ghi789", "Chileno", true);
+            Ocacional o3 = new Ocacional("51244127", "Carlos", "carlos@gmail.com", "ghi789", "Chileno");
             AgregarCliente(o3);
 
-            Ocacional o4 = new Ocacional("51244128", "Luisa", "luisa@gmail.com", "jkl012", "Peruana", false);
+            Ocacional o4 = new Ocacional("51244128", "Luisa", "luisa@gmail.com", "jkl012", "Peruana");
             AgregarCliente(o4);
 
-            Ocacional o5 = new Ocacional("51244129", "Felipe", "felipe@gmail.com", "mno345", "Colombiano", true);
+            Ocacional o5 = new Ocacional("51244129", "Felipe", "felipe@gmail.com", "mno345", "Colombiano");
             AgregarCliente(o5);
 
             Premium p1 = new Premium("61244125", "Martín", "martin@gmail.com", "xyz123", "Uruguayo", 150);
