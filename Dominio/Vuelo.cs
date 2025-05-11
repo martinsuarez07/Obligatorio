@@ -137,6 +137,11 @@ namespace Dominio
                 mensaje += $" {d} - " ;    
             }
             return mensaje; 
+     
+        }
+        public decimal ObtenerTotalTasas()
+        {
+            return _ruta.TotalTasas();
         }
     }
 }

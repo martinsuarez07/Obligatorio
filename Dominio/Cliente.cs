@@ -61,7 +61,7 @@ namespace Dominio
 
         public override string ToString()
         {
-            return $"Nombre: {Nombre}, Correo: {Correo}, Nacionalidad: {Nacionalidad}";
+            return $"Nombre: {Nombre}, Correo: {Correo}, Nacionalidad: {Nacionalidad} ,";
         }
         public override bool Equals(object? obj)
         {

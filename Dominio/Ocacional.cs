@@ -61,7 +61,7 @@ namespace Dominio
             if (_regalos) {
                 regalo = "si";
             }
-            return base.ToString() +$" Tiene regalo { regalo}";
+            return base.ToString() +$" Tiene regalo: { regalo}";
         }
 
         //nuevo verificar

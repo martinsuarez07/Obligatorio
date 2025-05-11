@@ -106,5 +106,9 @@ namespace Dominio
         {
             return $"Ruta {_aeropuertoOrigen.CodigoIATA}-{_aeropuertoDestino.CodigoIATA}";
         }
+        public decimal TotalTasas()
+        {
+            return _aeropuertoOrigen.CostoTasas + _aeropuertoDestino.CostoTasas;
+        }
     }
 }

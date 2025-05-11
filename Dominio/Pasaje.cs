@@ -62,7 +62,7 @@ namespace Dominio
             ValidarCliente();
             ValidarTipo();
             ValidarPrecio();
-            //ValidarFrecuenciaVuelo();
+            ValidarFrecuenciaVuelo();
         }
        
         private void ValidarId()
@@ -118,5 +118,37 @@ namespace Dominio
             }
         }
 
+        public decimal CalcularPrecio()
+        {
+            decimal costoBase = _vuelo.CalcularCostoPorAsiento();
+            decimal margen = 0.25m;
+            decimal porcentajeEquipaje = CalcularPorcentajeEquipaje();
+
+            decimal costoFinal = costoBase * (1 + margen + porcentajeEquipaje);
+
+            decimal tasas = _vuelo.ObtenerTotalTasas();
+
+            return costoFinal + tasas;
+        }
+
+        private decimal CalcularPorcentajeEquipaje()
+        {
+            if (_cliente is Ocacional)
+            {
+                switch (_tipoEquipaje)
+                {
+                    case TipoEquipaje.cabina: return 0.10m;
+                    case TipoEquipaje.bodega: return 0.20m;
+                    default: return 0m; 
+                }
+            }
+            else if (_cliente is Premium)
+            {
+                if (_tipoEquipaje == TipoEquipaje.bodega) return 0.05m;
+                return 0m;
+            }
+
+            return 0m; 
+        }
     }
 }
