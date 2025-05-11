@@ -118,58 +118,43 @@ namespace Dominio
             }
         }
 
-        public decimal CalcularPrecio()
-        {
-            decimal costoBase = _vuelo.CalcularCostoPorAsiento();
-            decimal margen = 0.25m;
-            decimal porcentajeEquipaje = CalcularPorcentajeEquipaje();
+        //public decimal CalcularPrecio()
+        //{
+        //    decimal costoBase = _vuelo.CalcularCostoPorAsiento();
+        //    decimal margen = 0.25m;
+        //    decimal porcentajeEquipaje = CalcularPorcentajeEquipaje();
 
-            decimal costoFinal = costoBase * (1 + margen + porcentajeEquipaje);
+        //    decimal costoFinal = costoBase * (1 + margen + porcentajeEquipaje);
 
-            decimal tasas = _vuelo.ObtenerTotalTasas();
+        //    decimal tasas = _vuelo.ObtenerTotalTasas();
 
-            return costoFinal + tasas;
-        }
+        //    return costoFinal + tasas;
+        //}
 
         //private decimal CalcularPorcentajeEquipaje()
         //{
         //    if (_cliente is Ocacional)
         //    {
-        //        switch (_tipoEquipaje)
-        //        {
-        //            case TipoEquipaje.cabina: return 0.10m;
-        //            case TipoEquipaje.bodega: return 0.20m;
-        //            default: return 0m; 
-        //        }
+        //        if (_tipoEquipaje == TipoEquipaje.cabina)
+        //            return 0.10m;
+        //        else if (_tipoEquipaje == TipoEquipaje.bodega)
+        //            return 0.20m;
+        //        else
+        //            return 0m;
         //    }
         //    else if (_cliente is Premium)
         //    {
-        //        if (_tipoEquipaje == TipoEquipaje.bodega) return 0.05m;
+        //        if (_tipoEquipaje == TipoEquipaje.bodega)
+        //            return 0.05m;
         //        return 0m;
         //    }
 
-        //    return 0m; 
+        //    return 0m;
         //}
-        private decimal CalcularPorcentajeEquipaje()
+
+        public override string ToString()
         {
-            if (_cliente is Ocacional)
-            {
-                if (_tipoEquipaje == TipoEquipaje.cabina)
-                    return 0.10m;
-                else if (_tipoEquipaje == TipoEquipaje.bodega)
-                    return 0.20m;
-                else
-                    return 0m;
-            }
-            else if (_cliente is Premium)
-            {
-                if (_tipoEquipaje == TipoEquipaje.bodega)
-                    return 0.05m;
-                return 0m;
-            }
-
-            return 0m;
+            return $"ID: {_id}, Cliente: {_cliente.Nombre}, Precio: {_precio}, Fecha: {_fecha}, Vuelo: {_vuelo.NumeroVuelo}";
         }
-
     }
 }

@@ -38,6 +38,7 @@ namespace Obligatorio
 
                         case 4:
                             //METODO 4
+                            ListarPasajesEntreFechas();
                             break;
 
                         default:
@@ -98,42 +99,63 @@ namespace Obligatorio
 
         private static void ListarClientes()
         {
-
-            Console.WriteLine("\nListado de todos los clientes:\n");
-
-            List<Cliente> lista = sistema.RetornarLista();
-
-            if (lista == null || lista.Count == 0)
+            try
             {
-                Console.WriteLine("No hay clientes cargados en el sistema.");
-                return;
+                Console.WriteLine("\nListado de todos los clientes:\n");
+
+                List<Cliente> lista = sistema.RetornarLista();
+
+                if (lista == null || lista.Count == 0)
+                {
+                    Console.WriteLine("No hay clientes cargados en el sistema.");
+
+                }
+                else
+                {
+                    for (int i = 0; i < lista.Count; i++)
+                    {
+                        Cliente c = lista[i];
+                        Console.WriteLine(c.ToString()); // Método polimórfico
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
 
-            for (int i = 0; i < lista.Count; i++)
-            {
-                Cliente c = lista[i];
-                Console.WriteLine(c.ToString()); // Método polimórfico
-            }
         }
         public static void AltaClienteOcacional(Ocacional cliente)
         {
-            List<Cliente> lista = sistema.RetornarLista();
-            if (cliente == null)
+            try
             {
-                throw new Exception("el cliente no puede ser nulo");
+
+                List<Cliente> lista = sistema.RetornarLista();
+                if (cliente == null)
+                {
+                    throw new Exception("el cliente no puede ser nulo");
+                }
+                cliente.Validar();
+                if (lista.Contains(cliente))
+                {
+                    throw new Exception("el cliente ya existe");
+                }
+                lista.Add(cliente);
             }
-            cliente.Validar();
-            if (lista.Contains(cliente))
+            catch (Exception ex) 
             {
-                throw new Exception("el cliente ya existe");
+                Console.WriteLine(ex.Message);
             }
-            lista.Add(cliente);
         }
+            
+    
+       
         //Nuevo ayuda de chat nano 07/05/1:21am VER
 
 
         private static Ocacional CrearClienteOcacional()
         {
+            
             Console.WriteLine("Ingrese cédula:");
             string ci = Console.ReadLine();
 
@@ -149,10 +171,13 @@ namespace Obligatorio
             Console.WriteLine("Ingrese nacionalidad:");
             string nacionalidad = Console.ReadLine();
 
+            if (string.IsNullOrEmpty(ci)|| string.IsNullOrEmpty(nombre) || string.IsNullOrEmpty(correo) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(nacionalidad))
+            {
+                throw new Exception("Datos no validados");
+            }
 
 
-
-            return new Ocacional(ci, nombre, correo, password, nacionalidad);
+                return new Ocacional(ci, nombre, correo, password, nacionalidad);
         }
 
         //public static void  listarPasajeEntreFechas()
@@ -204,6 +229,57 @@ namespace Obligatorio
             catch (Exception ex)
             {
                 Console.WriteLine("Ocurrió un error: " + ex.Message);
+            }
+
+        }
+        private static void ListarPasajesEntreFechas()
+        {
+            try
+            {
+                Console.WriteLine("Ingrese la fecha de inicio (formato: dd/mm/yyyy):");
+                 DateTime.TryParse(Console.ReadLine(), out DateTime fechaInicio);
+
+                Console.WriteLine("Ingrese la fecha de fin (formato: dd/mm/yyyy):");
+                
+                    DateTime.TryParse(Console.ReadLine(), out DateTime fechaFin);
+                if(fechaInicio == new DateTime() || fechaFin == new DateTime())
+                {
+                    throw new Exception("Fecha no valida.");
+                }
+
+                if (fechaInicio > fechaFin)
+                {
+                    throw new Exception("La fecha de inicio no puede ser posterior a la fecha de fin.");
+                }
+
+
+                List<Pasaje> todosLosPasajes = sistema.ObtenerPasajes();
+                List<Pasaje> pasajesFiltrados = new List<Pasaje>();
+
+                foreach (Pasaje pasaje in todosLosPasajes)
+                {
+                    if (pasaje.Fecha.Date >= fechaInicio.Date && pasaje.Fecha.Date <= fechaFin.Date)
+                    {
+                        pasajesFiltrados.Add(pasaje);
+                    }
+                }
+
+                if (pasajesFiltrados.Count == 0)
+                {
+                    Console.WriteLine("No se encontraron pasajes en el rango de fechas ingresado.");
+                    
+                }
+
+                Console.WriteLine("\nPasajes encontrados:");
+                foreach (Pasaje p in pasajesFiltrados)
+                {
+                    Console.WriteLine(p);
+                }
+            }
+           
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
             }
         }
 
