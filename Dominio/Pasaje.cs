@@ -131,24 +131,45 @@ namespace Dominio
             return costoFinal + tasas;
         }
 
+        //private decimal CalcularPorcentajeEquipaje()
+        //{
+        //    if (_cliente is Ocacional)
+        //    {
+        //        switch (_tipoEquipaje)
+        //        {
+        //            case TipoEquipaje.cabina: return 0.10m;
+        //            case TipoEquipaje.bodega: return 0.20m;
+        //            default: return 0m; 
+        //        }
+        //    }
+        //    else if (_cliente is Premium)
+        //    {
+        //        if (_tipoEquipaje == TipoEquipaje.bodega) return 0.05m;
+        //        return 0m;
+        //    }
+
+        //    return 0m; 
+        //}
         private decimal CalcularPorcentajeEquipaje()
         {
             if (_cliente is Ocacional)
             {
-                switch (_tipoEquipaje)
-                {
-                    case TipoEquipaje.cabina: return 0.10m;
-                    case TipoEquipaje.bodega: return 0.20m;
-                    default: return 0m; 
-                }
+                if (_tipoEquipaje == TipoEquipaje.cabina)
+                    return 0.10m;
+                else if (_tipoEquipaje == TipoEquipaje.bodega)
+                    return 0.20m;
+                else
+                    return 0m;
             }
             else if (_cliente is Premium)
             {
-                if (_tipoEquipaje == TipoEquipaje.bodega) return 0.05m;
+                if (_tipoEquipaje == TipoEquipaje.bodega)
+                    return 0.05m;
                 return 0m;
             }
 
-            return 0m; 
+            return 0m;
         }
+
     }
 }
