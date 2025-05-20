@@ -131,26 +131,26 @@ namespace Dominio
         //    return costoFinal + tasas;
         //}
 
-       
-        private decimal CalcularPorcentajeEquipaje()
-        {
-            if (_cliente is Ocacional)
-            {
-                if (_tipoEquipaje == TipoEquipaje.cabina)
-                    return 0.10m;
-                else if (_tipoEquipaje == TipoEquipaje.bodega)
-                    return 0.20m;
-                else
-                    return 0m;
-            }
-            else if (_cliente is Premium)
-            {
-                if (_tipoEquipaje == TipoEquipaje.bodega)
-                    return 0.05m;
-                return 0m;
-            }
 
-            return 0m;
+        //private decimal CalcularPorcentajeEquipaje()
+        //{
+        //    if (_cliente is Ocacional)
+        //    {
+        //        if (_tipoEquipaje == TipoEquipaje.cabina)
+        //            return 0.10m;
+        //        else if (_tipoEquipaje == TipoEquipaje.bodega)
+        //            return 0.20m;
+        //        else
+        //            return 0m;
+        //    }
+        //    else if (_cliente is Premium)
+        //    {
+        //        if (_tipoEquipaje == TipoEquipaje.bodega)
+        //            return 0.05m;
+        //        return 0m;
+        //    }
+        //}
+           
         //private decimal CalcularPorcentajeEquipaje()
         //{
         //    if (_cliente is Ocacional)
@@ -169,26 +169,12 @@ namespace Dominio
         //        return 0m;
         //    }
 
-        //    return 0m;
-        //}
+            //    return 0m;
+            //}
 
         public override string ToString()
         {
             return $"ID: {_id}, Cliente: {_cliente.Nombre}, Precio: {_precio}, Fecha: {_fecha}, Vuelo: {_vuelo.NumeroVuelo}";
-                    return 0.10m;
-                else if (_tipoEquipaje == TipoEquipaje.bodega)
-                    return 0.20m;
-                else
-                    return 0m;
-            }
-            else if (_cliente is Premium)
-            {
-                if (_tipoEquipaje == TipoEquipaje.bodega)
-                    return 0.05m;
-                return 0m;
-            }
-
-            return 0m;
         }
     }
 }

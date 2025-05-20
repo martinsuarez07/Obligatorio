@@ -9,6 +9,7 @@ namespace Dominio
     public class Sistema
 
     {
+        public static Sistema _instancia;
         private List<Administrador> _administradores = new List<Administrador>();
         private List<Cliente> _clientes = new List<Cliente>();
         private List<Aeropuerto> _aeropuertos = new List<Aeropuerto>();
@@ -16,7 +17,7 @@ namespace Dominio
         private List<Pasaje> _pasajes = new List<Pasaje>();
         private List<Ruta> _rutas = new List<Ruta>();
         private List<Vuelo> _vuelos = new List<Vuelo>();
-
+      
 
         public List<Administrador> Administrador { get { return new List<Administrador>(_administradores); } }
         public List<Cliente> Cliente { get { return new List<Cliente>(_clientes); } }
@@ -27,7 +28,17 @@ namespace Dominio
         public List<Ruta> Ruta { get { return new List<Ruta>(_rutas); } }
         public List<Vuelo> Vuelo { get { return new List<Vuelo>(_vuelos); } }
 
-
+        public static Sistema Instancia
+        {
+            get
+            {
+                if (_instancia == null)
+                {
+                    _instancia = new Sistema();
+                }
+                return _instancia;
+            }
+        }
 
         //-------------------------------------------- PRECARGAS------------------------------------------------------
         public void PrecargarDatos()
@@ -481,6 +492,26 @@ namespace Dominio
             return _pasajes; // donde _pasajes es la lista interna de pasajes
         }
         //averiguar bien estemetodo 
+
+
+
+        public Cliente ObtenerClientes(string correo, string password)
+        {
+            foreach (Cliente cliente in _clientes)
+            {
+
+                if (cliente.Password ==password && cliente.Correo == correo)
+                {
+                    return cliente;
+                }
+            }
+            return null;
+        }
+
+        public Cliente ObtenerClientes(object correo, object password)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 
