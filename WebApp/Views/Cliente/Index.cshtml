@@ -1,0 +1,11 @@
+﻿@using Dominio;
+<h1>Clientes</h1>
+<a href="RegistrarClienteOcacional">Registrar cliente ocacional </a>
+<ul>
+@foreach(Cliente cliente in ViewBag.Cliente)
+{
+	<li>@cliente.ToString()</li>
+}
+</ul>
+<br />
+<p>@ViewBag.Mensaje </p>

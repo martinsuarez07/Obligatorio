@@ -17,6 +17,7 @@ namespace Dominio
         private List<Pasaje> _pasajes = new List<Pasaje>();
         private List<Ruta> _rutas = new List<Ruta>();
         private List<Vuelo> _vuelos = new List<Vuelo>();
+        private List<Usuario> _usuario = new List<Usuario>();
       
 
         public List<Administrador> Administrador { get { return new List<Administrador>(_administradores); } }
@@ -461,7 +462,10 @@ namespace Dominio
             }
             _pasajes.Add(pasaje);
         }
+        // public void AgregarClienteOcacional(Ocacional ocacional)
+        //{
 
+        //}
 
         //---------------------------------------- FIN METODOS AGREGAR //-------
 
