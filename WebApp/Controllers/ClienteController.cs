@@ -6,7 +6,7 @@ namespace WebApp.Controllers
     public class ClienteController : Controller
     {
         
-        Sistema s = Sistema._instancia;
+        Sistema s = Sistema.Instancia;
         [HttpGet]
         public IActionResult Index()
         {

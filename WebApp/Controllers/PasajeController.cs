@@ -5,22 +5,21 @@ namespace WebApp.Controllers
 {
     public class PasajeController : Controller
     {
-        Sistema s = Sistema._instancia;
+        Sistema s = Sistema.Instancia;
+        [HttpGet]
         public IActionResult Index()
         {
             List<Pasaje> p = s.Pasaje;
             ViewBag.Pasaje = p;
             return View();
         }
-
+        [HttpGet]
         public IActionResult VerPasajes()
-        {
-             return View();
-        }
-        public IActionResult VerPasajes(int id, Vuelo vuelo, DateTime fecha, Cliente cliente, TipoEquipaje tipo, decimal precio)
         {
             ViewBag.Pasaje = s.Pasaje;
             return View();
         }
+        
+        
     }
 }

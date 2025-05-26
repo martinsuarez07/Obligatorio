@@ -1,2 +1,10 @@
-﻿<h1>Ver pasajes  </h1>
-<p>@ViewBag.Pasaje</p>
+﻿@using Dominio;
+
+<h1>Ver pasajes</h1>
+
+<ul>
+    @foreach (Pasaje p in ViewBag.Pasaje)
+    {
+        <li>@p.ToString()</li>
+    }
+</ul>

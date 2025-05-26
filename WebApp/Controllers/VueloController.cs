@@ -5,12 +5,22 @@ namespace WebApp.Controllers
 {
     public class VueloController : Controller
     {
-        Sistema s = Sistema._instancia;
+        Sistema s = Sistema.Instancia;
+
+        [HttpGet]
         public IActionResult Index()
+        {
+            List<Vuelo> v = s.Vuelo;
+            ViewBag.Vuelo = v;
+            return View();
+        }
+        [HttpGet]
+        public IActionResult VerVuelos()
         {
             return View();
         }
-        public IActionResult VerVuelos()
+        [HttpPost]
+        public IActionResult VerVuelos(string numeroVuelo, Ruta ruta, Avion avion, List<DayOfWeek> frecuencia)
         {
             return View();
         }
