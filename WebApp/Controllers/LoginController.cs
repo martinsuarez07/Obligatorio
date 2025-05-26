@@ -13,7 +13,7 @@ namespace WebApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult Ingresar(string correo, string password)
+        public IActionResult Login(string correo, string password)
         {
 
             if (string.IsNullOrEmpty(correo))
@@ -32,25 +32,29 @@ namespace WebApp.Controllers
 
             try
             {
-                Cliente unC = _sistema.ObtenerClientes(correo, password);
-                if (unC == null)
+                Usuario unU = _sistema.LoguinRetUsuario(password, correo);
+                if (unU == null)
                 {
                     ViewBag.ErrorMessage = "Usuario y/o password incorrecto";
                 }
+                else
+                {
+                    HttpContext.Session.SetString("correo", unU.Correo);
+                    HttpContext.Session.SetString("password", unU.Password);
+                }
 
-                HttpContext.Session.SetString("correo", unC.Correo);
-                HttpContext.Session.SetString("password", unC.Password);
+               
 
-                if (unC is Cliente cliente)
+                if (unU is Cliente cliente)
                 {
                     HttpContext.Session.SetString("rol", "cliente");
-                    return Redirect("/");
+                    return Redirect("Cliente/Index");
 
                 }
                 else
                 {
-                    HttpContext.Session.SetString("ClienteCorreo", correo);
-                    return Redirect("/");
+                    HttpContext.Session.SetString("rol", "administrador" );
+                    return Redirect("Pasaje/VerPasajes");
 
                 }
 
@@ -62,7 +66,7 @@ namespace WebApp.Controllers
                 return View();
             }
         }
-        [HttpPost]
+       
         public IActionResult Logout()
         {
             HttpContext.Session.Clear();

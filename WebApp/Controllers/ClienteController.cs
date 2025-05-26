@@ -10,8 +10,9 @@ namespace WebApp.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            List<Cliente> clientes = s.Cliente;
+            List<Cliente> clientes = s.GetClientes();
             ViewBag.Cliente = clientes;
+            ViewBag.Mensaje = "Alta exitosa";
             return View();
         }
         [HttpGet]
@@ -26,9 +27,9 @@ namespace WebApp.Controllers
             {
                 Ocacional o = new Ocacional(ci, nombre, correo, password, nacionalidad);
                 s.AgregarCliente(o);
-                ViewBag.Mensaje = "Alta exitosa";
             } catch (Exception ex) {
                 ViewBag.Mensaje = ex.Message;
+                return View();
             }
             ViewBag.Cliente = s.Cliente;
             return RedirectToAction("Index");

@@ -17,12 +17,10 @@ namespace WebApp.Controllers
         [HttpGet]
         public IActionResult VerVuelos()
         {
+            ViewBag.Vuelo = s.Vuelo;
             return View();
         }
-        [HttpPost]
-        public IActionResult VerVuelos(string numeroVuelo, Ruta ruta, Avion avion, List<DayOfWeek> frecuencia)
-        {
-            return View();
-        }
+        
+        
     }
 }

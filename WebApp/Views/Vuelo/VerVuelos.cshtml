@@ -1,3 +1,12 @@
-﻿<h1>
+﻿@using Dominio;
+<h1>
 	Ver vuelos
 </h1>
+
+
+<ul>
+    @foreach (Vuelo v in ViewBag.Vuelo)
+    {
+        <li>@v.ToString()</li>
+    }
+</ul>
