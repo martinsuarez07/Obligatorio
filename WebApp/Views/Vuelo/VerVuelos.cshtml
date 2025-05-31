@@ -1,12 +1,37 @@
 ﻿@using Dominio;
-<h1>
-	Ver vuelos
-</h1>
+<h1>Vuelos Disponibles</h1>
 
+<p>@ViewBag.Mensaje</p>
 
-<ul>
-    @foreach (Vuelo v in ViewBag.Vuelo)
-    {
-        <li>@v.ToString()</li>
-    }
-</ul>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Número de Vuelo</th>
+            <th>Avión</th>
+            <th>Ruta</th>
+            <th>Frecuencia</th>
+            <th>Acción</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Vuelo v in ViewBag.Vuelo)
+        {
+            <tr>
+                <td>@v.NumeroVuelo</td>
+                <td>@v.Avion.Modelo</td>
+                <td>@v.Ruta.ToString()</td>
+                <td>
+                    @foreach (DayOfWeek d in v.Frecuencia)
+                    {
+                        @d.ToString() @(" ")
+                    }
+                </td>
+                
+                <td>
+                    <a asp-controller="Pasaje" asp-action="Comprar" asp-route-numeroVuelo="@v.NumeroVuelo" class="btn btn-success">Comprar</a>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>

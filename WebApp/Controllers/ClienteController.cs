@@ -12,7 +12,7 @@ namespace WebApp.Controllers
         {
             List<Cliente> clientes = s.GetClientes();
             ViewBag.Cliente = clientes;
-            ViewBag.Mensaje = "Alta exitosa";
+           ViewBag.Mensaje = "Alta exitosa";
             return View();
         }
         [HttpGet]

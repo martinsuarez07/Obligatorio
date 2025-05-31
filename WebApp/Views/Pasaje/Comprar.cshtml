@@ -1,0 +1,27 @@
+﻿@using Dominio;
+@model Vuelo
+
+<h1>Comprar pasaje para el vuelo @Model.NumeroVuelo</h1>
+
+<form asp-controller="Pasaje" asp-action="ConfirmarCompra" method="post">
+    <input type="hidden" name="numeroVuelo" value="@Model.NumeroVuelo" />
+
+    <div>
+        <label>Fecha del vuelo:</label>
+        <input type="date" name="fecha" required />
+    </div>
+
+    <div>
+        <label>Tipo de equipaje:</label>
+        <select name="tipoEquipaje">
+            <option value="cabina">Cabina</option>
+            <option value="bodega">Bodega</option>
+            <option value="ninguno">Ninguno</option>
+        </select>
+    </div>
+
+    <br />
+    <button type="submit" class="btn btn-primary">Confirmar compra</button>
+</form>
+
+<p style="color:red">@ViewBag.Mensaje</p>
