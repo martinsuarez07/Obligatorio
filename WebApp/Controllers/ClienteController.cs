@@ -12,7 +12,7 @@ namespace WebApp.Controllers
         {
             List<Cliente> clientes = s.GetClientes();
             ViewBag.Cliente = clientes;
-           ViewBag.Mensaje = "Alta exitosa";
+          
             return View();
         }
         [HttpGet]
@@ -27,14 +27,21 @@ namespace WebApp.Controllers
             {
                 Ocacional o = new Ocacional(ci, nombre, correo, password, nacionalidad);
                 s.AgregarCliente(o);
+                ViewBag.Mensaje = "Alta exitosa";
             } catch (Exception ex) {
                 ViewBag.Mensaje = ex.Message;
                 return View();
             }
             ViewBag.Cliente = s.Cliente;
-            return RedirectToAction("Index");
+            return RedirectToAction("Login", "Login");
         }
-
+         public IActionResult VerPerfil()
+        {
+            string correo = HttpContext.Session.GetString("correo");
+            string contra = HttpContext.Session.GetString("password");
+            Cliente unU = (Cliente)s.LoguinRetUsuario(contra, correo);
+            return View(unU);
+        }
     }
 }
 

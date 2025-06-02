@@ -48,5 +48,9 @@ namespace WebApp.Controllers
             ViewBag.Vuelo = s.Vuelo;
             return View("VerVuelos");
         }
+        public IActionResult BuscarRuta()
+        {
+            return View();
+        }
     }
 }

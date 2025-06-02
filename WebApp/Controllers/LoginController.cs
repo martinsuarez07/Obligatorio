@@ -41,23 +41,21 @@ namespace WebApp.Controllers
                 {
                     HttpContext.Session.SetString("correo", unU.Correo);
                     HttpContext.Session.SetString("password", unU.Password);
-                }
+                    if (unU is Cliente cliente)
+                    {
+                        HttpContext.Session.SetString("rol", "cliente");
+                        return Redirect("Vuelo/VerVuelos");
 
+                    }
+                    else
+                    {
+                        HttpContext.Session.SetString("rol", "administrador");
+                        return Redirect("Pasaje/VerPasajes");
+
+                    }
+                }
+                return View();
                
-
-                if (unU is Cliente cliente)
-                {
-                    HttpContext.Session.SetString("rol", "cliente");
-                    return Redirect("Cliente/Index");
-
-                }
-                else
-                {
-                    HttpContext.Session.SetString("rol", "administrador" );
-                    return Redirect("Pasaje/VerPasajes");
-
-                }
-
             }
             catch (Exception e)
             {

@@ -1,0 +1,46 @@
+﻿@using Dominio;
+@model Dominio.Cliente;
+
+
+
+<h1 class="text-center mb-4 text-primary" style="font-family: 'Helvetica Neue', Arial, sans-serif;">Mi Perfil</h1>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10 col-sm-12">
+            <div class="card shadow-sm border-0 rounded-3 p-4" style="background-color: #f7f7f7;">
+                <div class="card-header bg-transparent text-center mb-4">
+                    <h3 class="text-dark" style="font-size: 1.8em;">Hola, @Model.Nombre</h3>
+                    <p class="text-muted">Tu información de perfil</p>
+                </div>
+                <div class="card-body">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <p class="fs-5 text-dark"><strong>Nombre:</strong> @Model.Nombre</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p class="fs-5 text-dark"><strong>Apellido:</strong> @Model.Ci</p>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <p class="fs-5 text-dark"><strong>Correo:</strong> @Model.Correo</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p class="fs-5 text-dark"><strong>Nacionalidad:</strong> @Model.Nacionalidad</p>
+                        </div>
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col-md-12">
+                            <div class="alert alert-light border-light text-center rounded-3">
+                                @if(Model is Premium p)
+                                {
+                                <strong>Puntos:</strong> <span style="font-weight: bold; font-size: 1.25em;">@p.Punto</span>
+                                    
+                                }else if(Model is Ocacional c){
+                                     <strong>Elegible:</strong> <span style="font-weight: bold; font-size: 1.25em;">@c.Regalos</span>
+                                }
+                            </div>
+                        </div>
+                    </div>

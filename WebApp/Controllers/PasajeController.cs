@@ -39,7 +39,7 @@ namespace WebApp.Controllers
             }
 
             ViewBag.Vuelo = vuelo;
-            return View();
+            return View("Comprar",vuelo);
         }
 
         [HttpPost]
