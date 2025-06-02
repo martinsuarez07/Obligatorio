@@ -1,11 +1,30 @@
 ﻿@using Dominio;
 <h1>Clientes</h1>
-<a href="RegistrarClienteOcacional">Registrar cliente ocacional </a>
-<ul>
-@foreach(Cliente cliente in ViewBag.Cliente)
-{
-	<li>@cliente.ToString()</li>
-}
-</ul>
-<br />
-<p >@ViewBag.Mensaje </p>
+
+<a href="RegistrarClienteOcacional" class="btn btn-primary mb-3">Registrar cliente ocacional</a>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Ci</th>
+            <th>Nacionalidad</th>
+            <th>Correo</th>
+            <th>Tipo</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Cliente cliente in ViewBag.Cliente)
+        {
+            <tr>
+                <td>@cliente.Nombre</td>
+                <td>@cliente.Ci</td>
+                <td>@cliente.Nacionalidad</td>
+                <td>@cliente.Correo</td>
+                <td>@cliente.GetType().Name</td> <!-- Muestra Ocacional o Premium -->
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p>@ViewBag.Mensaje</p>

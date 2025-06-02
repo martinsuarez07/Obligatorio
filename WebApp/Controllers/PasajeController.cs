@@ -73,7 +73,10 @@ namespace WebApp.Controllers
             ViewBag.Vuelo = vuelo;
             return View();
         }
-      
+       public IActionResult VerPasajesComprados()
+        {
+            return View();
+        }
         
     }
 }

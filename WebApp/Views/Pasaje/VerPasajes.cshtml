@@ -1,10 +1,30 @@
-﻿@using Dominio;
+﻿@using Dominio
+<h1>Pasajes </h1>
 
-<h1>Ver pasajes</h1>
+<p>@ViewBag.Mensaje</p>
 
-<ul>
-    @foreach (Pasaje p in ViewBag.Pasaje)
-    {
-        <li>@p.ToString()</li>
-    }
-</ul>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Cliente</th>
+            <th>Vuelo</th>
+            <th>Fecha</th>
+            <th>Tipo de Equipaje</th>
+            <th>Precio</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Pasaje p in ViewBag.Pasaje)
+        {
+            <tr>
+                <td>@p.Id</td>
+                <td>@p.Cliente.Nombre</td>
+                <td>@p.Vuelo.NumeroVuelo</td>
+                <td>@p.Fecha.ToString("dd/MM/yyyy")</td>
+                <td>@p.TipoEquipaje</td>
+                <td>$@p.Precio</td>
+            </tr>
+        }
+    </tbody>
+</table>
