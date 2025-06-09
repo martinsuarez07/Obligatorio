@@ -1,1 +1,53 @@
-﻿
+﻿@using Dominio
+@{
+    ViewData["Title"] = "Buscar Vuelos";
+    List<Vuelo> vuelos = ViewBag.VuelosFiltrados;
+}
+
+<h2>Buscar vuelos por código IATA</h2>
+
+<form asp-controller="Vuelo" asp-action="BuscarPorRuta" method="post">
+    <div>
+        <label>Código IATA Origen:</label>
+        <input type="text" name="codOrigen" />
+    </div>
+    <div>
+        <label>Código IATA Destino:</label>
+        <input type="text" name="codDestino" />
+    </div>
+    <button class="btn btn-primary mb-3" type="submit">Buscar</button>
+</form>
+
+@if (vuelos != null && vuelos.Count > 0)
+{
+    <h3>Resultados encontrados:</h3>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Número</th>
+                <th>Origen</th>
+                <th>Destino</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Vuelo vuelo in ViewBag.VuelosFiltrados)
+            {
+                <tr>
+                    <td>@vuelo.NumeroVuelo</td>
+                    <td>@vuelo.Ruta.AeropuertoOrigen.DevolverCodIATA()</td>
+                    <td>@vuelo.Ruta.AeropuertoDestino.DevolverCodIATA()</td>
+                    <td>
+                        <a class="btn btn-primary mb-3" asp-controller="Pasaje" asp-action="Comprar" asp-route-numeroVuelo="@vuelo.NumeroVuelo">
+                            Comprar Pasaje
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else if (vuelos != null)
+{
+    <p>No se encontraron vuelos con los criterios ingresados.</p>
+}

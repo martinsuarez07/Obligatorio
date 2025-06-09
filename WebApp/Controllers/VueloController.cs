@@ -48,10 +48,56 @@ namespace WebApp.Controllers
             ViewBag.Vuelo = s.Vuelo;
             return View("VerVuelos");
         }
+
+        
         public IActionResult BuscarRuta()
         {
             return View();
         }
 
+        [HttpPost]
+        public IActionResult BuscarPorRuta(string codOrigen, string codDestino)
+        {
+            List<Vuelo> vuelosFiltrados = new List<Vuelo>();
+           
+            List<Vuelo> todos = s.Vuelo;
+
+            foreach (Vuelo v in todos)
+            {
+                Ruta ruta = v.Ruta;
+
+                Aeropuerto aeropuertoO = ruta.AeropuertoOrigen;
+                Aeropuerto aeropuertoD = ruta.AeropuertoDestino;
+
+                string codO = aeropuertoO.DevolverCodIATA();
+                string codD = aeropuertoD.DevolverCodIATA();
+
+                codO = codO.ToLower();
+                codD = codD.ToLower();
+
+                bool coincideOrigen = true;
+                bool coincideDestino = true;
+
+                if (!string.IsNullOrEmpty(codOrigen))
+                {
+                    codOrigen = codOrigen.ToLower();
+                    coincideOrigen = codO == codOrigen;
+                }
+
+                if (!string.IsNullOrEmpty(codDestino))
+                {
+                    codDestino = codDestino.ToLower();
+                    coincideDestino = codD == codDestino;
+                }
+
+                if (coincideOrigen && coincideDestino)
+                {
+                    vuelosFiltrados.Add(v);
+                }
+            }
+
+            ViewBag.VuelosFiltrados = vuelosFiltrados;
+            return View("BuscarRuta");
+        }
     }
 }

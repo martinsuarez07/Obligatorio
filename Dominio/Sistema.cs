@@ -562,6 +562,31 @@ namespace Dominio
         {
             throw new NotImplementedException();
         }
+        public List<Vuelo> BuscarVuelosPorRuta(string codOrigen, string codDestino)
+        {
+            List<Vuelo> resultado = new List<Vuelo>();
+
+            for (int i = 0; i < _vuelos.Count; i++)
+            {
+                Vuelo v = _vuelos[i];
+                Ruta r = v.Ruta;
+                Aeropuerto origen = r.AeropuertoOrigen;
+                Aeropuerto destino = r.AeropuertoDestino;
+
+                string codO = origen.DevolverCodIATA();
+                string codD = destino.DevolverCodIATA();
+
+                bool coincideOrigen = string.IsNullOrEmpty(codOrigen) || codO == codOrigen;
+                bool coincideDestino = string.IsNullOrEmpty(codDestino) || codD == codDestino;
+
+                if (coincideOrigen && coincideDestino)
+                {
+                    resultado.Add(v);
+                }
+            }
+
+            return resultado;
+        }
     }
 }
 
