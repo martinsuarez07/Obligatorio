@@ -63,12 +63,6 @@ namespace Dominio
 
         private void PrecargarClientes()
         {
-            Ocacional o1 = new Ocacional("51244125", "Jorge", "jorge@gmail.com", "abc123", "Uruguayo");
-            AgregarCliente(o1);
-
-            Ocacional o2 = new Ocacional("51244126", "Ana", "ana@gmail.com", "def456", "Argentina");
-            AgregarCliente(o2);
-
             Ocacional o3 = new Ocacional("51244127", "Carlos", "carlos@gmail.com", "ghi789", "Chileno");
             AgregarCliente(o3);
 
@@ -77,12 +71,12 @@ namespace Dominio
 
             Ocacional o5 = new Ocacional("51244129", "Felipe", "felipe@gmail.com", "mno345", "Colombiano");
             AgregarCliente(o5);
+            Ocacional o1 = new Ocacional("51244125", "Jorge", "jorge@gmail.com", "abc123", "Uruguayo");
+            AgregarCliente(o1);
 
-            Premium p1 = new Premium("61244125", "Martín", "martin@gmail.com", "xyz123", "Uruguayo", 150);
-            AgregarCliente(p1);
+            Ocacional o2 = new Ocacional("51244126", "Ana", "ana@gmail.com", "def456", "Argentina");
+            AgregarCliente(o2);
 
-            Premium p2 = new Premium("61244126", "Laura", "laura@gmail.com", "abc789", "Argentina", 200);
-            AgregarCliente(p2);
 
             Premium p3 = new Premium("61244127", "Ricardo", "ricardo@gmail.com", "def456", "Chileno", 250);
             AgregarCliente(p3);
@@ -92,6 +86,13 @@ namespace Dominio
 
             Premium p5 = new Premium("61244129", "Esteban", "esteban@gmail.com", "jkl345", "Colombiano", 400);
             AgregarCliente(p5);
+            Premium p1 = new Premium("61244125", "Martín", "martin@gmail.com", "xyz123", "Uruguayo", 150);
+            AgregarCliente(p1);
+
+            Premium p2 = new Premium("61244126", "Laura", "laura@gmail.com", "abc789", "Argentina", 200);
+            AgregarCliente(p2);
+
+          
         }
 
         private void PrecargarAdmin()
@@ -310,6 +311,30 @@ namespace Dominio
 
         private void PrecargarPasaje()
         {
+            Pasaje pasaje14 = new Pasaje(14, _vuelos[13], new DateTime(2025, 4, 13), (Cliente)_usuarios[3], TipoEquipaje.bodega, 13);
+            AgregarPasaje(pasaje14);
+            Pasaje pasaje15 = new Pasaje(15, _vuelos[14], new DateTime(2025, 4, 14), (Cliente)_usuarios[4], TipoEquipaje.ligth, 12);
+            AgregarPasaje(pasaje15);
+            Pasaje pasaje16 = new Pasaje(16, _vuelos[15], new DateTime(2025, 4, 15), (Cliente)_usuarios[5], TipoEquipaje.bodega, 14);
+            AgregarPasaje(pasaje16);
+            Pasaje pasaje17 = new Pasaje(17, _vuelos[16], new DateTime(2025, 4, 16), (Cliente)_usuarios[6], TipoEquipaje.ligth, 11);
+            AgregarPasaje(pasaje17);
+            Pasaje pasaje18 = new Pasaje(18, _vuelos[17], new DateTime(2025, 4, 17), (Cliente)_usuarios[7], TipoEquipaje.bodega, 10);
+            AgregarPasaje(pasaje18);
+            Pasaje pasaje19 = new Pasaje(19, _vuelos[18], new DateTime(2025, 4, 18), (Cliente)_usuarios[8], TipoEquipaje.cabina, 13);
+            AgregarPasaje(pasaje19);
+            Pasaje pasaje20 = new Pasaje(20, _vuelos[19], new DateTime(2025, 4, 19), (Cliente)_usuarios[9], TipoEquipaje.bodega, 12);
+            AgregarPasaje(pasaje20);
+            Pasaje pasaje21 = new Pasaje(21, _vuelos[20], new DateTime(2025, 4, 20), (Cliente)_usuarios[5], TipoEquipaje.ligth, 10);
+            AgregarPasaje(pasaje21);
+            Pasaje pasaje22 = new Pasaje(22, _vuelos[21], new DateTime(2025, 4, 21), (Cliente)_usuarios[1], TipoEquipaje.bodega, 14);
+            AgregarPasaje(pasaje22);
+            Pasaje pasaje23 = new Pasaje(23, _vuelos[22], new DateTime(2025, 4, 22), (Cliente)_usuarios[2], TipoEquipaje.cabina, 11);
+            AgregarPasaje(pasaje23);
+            Pasaje pasaje24 = new Pasaje(24, _vuelos[23], new DateTime(2025, 4, 23), (Cliente)_usuarios[3], TipoEquipaje.bodega, 13);
+            AgregarPasaje(pasaje24);
+            Pasaje pasaje25 = new Pasaje(25, _vuelos[24], new DateTime(2025, 4, 24), (Cliente)_usuarios[4], TipoEquipaje.ligth, 12);
+            AgregarPasaje(pasaje25);
             Pasaje pasaje1 = new Pasaje(1, _vuelos[0], new DateTime(2025, 3, 31), (Cliente)_usuarios[1], TipoEquipaje.cabina, 12);
             AgregarPasaje(pasaje1);
             Pasaje pasaje2 = new Pasaje(2, _vuelos[1], new DateTime(2025, 4, 1), (Cliente)_usuarios[1], TipoEquipaje.bodega, 14);
@@ -336,30 +361,7 @@ namespace Dominio
             AgregarPasaje(pasaje12);
             Pasaje pasaje13 = new Pasaje(13, _vuelos[12], new DateTime(2025, 4, 12), (Cliente)_usuarios[2], TipoEquipaje.cabina, 15);
             AgregarPasaje(pasaje13);
-            Pasaje pasaje14 = new Pasaje(14, _vuelos[13], new DateTime(2025, 4, 13), (Cliente)_usuarios[3], TipoEquipaje.bodega, 13);
-            AgregarPasaje(pasaje14);
-            Pasaje pasaje15 = new Pasaje(15, _vuelos[14], new DateTime(2025, 4, 14), (Cliente)_usuarios[4], TipoEquipaje.ligth, 12);
-            AgregarPasaje(pasaje15);
-            Pasaje pasaje16 = new Pasaje(16, _vuelos[15], new DateTime(2025, 4, 15), (Cliente)_usuarios[5], TipoEquipaje.bodega, 14);
-            AgregarPasaje(pasaje16);
-            Pasaje pasaje17 = new Pasaje(17, _vuelos[16], new DateTime(2025, 4, 16), (Cliente)_usuarios[6], TipoEquipaje.ligth, 11);
-            AgregarPasaje(pasaje17);
-            Pasaje pasaje18 = new Pasaje(18, _vuelos[17], new DateTime(2025, 4, 17), (Cliente)_usuarios[7], TipoEquipaje.bodega, 10);
-            AgregarPasaje(pasaje18);
-            Pasaje pasaje19 = new Pasaje(19, _vuelos[18], new DateTime(2025, 4, 18), (Cliente)_usuarios[8], TipoEquipaje.cabina, 13);
-            AgregarPasaje(pasaje19);
-            Pasaje pasaje20 = new Pasaje(20, _vuelos[19], new DateTime(2025, 4, 19), (Cliente)_usuarios[9], TipoEquipaje.bodega, 12);
-            AgregarPasaje(pasaje20);
-            Pasaje pasaje21 = new Pasaje(21, _vuelos[20], new DateTime(2025, 4, 20), (Cliente)_usuarios[5], TipoEquipaje.ligth, 10);
-            AgregarPasaje(pasaje21);
-            Pasaje pasaje22 = new Pasaje(22, _vuelos[21], new DateTime(2025, 4, 21), (Cliente)_usuarios[1], TipoEquipaje.bodega, 14);
-            AgregarPasaje(pasaje22);
-            Pasaje pasaje23 = new Pasaje(23, _vuelos[22], new DateTime(2025, 4, 22), (Cliente)_usuarios[2], TipoEquipaje.cabina, 11);
-            AgregarPasaje(pasaje23);
-            Pasaje pasaje24 = new Pasaje(24, _vuelos[23], new DateTime(2025, 4, 23), (Cliente)_usuarios[3], TipoEquipaje.bodega, 13);
-            AgregarPasaje(pasaje24);
-            Pasaje pasaje25 = new Pasaje(25, _vuelos[24], new DateTime(2025, 4, 24), (Cliente)_usuarios[4], TipoEquipaje.ligth, 12);
-            AgregarPasaje(pasaje25);
+            
 
             //vuelo.Frecuencia.conteins(pasaje.fecha.dayoftheweek)
         }
