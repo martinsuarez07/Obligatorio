@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Dominio
 {
 
-    public class Pasaje
+    public class Pasaje:IComparable<Pasaje>
     {
         private int _id;
         private Vuelo _vuelo;
@@ -158,6 +158,11 @@ namespace Dominio
         public override string ToString()
         {
             return $"ID: {_id}, Cliente: {_cliente.Nombre}, Precio: {_precio}, Fecha: {_fecha}, Vuelo: {_vuelo.NumeroVuelo}";
+        }
+
+        public int CompareTo(Pasaje? other)
+        {
+            return this.Precio.CompareTo(other.Precio) * -1;
         }
     }
 }

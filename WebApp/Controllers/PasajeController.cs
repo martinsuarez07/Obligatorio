@@ -106,8 +106,33 @@ namespace WebApp.Controllers
             return View("Comprar", vuelo);
         }
 
+       
+        private int CompararPorPrecioDescendente(Pasaje p1, Pasaje p2)
+        {
+            if (p1.Precio > p2.Precio)
+                return -1;
+            if (p1.Precio < p2.Precio)
+                return 1;
+            return 0;
+        }
         public IActionResult VerPasajesComprados()
         {
+            string correo = HttpContext.Session.GetString("correo");
+            Cliente clienteLogueado = s.ObtenerCliente(correo);
+
+            List<Pasaje> pasajesCliente = new List<Pasaje>();
+
+            foreach (Pasaje p in s.Pasaje)
+            {
+                if (p.Cliente != null && clienteLogueado != null && p.Cliente.Correo == clienteLogueado.Correo)
+                {
+                    pasajesCliente.Add(p);
+                }
+            }
+
+            pasajesCliente.Sort(CompararPorPrecioDescendente);
+
+            ViewBag.Pasajes = pasajesCliente;
             return View();
         }
     }

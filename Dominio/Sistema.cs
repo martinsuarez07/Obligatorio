@@ -594,6 +594,12 @@ namespace Dominio
             return _clientes; // o como tengas almacenada la lista en Sistema
         }
 
+        public List<Pasaje> PasajesOrdenadosDescPrecio()
+        {
+            List<Pasaje> pasajes = new List<Pasaje>(Pasaje);
+            pasajes.Sort();
+            return pasajes;
+        }
     }
 
 }
