@@ -135,5 +135,33 @@ namespace WebApp.Controllers
             ViewBag.Pasajes = pasajesCliente;
             return View();
         }
+        private int CompararPorFecha(Pasaje p1, Pasaje p2)
+        {
+            if (p1.Fecha > p2.Fecha)
+                return 1;
+            if (p1.Fecha < p2.Fecha)
+                return -1;
+            return 0;
+        }
+        public IActionResult VerPasajesCompradosFecha()
+        {
+            string correo = HttpContext.Session.GetString("correo");
+            Administrador clienteLogueado = s.ObtenerAdmin(correo);
+
+            List<Pasaje> pasajesClienteFecha = new List<Pasaje>();
+
+            foreach (Pasaje p in s.Pasaje)
+            {
+                if (p.Cliente != null && clienteLogueado != null && p.Cliente.Correo == clienteLogueado.Correo)
+                {
+                    pasajesClienteFecha.Add(p);
+                }
+            }
+
+            pasajesClienteFecha.Sort(CompararPorFecha);
+
+            ViewBag.PasajesFecha = pasajesClienteFecha;
+            return View();
+        }
     }
 }

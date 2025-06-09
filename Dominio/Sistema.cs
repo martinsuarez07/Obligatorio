@@ -502,7 +502,18 @@ namespace Dominio
         }
         //averiguar bien estemetodo 
 
+        public Administrador ObtenerAdmin(string correo)
+        {
+            foreach (Administrador a in _usuarios)
+            {
 
+                if (a.Correo == correo)
+                {
+                    return a;
+                }
+            }
+            return null;
+        }
 
         public Cliente ObtenerCliente(string correo)
         {
@@ -595,6 +606,12 @@ namespace Dominio
         }
 
         public List<Pasaje> PasajesOrdenadosDescPrecio()
+        {
+            List<Pasaje> pasajes = new List<Pasaje>(Pasaje);
+            pasajes.Sort();
+            return pasajes;
+        }
+        public List<Pasaje> PasajesOrdenadosFecha()
         {
             List<Pasaje> pasajes = new List<Pasaje>(Pasaje);
             pasajes.Sort();
