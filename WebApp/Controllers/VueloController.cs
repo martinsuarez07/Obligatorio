@@ -48,8 +48,6 @@ namespace WebApp.Controllers
             ViewBag.Vuelo = s.Vuelo;
             return View("VerVuelos");
         }
-
-        
         public IActionResult BuscarRuta()
         {
             return View();
@@ -59,7 +57,7 @@ namespace WebApp.Controllers
         public IActionResult BuscarPorRuta(string codOrigen, string codDestino)
         {
             List<Vuelo> vuelosFiltrados = new List<Vuelo>();
-           
+
             List<Vuelo> todos = s.Vuelo;
 
             foreach (Vuelo v in todos)
@@ -99,5 +97,7 @@ namespace WebApp.Controllers
             ViewBag.VuelosFiltrados = vuelosFiltrados;
             return View("BuscarRuta");
         }
+
+
     }
 }

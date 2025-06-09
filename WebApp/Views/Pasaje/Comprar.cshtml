@@ -1,27 +1,30 @@
 ﻿@using Dominio;
-@model Vuelo
+@model Dominio.Vuelo
 
-<h1>Comprar pasaje para el vuelo @Model.NumeroVuelo</h1>
+<h2>Comprar Pasaje</h2>
 
-<form asp-controller="Pasaje" asp-action="ConfirmarCompra" method="post">
+<p><strong>Vuelo:</strong> @Model.NumeroVuelo</p>
+<p>
+    <strong>Días disponibles:</strong>
+    @foreach (var dia in ViewBag.Frecuencias as List<DayOfWeek>)
+    {
+        <span>@dia.ToString() </span>
+    }
+</p>
+
+<form asp-action="ConfirmarCompra" method="post">
     <input type="hidden" name="numeroVuelo" value="@Model.NumeroVuelo" />
 
-    <div>
-        <label>Fecha del vuelo:</label>
-        <input type="date" name="fecha" required />
-    </div>
+    <label for="fecha">Fecha:</label>
+    <input type="date" name="fecha" required />
 
-    <div>
-        <label>Tipo de equipaje:</label>
-        <select name="tipoEquipaje">
-            <option value="cabina">Cabina</option>
-            <option value="bodega">Bodega</option>
-            <option value="ninguno">Ninguno</option>
-        </select>
-    </div>
+    <label for="tipoEquipaje">Equipaje:</label>
+    <select name="tipoEquipaje">
+        <option value="cabina">Cabina</option>
+        <option value="bodega">Bodega</option>
+    </select>
 
-    <br />
-    <button type="submit" class="btn btn-primary">Confirmar compra</button>
+    <button type="submit">Comprar</button>
 </form>
 
-<p style="color:red">@ViewBag.Mensaje</p>
+<p style="color:@ViewBag.ColorMensaje;">@ViewBag.Mensaje</p>

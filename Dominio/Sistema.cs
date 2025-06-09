@@ -63,6 +63,12 @@ namespace Dominio
 
         private void PrecargarClientes()
         {
+            Ocacional o1 = new Ocacional("51244125", "Jorge", "jorge@gmail.com", "abc123", "Uruguayo");
+            AgregarCliente(o1);
+
+            Ocacional o2 = new Ocacional("51244126", "Ana", "ana@gmail.com", "def456", "Argentina");
+            AgregarCliente(o2);
+
             Ocacional o3 = new Ocacional("51244127", "Carlos", "carlos@gmail.com", "ghi789", "Chileno");
             AgregarCliente(o3);
 
@@ -71,12 +77,12 @@ namespace Dominio
 
             Ocacional o5 = new Ocacional("51244129", "Felipe", "felipe@gmail.com", "mno345", "Colombiano");
             AgregarCliente(o5);
-            Ocacional o1 = new Ocacional("51244125", "Jorge", "jorge@gmail.com", "abc123", "Uruguayo");
-            AgregarCliente(o1);
 
-            Ocacional o2 = new Ocacional("51244126", "Ana", "ana@gmail.com", "def456", "Argentina");
-            AgregarCliente(o2);
+            Premium p1 = new Premium("61244125", "Martín", "martin@gmail.com", "xyz123", "Uruguayo", 150);
+            AgregarCliente(p1);
 
+            Premium p2 = new Premium("61244126", "Laura", "laura@gmail.com", "abc789", "Argentina", 200);
+            AgregarCliente(p2);
 
             Premium p3 = new Premium("61244127", "Ricardo", "ricardo@gmail.com", "def456", "Chileno", 250);
             AgregarCliente(p3);
@@ -86,13 +92,6 @@ namespace Dominio
 
             Premium p5 = new Premium("61244129", "Esteban", "esteban@gmail.com", "jkl345", "Colombiano", 400);
             AgregarCliente(p5);
-            Premium p1 = new Premium("61244125", "Martín", "martin@gmail.com", "xyz123", "Uruguayo", 150);
-            AgregarCliente(p1);
-
-            Premium p2 = new Premium("61244126", "Laura", "laura@gmail.com", "abc789", "Argentina", 200);
-            AgregarCliente(p2);
-
-          
         }
 
         private void PrecargarAdmin()
@@ -311,6 +310,32 @@ namespace Dominio
 
         private void PrecargarPasaje()
         {
+            Pasaje pasaje1 = new Pasaje(1, _vuelos[0], new DateTime(2025, 3, 31), (Cliente)_usuarios[1], TipoEquipaje.cabina, 12);
+            AgregarPasaje(pasaje1);
+            Pasaje pasaje2 = new Pasaje(2, _vuelos[1], new DateTime(2025, 4, 1), (Cliente)_usuarios[1], TipoEquipaje.bodega, 14);
+            AgregarPasaje(pasaje2);
+            Pasaje pasaje3 = new Pasaje(3, _vuelos[2], new DateTime(2025, 4, 2), (Cliente)_usuarios[2], TipoEquipaje.ligth, 11);
+            AgregarPasaje(pasaje3);
+            Pasaje pasaje4 = new Pasaje(4, _vuelos[3], new DateTime(2025, 4, 3), (Cliente)_usuarios[3], TipoEquipaje.bodega, 10);
+            AgregarPasaje(pasaje4);
+            Pasaje pasaje5 = new Pasaje(5, _vuelos[4], new DateTime(2025, 4, 4), (Cliente)_usuarios[4], TipoEquipaje.cabina, 13);
+            AgregarPasaje(pasaje5);
+            Pasaje pasaje6 = new Pasaje(6, _vuelos[5], new DateTime(2025, 4, 5), (Cliente)_usuarios[5], TipoEquipaje.ligth, 15);
+            AgregarPasaje(pasaje6);
+            Pasaje pasaje7 = new Pasaje(7, _vuelos[6], new DateTime(2025, 4, 6), (Cliente)_usuarios[6], TipoEquipaje.cabina, 12);
+            AgregarPasaje(pasaje7);
+            Pasaje pasaje8 = new Pasaje(8, _vuelos[7], new DateTime(2025, 4, 7), (Cliente)_usuarios[7], TipoEquipaje.bodega, 16);
+            AgregarPasaje(pasaje8);
+            Pasaje pasaje9 = new Pasaje(9, _vuelos[8], new DateTime(2025, 4, 8), (Cliente)_usuarios[8], TipoEquipaje.ligth, 13);
+            AgregarPasaje(pasaje9);
+            Pasaje pasaje10 = new Pasaje(10, _vuelos[9], new DateTime(2025, 4, 9), (Cliente)_usuarios[9], TipoEquipaje.bodega, 11);
+            AgregarPasaje(pasaje10);
+            Pasaje pasaje11 = new Pasaje(11, _vuelos[10], new DateTime(2025, 4, 10), (Cliente)_usuarios[0], TipoEquipaje.cabina, 14);
+            AgregarPasaje(pasaje11);
+            Pasaje pasaje12 = new Pasaje(12, _vuelos[11], new DateTime(2025, 4, 11), (Cliente)_usuarios[1], TipoEquipaje.ligth, 10);
+            AgregarPasaje(pasaje12);
+            Pasaje pasaje13 = new Pasaje(13, _vuelos[12], new DateTime(2025, 4, 12), (Cliente)_usuarios[2], TipoEquipaje.cabina, 15);
+            AgregarPasaje(pasaje13);
             Pasaje pasaje14 = new Pasaje(14, _vuelos[13], new DateTime(2025, 4, 13), (Cliente)_usuarios[3], TipoEquipaje.bodega, 13);
             AgregarPasaje(pasaje14);
             Pasaje pasaje15 = new Pasaje(15, _vuelos[14], new DateTime(2025, 4, 14), (Cliente)_usuarios[4], TipoEquipaje.ligth, 12);
@@ -335,33 +360,6 @@ namespace Dominio
             AgregarPasaje(pasaje24);
             Pasaje pasaje25 = new Pasaje(25, _vuelos[24], new DateTime(2025, 4, 24), (Cliente)_usuarios[4], TipoEquipaje.ligth, 12);
             AgregarPasaje(pasaje25);
-            Pasaje pasaje1 = new Pasaje(1, _vuelos[0], new DateTime(2025, 3, 31), (Cliente)_usuarios[1], TipoEquipaje.cabina, 12);
-            AgregarPasaje(pasaje1);
-            Pasaje pasaje2 = new Pasaje(2, _vuelos[1], new DateTime(2025, 4, 1), (Cliente)_usuarios[1], TipoEquipaje.bodega, 14);
-            AgregarPasaje(pasaje2);
-            Pasaje pasaje3 = new Pasaje(3, _vuelos[2], new DateTime(2025, 4, 2), (Cliente)_usuarios[2], TipoEquipaje.ligth, 11);
-            AgregarPasaje(pasaje3);
-            Pasaje pasaje4 = new Pasaje(4, _vuelos[3], new DateTime(2025, 4, 3), (Cliente)_usuarios[3], TipoEquipaje.bodega, 10);
-            AgregarPasaje(pasaje4);
-            Pasaje pasaje5 = new Pasaje(5, _vuelos[4], new DateTime(2025, 4, 4), (Cliente)_usuarios[4], TipoEquipaje.cabina, 13);
-            AgregarPasaje(pasaje5);
-            Pasaje pasaje6 = new Pasaje(6, _vuelos[5], new DateTime(2025, 4, 5), (Cliente)_usuarios[5], TipoEquipaje.ligth, 15);
-            AgregarPasaje(pasaje6);
-            Pasaje pasaje7 = new Pasaje(7, _vuelos[6], new DateTime(2025, 4, 6), (Cliente)_usuarios[6], TipoEquipaje.cabina, 12);
-            AgregarPasaje(pasaje7);
-            Pasaje pasaje8 = new Pasaje(8, _vuelos[7], new DateTime(2025, 4, 7), (Cliente)_usuarios[7], TipoEquipaje.bodega, 16);
-            AgregarPasaje(pasaje8); 
-            Pasaje pasaje9 = new Pasaje(9, _vuelos[8], new DateTime(2025, 4, 8), (Cliente)_usuarios[8], TipoEquipaje.ligth, 13);
-            AgregarPasaje(pasaje9);
-            Pasaje pasaje10 = new Pasaje(10, _vuelos[9], new DateTime(2025, 4, 9), (Cliente)_usuarios[9], TipoEquipaje.bodega, 11);
-            AgregarPasaje(pasaje10);
-            Pasaje pasaje11 = new Pasaje(11, _vuelos[10], new DateTime(2025, 4, 10), (Cliente)_usuarios[0], TipoEquipaje.cabina, 14);
-            AgregarPasaje(pasaje11);
-            Pasaje pasaje12 = new Pasaje(12, _vuelos[11], new DateTime(2025, 4, 11), (Cliente)_usuarios[1], TipoEquipaje.ligth, 10);
-            AgregarPasaje(pasaje12);
-            Pasaje pasaje13 = new Pasaje(13, _vuelos[12], new DateTime(2025, 4, 12), (Cliente)_usuarios[2], TipoEquipaje.cabina, 15);
-            AgregarPasaje(pasaje13);
-            
 
             //vuelo.Frecuencia.conteins(pasaje.fecha.dayoftheweek)
         }
@@ -506,12 +504,12 @@ namespace Dominio
 
 
 
-        public Cliente ObtenerCliente(string correo, string password)
+        public Cliente ObtenerCliente(string correo)
         {
             foreach (Cliente cliente in _usuarios)
             {
 
-                if (cliente.Password ==password && cliente.Correo == correo)
+                if (cliente.Correo == correo)
                 {
                     return cliente;
                 }
@@ -521,9 +519,9 @@ namespace Dominio
         public List<Administrador> GetAdministradores()
         {
             List<Administrador> retorno = new List<Administrador>();
-            foreach ( Usuario u in _usuarios)
+            foreach (Usuario u in _usuarios)
             {
-                if(u is Administrador a )
+                if (u is Administrador a)
                 {
                     retorno.Add(a);
                 }
@@ -546,7 +544,7 @@ namespace Dominio
         public Usuario LoguinRetUsuario(string pass, string email)
         {
             Usuario retorno = null;
-           foreach(Usuario c in _usuarios)
+            foreach (Usuario c in _usuarios)
             {
                 if (Login(c, pass, email))
                 {
@@ -564,6 +562,8 @@ namespace Dominio
         {
             throw new NotImplementedException();
         }
+
+        //AGREGUE ESTE METODO
         public List<Vuelo> BuscarVuelosPorRuta(string codOrigen, string codDestino)
         {
             List<Vuelo> resultado = new List<Vuelo>();
@@ -589,7 +589,13 @@ namespace Dominio
 
             return resultado;
         }
+        public List<Cliente> ObtenerClientes()
+        {
+            return _clientes; // o como tengas almacenada la lista en Sistema
+        }
+
     }
+
 }
 
 

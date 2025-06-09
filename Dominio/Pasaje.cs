@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
+
     public class Pasaje
     {
         private int _id;
@@ -64,33 +65,33 @@ namespace Dominio
             ValidarPrecio();
             ValidarFrecuenciaVuelo();
         }
-       
+
         private void ValidarId()
         {
-          if(_id < 0 )
+            if (_id < 0)
             {
                 throw new Exception("El id no puede ser menor que 0 ");
             }
         }
         private void ValidarVuelo()
         {
-            if(_vuelo == null)
+            if (_vuelo == null)
             {
-                throw new Exception("No puede ser nulo ");
+                throw new Exception("No puede ser nulo el vuelo ");
             }
         }
         private void ValidarFecha()
         {
             if (_fecha == null)
             {
-                throw new Exception("No puede ser nulo ");
+                throw new Exception("No puede ser nula la fecha ");
             }
         }
         private void ValidarCliente()
         {
-            if(_cliente == null)
+            if (_cliente == null)
             {
-                throw new Exception("No puede ser nulo ");
+                throw new Exception("No puede ser nulo el cliente ");
             }
         }
 
@@ -103,7 +104,7 @@ namespace Dominio
         }
         private void ValidarPrecio()
         {
-            if (_precio<=0)
+            if (_precio <= 0)
             {
                 throw new Exception("El precio no puede ser cero ");
             }
@@ -118,59 +119,41 @@ namespace Dominio
             }
         }
 
-        //public decimal CalcularPrecio()
-        //{
-        //    decimal costoBase = _vuelo.CalcularCostoPorAsiento();
-        //    decimal margen = 0.25m;
-        //    decimal porcentajeEquipaje = CalcularPorcentajeEquipaje();
+        public decimal CalcularPrecio()
+        {
+            decimal costoBase = _vuelo.CalcularCostoPorAsiento();
+            decimal margen = 0.25m;
+            decimal porcentajeEquipaje = CalcularPorcentajeEquipaje();
 
-        //    decimal costoFinal = costoBase * (1 + margen + porcentajeEquipaje);
+            decimal costoFinal = costoBase * (1 + margen + porcentajeEquipaje);
+            decimal tasas = _vuelo.ObtenerTotalTasas();
 
-        //    decimal tasas = _vuelo.ObtenerTotalTasas();
+            return costoFinal + tasas;
+        }
 
-        //    return costoFinal + tasas;
-        //}
+        private decimal CalcularPorcentajeEquipaje()
+        {
+            if (_cliente == null)
+            {
+                return 0.15m; // un valor genérico si no hay cliente
+            }
 
+            if (_cliente is Ocacional)
+            {
+                if (_tipoEquipaje == TipoEquipaje.cabina)
+                    return 0.10m;
+                else if (_tipoEquipaje == TipoEquipaje.bodega)
+                    return 0.20m;
+            }
+            else if (_cliente is Premium)
+            {
+                if (_tipoEquipaje == TipoEquipaje.bodega)
+                    return 0.05m;
+            }
 
-        //private decimal CalcularPorcentajeEquipaje()
-        //{
-        //    if (_cliente is Ocacional)
-        //    {
-        //        if (_tipoEquipaje == TipoEquipaje.cabina)
-        //            return 0.10m;
-        //        else if (_tipoEquipaje == TipoEquipaje.bodega)
-        //            return 0.20m;
-        //        else
-        //            return 0m;
-        //    }
-        //    else if (_cliente is Premium)
-        //    {
-        //        if (_tipoEquipaje == TipoEquipaje.bodega)
-        //            return 0.05m;
-        //        return 0m;
-        //    }
-        //}
-           
-        //private decimal CalcularPorcentajeEquipaje()
-        //{
-        //    if (_cliente is Ocacional)
-        //    {
-        //        if (_tipoEquipaje == TipoEquipaje.cabina)
-        //            return 0.10m;
-        //        else if (_tipoEquipaje == TipoEquipaje.bodega)
-        //            return 0.20m;
-        //        else
-        //            return 0m;
-        //    }
-        //    else if (_cliente is Premium)
-        //    {
-        //        if (_tipoEquipaje == TipoEquipaje.bodega)
-        //            return 0.05m;
-        //        return 0m;
-        //    }
+            return 0m;
+        }
 
-            //    return 0m;
-            //}
 
         public override string ToString()
         {
