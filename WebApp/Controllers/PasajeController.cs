@@ -146,22 +146,19 @@ namespace WebApp.Controllers
         public IActionResult VerPasajesCompradosFecha()
         {
             string correo = HttpContext.Session.GetString("correo");
-            Administrador clienteLogueado = s.ObtenerAdmin(correo);
+            Administrador adminLogueado = s.ObtenerAdmin(correo);
 
-            List<Pasaje> pasajesClienteFecha = new List<Pasaje>();
-
-            foreach (Pasaje p in s.Pasaje)
+            if (adminLogueado == null)
             {
-                if (p.Cliente != null && clienteLogueado != null && p.Cliente.Correo == clienteLogueado.Correo)
-                {
-                    pasajesClienteFecha.Add(p);
-                }
+                return RedirectToAction("Login", "Login");
             }
 
-            pasajesClienteFecha.Sort(CompararPorFecha);
+            List<Pasaje> pasajesOrdenados = s.Pasaje.ToList();
+            pasajesOrdenados.Sort(CompararPorFecha);
 
-            ViewBag.PasajesFecha = pasajesClienteFecha;
+            ViewBag.PasajesFecha = pasajesOrdenados;
             return View();
         }
+
     }
 }

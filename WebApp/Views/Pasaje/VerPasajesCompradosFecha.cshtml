@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Pasajes Comprados";
+    var pasajes = ViewBag.PasajesFecha as List<Dominio.Pasaje>;
+}
+
+<h2>Pasajes Comprados</h2>
+
+@if (pasajes != null && pasajes.Count > 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Vuelo</th>
+                <th>Fecha</th>
+                <th>Tipo Equipaje</th>
+                <th>Precio</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var p in pasajes)
+            {
+                <tr>
+                    <td>@p.Vuelo.NumeroVuelo</td>
+                    <td>@p.Fecha.ToShortDateString()</td>
+                    <td>@p.TipoEquipaje</td>
+                    <td>@p.Precio</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No hay pasajes comprados.</p>
+}

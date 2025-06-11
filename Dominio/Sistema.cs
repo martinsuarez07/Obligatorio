@@ -504,16 +504,16 @@ namespace Dominio
 
         public Administrador ObtenerAdmin(string correo)
         {
-            foreach (Administrador a in _usuarios)
+            foreach (Usuario u in _usuarios)
             {
-
-                if (a.Correo == correo)
+                if (u is Administrador a && a.Correo == correo)
                 {
                     return a;
                 }
             }
             return null;
         }
+
 
         public Cliente ObtenerCliente(string correo)
         {
