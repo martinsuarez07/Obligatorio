@@ -153,7 +153,7 @@ namespace WebApp.Controllers
                 return RedirectToAction("Login", "Login");
             }
 
-            List<Pasaje> pasajesOrdenados = s.Pasaje.ToList();
+            List<Pasaje> pasajesOrdenados = s.Pasaje;
             pasajesOrdenados.Sort(CompararPorFecha);
 
             ViewBag.PasajesFecha = pasajesOrdenados;

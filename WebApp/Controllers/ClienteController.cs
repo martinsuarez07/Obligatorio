@@ -42,6 +42,25 @@ namespace WebApp.Controllers
             Cliente unU = (Cliente)s.LoguinRetUsuario(contra, correo);
             return View(unU);
         }
+
+        public IActionResult VerClienteCi()
+        {
+            string correo = HttpContext.Session.GetString("correo");
+            Administrador adminLogueado = s.ObtenerAdmin(correo);
+
+            if (adminLogueado == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
+
+            // Obtener y ordenar los clientes por su cédula
+            List<Cliente> clienteOrdenados = s.GetClientes();
+            clienteOrdenados.Sort(); // Usa CompareTo de la clase Cliente
+
+            return View(clienteOrdenados); // Pasar el modelo a la vista
+        }
+
+
     }
 }
 

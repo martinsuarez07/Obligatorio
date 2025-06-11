@@ -1,0 +1,27 @@
+﻿@model List<Dominio.Cliente>
+
+<h1>Clientes </h1>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>CI</th>
+            <th>Nacionalidad</th>
+            <th>Correo</th>
+            <th>Tipo</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var cliente in Model)
+        {
+            <tr>
+                <td>@cliente.Nombre</td>
+                <td>@cliente.Ci</td>
+                <td>@cliente.Nacionalidad</td>
+                <td>@cliente.Correo</td>
+                <td>@cliente.GetType().Name</td>
+            </tr>
+        }
+    </tbody>
+</table>
