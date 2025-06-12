@@ -135,14 +135,7 @@ namespace WebApp.Controllers
             ViewBag.Pasajes = pasajesCliente;
             return View();
         }
-        private int CompararPorFecha(Pasaje p1, Pasaje p2)
-        {
-            if (p1.Fecha > p2.Fecha)
-                return 1;
-            if (p1.Fecha < p2.Fecha)
-                return -1;
-            return 0;
-        }
+       
         public IActionResult VerPasajesCompradosFecha()
         {
             string correo = HttpContext.Session.GetString("correo");
@@ -153,8 +146,10 @@ namespace WebApp.Controllers
                 return RedirectToAction("Login", "Login");
             }
 
-            List<Pasaje> pasajesOrdenados = s.Pasaje;
-            pasajesOrdenados.Sort(CompararPorFecha);
+            List<Pasaje> pasajesOrdenados = new List<Pasaje>(s.Pasaje);
+            Pasaje comparadorPorFecha = new Pasaje(0, null, DateTime.Now, null, TipoEquipaje.ligth, 0);
+            pasajesOrdenados.Sort(comparadorPorFecha);
+
 
             ViewBag.PasajesFecha = pasajesOrdenados;
             return View();

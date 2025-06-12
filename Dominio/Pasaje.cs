@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 namespace Dominio
 {
 
-    public class Pasaje:IComparable<Pasaje>
+    public class Pasaje:IComparable<Pasaje>, IComparer<Pasaje>
     {
         private int _id;
         private Vuelo _vuelo;
@@ -163,6 +164,12 @@ namespace Dominio
         public int CompareTo(Pasaje? other)
         {
             return this.Precio.CompareTo(other.Precio) * -1;
+        }
+    
+
+        public int Compare(Pasaje? x, Pasaje? y)
+        {
+            return x.Fecha.CompareTo(y.Fecha);
         }
     }
 }
