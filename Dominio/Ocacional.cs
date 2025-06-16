@@ -71,5 +71,10 @@ namespace Dominio
             return rand.Next(2) == 0; // Devuelve 'true' o 'false' aleatoriamente
         }
 
+        public void CambiarEstadoRegalo()
+        {
+            _regalos = !_regalos;
+        }
+
     }
 }

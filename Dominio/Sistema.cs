@@ -519,12 +519,12 @@ namespace Dominio
 
         public Cliente ObtenerCliente(string correo)
         {
-            foreach (Cliente cliente in _usuarios)
+            foreach (Usuario u in _usuarios)
             {
 
-                if (cliente.Correo == correo)
+                if (u is Cliente c && c.Correo == correo)
                 {
-                    return cliente;
+                    return c;
                 }
             }
             return null;
@@ -565,6 +565,17 @@ namespace Dominio
                 }
             }
             return retorno;
+        }
+        public Cliente ObtenerClientePorCi(string ci)
+        {
+            foreach (Usuario u in _usuarios)
+            {
+                if (u is Cliente c && c.Ci == ci)
+                {
+                    return c;
+                }
+            }
+            return null;
         }
 
         private bool Login(Usuario u, string pass, string email)

@@ -60,6 +60,18 @@ namespace WebApp.Controllers
             return View(clienteOrdenados); // Pasar el modelo a la vista
         }
 
+        [HttpPost]
+        public IActionResult CambiarRegalo(string ci)
+        {
+            Cliente cliente = s.ObtenerClientePorCi(ci);
+            if (cliente is Ocacional o)
+            {
+                o.CambiarEstadoRegalo(); 
+            }
+
+            return RedirectToAction("VerClienteCi");
+        }
+
 
     }
 }
