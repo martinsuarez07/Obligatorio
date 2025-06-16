@@ -21,14 +21,7 @@ namespace WebApp.Controllers
             return View();
         }
 
-        [HttpPost]
-        public IActionResult Comprar(string numeroVuelo)
-        {
-            string mensaje = s.ComprarVuelo(numeroVuelo);
-            ViewBag.Mensaje = mensaje;
-            ViewBag.Vuelo = s.Vuelo;
-            return View("VerVuelos");
-        }
+        
 
         public IActionResult BuscarRuta()
         {
@@ -38,7 +31,7 @@ namespace WebApp.Controllers
         [HttpPost]
         public IActionResult BuscarPorRuta(string codOrigen, string codDestino)
         {
-            var vuelosFiltrados = s.BuscarVuelosPorRutas(codOrigen, codDestino);
+            var vuelosFiltrados = s.BuscarVuelosPorRuta(codOrigen, codDestino);
             ViewBag.VuelosFiltrados = vuelosFiltrados;
             return View("BuscarRuta");
         }

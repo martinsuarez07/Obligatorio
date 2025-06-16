@@ -18,15 +18,20 @@ namespace WebApp.Controllers
         [HttpGet]
         public IActionResult RegistrarClienteOcacional()
         {
+            string mail = HttpContext.Session.GetString("correo");
+            if (mail != null)
+            {
+                return RedirectToAction("Cliente", "Index");
+            }
             return View();
         }
         [HttpPost]
         public IActionResult RegistrarClienteOcacional(string ci, string nombre, string correo, string password, string nacionalidad)
         {
             string mail = HttpContext.Session.GetString("correo");
-            if (correo == null)
+            if (mail != null)
             {
-                return RedirectToAction("Login", "Login");
+                return RedirectToAction("Cliente", "Index");
             }
             try
             {
@@ -69,6 +74,11 @@ namespace WebApp.Controllers
         [HttpPost]
         public IActionResult EditarCliente(string ci, int? nuevoPunto)
         {
+            string mail = HttpContext.Session.GetString("correo");
+            if (mail == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             Cliente cliente = s.ObtenerClientePorCi(ci);
             if (cliente is Ocacional o)
             {

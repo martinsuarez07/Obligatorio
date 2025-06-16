@@ -687,20 +687,7 @@ namespace Dominio
             return vuelosFiltrados;
         }
 
-        public string ComprarVuelo(string numeroVuelo)
-        {
-            Vuelo vuelo = ObtenerVueloPorNumero(numeroVuelo);
-
-            if (vuelo != null)
-            {
-                // Lógica de compra aquí, si hace falta
-                return $"¡Compra realizada para el vuelo {vuelo.NumeroVuelo}!";
-            }
-            else
-            {
-                return "No se encontró el vuelo.";
-            }
-        }
+        
     }
 }
 
