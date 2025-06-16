@@ -65,7 +65,7 @@ namespace WebApp.Controllers
 
             // Obtener y ordenar los clientes por su cédula
             List<Cliente> clienteOrdenados = s.GetClientes();
-            clienteOrdenados.Sort(); // Usa CompareTo de la clase Cliente
+            clienteOrdenados.Sort(); //  CompareTo de la clase Cliente
 
             return View(clienteOrdenados); // Pasar el modelo a la vista
         }
