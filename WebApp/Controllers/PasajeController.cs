@@ -17,22 +17,14 @@ namespace WebApp.Controllers
         [HttpGet]
         public IActionResult VerPasajes()
         {
-            ViewBag.Pasaje = s.Pasaje;
+            ViewBag.Pasaje = s.PasajesOrdenadosFecha();
             return View();
         }
 
         [HttpGet]
         public IActionResult Comprar(string numeroVuelo)
         {
-            Vuelo vuelo = null;
-            foreach (Vuelo v in s.Vuelo)
-            {
-                if (v.NumeroVuelo == numeroVuelo)
-                {
-                    vuelo = v;
-                    break;
-                }
-            }
+            Vuelo vuelo = s.ObtenerVueloPorNumero(numeroVuelo);
 
             if (vuelo == null)
             {
@@ -50,15 +42,8 @@ namespace WebApp.Controllers
         [HttpPost]
         public IActionResult ConfirmarCompra(string numeroVuelo, DateTime fecha, string tipoEquipaje)
         {
-            Vuelo vuelo = null;
-            foreach (Vuelo v in s.Vuelo)
-            {
-                if (v.NumeroVuelo == numeroVuelo)
-                {
-                    vuelo = v;
-                    break;
-                }
-            }
+            Vuelo vuelo = s.ObtenerVueloPorNumero(numeroVuelo);
+            
 
             if (vuelo == null)
             {
@@ -107,30 +92,14 @@ namespace WebApp.Controllers
         }
 
        
-        private int CompararPorPrecioDescendente(Pasaje p1, Pasaje p2)
-        {
-            if (p1.Precio > p2.Precio)
-                return -1;
-            if (p1.Precio < p2.Precio)
-                return 1;
-            return 0;
-        }
+      
         public IActionResult VerPasajesComprados()
         {
             string correo = HttpContext.Session.GetString("correo");
             Cliente clienteLogueado = s.ObtenerCliente(correo);
 
-            List<Pasaje> pasajesCliente = new List<Pasaje>();
+            List<Pasaje> pasajesCliente = s.PasajesOrdenadosDescPrecio(correo);
 
-            foreach (Pasaje p in s.Pasaje)
-            {
-                if (p.Cliente != null && clienteLogueado != null && p.Cliente.Correo == clienteLogueado.Correo)
-                {
-                    pasajesCliente.Add(p);
-                }
-            }
-
-            pasajesCliente.Sort(CompararPorPrecioDescendente);
 
             ViewBag.Pasajes = pasajesCliente;
             return View();
@@ -146,11 +115,7 @@ namespace WebApp.Controllers
                 return RedirectToAction("Login", "Login");
             }
 
-            List<Pasaje> pasajesOrdenados = new List<Pasaje>(s.Pasaje);
-            Pasaje comparadorPorFecha = new Pasaje(0, null, DateTime.Now, null, TipoEquipaje.ligth, 0);
-            pasajesOrdenados.Sort(comparadorPorFecha);
-
-
+            List<Pasaje> pasajesOrdenados = s.PasajesOrdenadosFecha();
             ViewBag.PasajesFecha = pasajesOrdenados;
             return View();
         }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Dominio;
+using Dominio.Comparadores;
 namespace Dominio
 {
     public class Sistema
@@ -618,21 +619,92 @@ namespace Dominio
             return _clientes; // o como tengas almacenada la lista en Sistema
         }
 
-        public List<Pasaje> PasajesOrdenadosDescPrecio()
+        public List<Pasaje> PasajesOrdenadosDescPrecio(string correo)
         {
-            List<Pasaje> pasajes = new List<Pasaje>(Pasaje);
+
+            List<Pasaje> pasajes = new List<Pasaje>();
+            foreach(Pasaje p in _pasajes)
+            {
+                if (p.Cliente.Correo == correo)
+                {
+                    pasajes.Add(p);
+                }
+            }
             pasajes.Sort();
             return pasajes;
         }
         public List<Pasaje> PasajesOrdenadosFecha()
         {
             List<Pasaje> pasajes = new List<Pasaje>(Pasaje);
-            pasajes.Sort();
+            pasajes.Sort( new CompararPasajePorFecha());
             return pasajes;
         }
-    }
 
+
+        public Vuelo ObtenerVueloPorNumero(string numeroVuelo)
+        {
+            foreach (var v in Vuelo)
+            {
+                if (v.NumeroVuelo == numeroVuelo)
+                {
+                    return v;
+                }
+            }
+            return null;
+        }
+
+        public List<Vuelo> BuscarVuelosPorRutas(string codOrigen, string codDestino)
+        {
+            List<Vuelo> vuelosFiltrados = new List<Vuelo>();
+
+            foreach (var v in Vuelo)
+            {
+                string codO = v.Ruta.AeropuertoOrigen.DevolverCodIATA();
+                string codD = v.Ruta.AeropuertoDestino.DevolverCodIATA();
+
+                codO = codO?.ToLower();
+                codD = codD?.ToLower();
+
+                bool coincideOrigen = true;
+                bool coincideDestino = true;
+
+                if (!string.IsNullOrEmpty(codOrigen))
+                {
+                    coincideOrigen = (codO == codOrigen.ToLower());
+                }
+
+                if (!string.IsNullOrEmpty(codDestino))
+                {
+                    coincideDestino = (codD == codDestino.ToLower());
+                }
+
+                if (coincideOrigen && coincideDestino)
+                {
+                    vuelosFiltrados.Add(v);
+                }
+            }
+
+            return vuelosFiltrados;
+        }
+
+        public string ComprarVuelo(string numeroVuelo)
+        {
+            Vuelo vuelo = ObtenerVueloPorNumero(numeroVuelo);
+
+            if (vuelo != null)
+            {
+                // Lógica de compra aquí, si hace falta
+                return $"¡Compra realizada para el vuelo {vuelo.NumeroVuelo}!";
+            }
+            else
+            {
+                return "No se encontró el vuelo.";
+            }
+        }
+    }
 }
+
+
 
 
 

@@ -57,5 +57,14 @@ namespace Dominio
          
             return base.ToString() + $" Puntos {_puntos}";
         }
+        public void EditarPuntos(int nuevosPuntos)
+        {
+            if (nuevosPuntos <= 0)
+            {
+                throw new Exception("Los puntos deben ser mayores a 0.");
+            }
+            _puntos = nuevosPuntos;
+        }
+
     }
 }

@@ -12,7 +12,7 @@
             <th>Correo</th>
             <th>Tipo</th>
             <th>Extra</th>
-            <th>Editar</th>
+            
         </tr>
     </thead>
     <tbody>
@@ -26,18 +26,27 @@
                 <td>@cliente.GetType().Name</td>
                 @if (cliente is Ocacional o)
                 {
-                    <td>@o.Regalos</td>
+                    <td>
+                        @o.Regalos
+                        <form asp-action="EditarCliente" method="post">
+                            <input type="hidden" name="ci" value="@cliente.Ci" />
+                            <button type="submit">Editar</button>
+                        </form>
+                    </td>
                 } @if (cliente is Premium p)
                 {
-                    <td>@p.Punto</td>
+                    <td>
+                        <form asp-action="EditarCliente" method="post">
+                            <input type="hidden" name="ci" value="@cliente.Ci" />
+                            <input type="number" name="nuevoPunto" value="@p.Punto" min="1" />
+                            <button type="submit">Editar</button>
+                        </form>
+                    </td>
                 }
 
-                <td>
-                    <form asp-action="CambiarRegalo" method="post">
-                        <input type="hidden" name="ci" value="@cliente.Ci" />
-                        <button type="submit">Editar</button>
-                    </form>
-                </td>
+                
+                
+
             </tr>
         }
     </tbody>

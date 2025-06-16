@@ -23,6 +23,11 @@ namespace WebApp.Controllers
         [HttpPost]
         public IActionResult RegistrarClienteOcacional(string ci, string nombre, string correo, string password, string nacionalidad)
         {
+            string mail = HttpContext.Session.GetString("correo");
+            if (correo == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             try
             {
                 Ocacional o = new Ocacional(ci, nombre, correo, password, nacionalidad);
@@ -60,13 +65,21 @@ namespace WebApp.Controllers
             return View(clienteOrdenados); // Pasar el modelo a la vista
         }
 
+    
         [HttpPost]
-        public IActionResult CambiarRegalo(string ci)
+        public IActionResult EditarCliente(string ci, int? nuevoPunto)
         {
             Cliente cliente = s.ObtenerClientePorCi(ci);
             if (cliente is Ocacional o)
             {
-                o.CambiarEstadoRegalo(); 
+                o.CambiarEstadoRegalo(); // Alternar true/false
+            }
+            else if (cliente is Premium p)
+            {
+                if (nuevoPunto != null && nuevoPunto > 0)
+                {
+                    p.EditarPuntos(nuevoPunto.Value); // Método que agregaremos abajo
+                }
             }
 
             return RedirectToAction("VerClienteCi");
