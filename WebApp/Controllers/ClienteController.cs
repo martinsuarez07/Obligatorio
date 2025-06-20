@@ -10,6 +10,11 @@ namespace WebApp.Controllers
         [HttpGet]
         public IActionResult Index()
         {
+            string correo = CorreoLogueado();
+            if (correo == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             List<Cliente> clientes = s.GetClientes();
             ViewBag.Cliente = clientes;
           
@@ -18,20 +23,20 @@ namespace WebApp.Controllers
         [HttpGet]
         public IActionResult RegistrarClienteOcacional()
         {
-            string mail = HttpContext.Session.GetString("correo");
-            if (mail != null)
+            string correo = CorreoLogueado();
+            if (correo == null)
             {
-                return RedirectToAction("Cliente", "Index");
+                return RedirectToAction("Login", "Login");
             }
             return View();
         }
         [HttpPost]
         public IActionResult RegistrarClienteOcacional(string ci, string nombre, string correo, string password, string nacionalidad)
         {
-            string mail = HttpContext.Session.GetString("correo");
-            if (mail != null)
+            string corrreo = CorreoLogueado();
+            if (corrreo == null)
             {
-                return RedirectToAction("Cliente", "Index");
+                return RedirectToAction("Login", "Login");
             }
             try
             {
@@ -47,6 +52,11 @@ namespace WebApp.Controllers
         }
          public IActionResult VerPerfil()
         {
+            string corrreo = CorreoLogueado();
+            if (corrreo == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             string correo = HttpContext.Session.GetString("correo");
             string contra = HttpContext.Session.GetString("password");
             Cliente unU = (Cliente)s.LoguinRetUsuario(contra, correo);
@@ -55,6 +65,11 @@ namespace WebApp.Controllers
 
         public IActionResult VerClienteCi()
         {
+            string corrreo = CorreoLogueado();
+            if (corrreo == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             string correo = HttpContext.Session.GetString("correo");
             Administrador adminLogueado = s.ObtenerAdmin(correo);
 
@@ -74,8 +89,8 @@ namespace WebApp.Controllers
         [HttpPost]
         public IActionResult EditarCliente(string ci, int? nuevoPunto)
         {
-            string mail = HttpContext.Session.GetString("correo");
-            if (mail == null)
+            string correo = CorreoLogueado();
+            if (correo == null)
             {
                 return RedirectToAction("Login", "Login");
             }
@@ -93,6 +108,10 @@ namespace WebApp.Controllers
             }
 
             return RedirectToAction("VerClienteCi");
+        }
+        private string CorreoLogueado()
+        {
+            return HttpContext.Session.GetString("correo");
         }
 
 
