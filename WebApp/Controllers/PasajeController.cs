@@ -10,6 +10,11 @@ namespace WebApp.Controllers
         [HttpGet]
         public IActionResult Index()
         {
+            string correo = CorreoLogueado();
+            if (correo == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             ViewBag.Pasaje = s.Pasaje;
             return View();
         }
@@ -17,6 +22,11 @@ namespace WebApp.Controllers
         [HttpGet]
         public IActionResult VerPasajes()
         {
+            string correo = CorreoLogueado();
+            if (correo == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             ViewBag.Pasaje = s.PasajesOrdenadosFecha();
             return View();
         }
@@ -24,6 +34,11 @@ namespace WebApp.Controllers
         [HttpGet]
         public IActionResult Comprar(string numeroVuelo)
         {
+            string correo = CorreoLogueado();
+            if (correo == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             Vuelo vuelo = s.ObtenerVueloPorNumero(numeroVuelo);
 
             if (vuelo == null)
@@ -42,6 +57,11 @@ namespace WebApp.Controllers
         [HttpPost]
         public IActionResult ConfirmarCompra(string numeroVuelo, DateTime fecha, string tipoEquipaje)
         {
+            string corrreo = CorreoLogueado();
+            if (corrreo == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             Vuelo vuelo = s.ObtenerVueloPorNumero(numeroVuelo);
             
 
@@ -95,6 +115,11 @@ namespace WebApp.Controllers
       
         public IActionResult VerPasajesComprados()
         {
+            string corrreo = CorreoLogueado();
+            if (corrreo == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             string correo = HttpContext.Session.GetString("correo");
             Cliente clienteLogueado = s.ObtenerCliente(correo);
 
@@ -107,6 +132,11 @@ namespace WebApp.Controllers
        
         public IActionResult VerPasajesCompradosFecha()
         {
+            string corrreo = CorreoLogueado();
+            if (corrreo == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             string correo = HttpContext.Session.GetString("correo");
             Administrador adminLogueado = s.ObtenerAdmin(correo);
 
@@ -120,5 +150,9 @@ namespace WebApp.Controllers
             return View();
         }
 
+        private string CorreoLogueado()
+        {
+            return HttpContext.Session.GetString("correo");
+        }
     }
 }
