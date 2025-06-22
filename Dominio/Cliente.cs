@@ -48,8 +48,10 @@ namespace Dominio
         //  Implementación para ordenar por cédula
         public int CompareTo(Cliente otro)
         {
+        
             if (otro == null) return 1;
-            return string.Compare(this.Ci, otro.Ci);
+            return this.Ci.CompareTo(otro.Ci);
         }
+
     }
 }
