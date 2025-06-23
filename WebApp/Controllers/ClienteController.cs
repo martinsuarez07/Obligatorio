@@ -118,7 +118,7 @@ namespace WebApp.Controllers
 
 
 
-        [HttpPost]
+        
         [HttpPost]
         public IActionResult EditarCliente(string ci, int? nuevoPunto)
         {
@@ -148,6 +148,7 @@ namespace WebApp.Controllers
                     {
                         p.EditarPuntos(nuevoPunto.Value);
                     }
+                   
                 }
 
                 return RedirectToAction("VerClienteCi");

@@ -49,7 +49,7 @@ public class LoginController : Controller
             else
             {
                 HttpContext.Session.SetString("rol", "administrador");
-                return RedirectToAction("VerPasajesCompradosFecha", "Pasaje");
+                return RedirectToAction("VerPasajes", "Pasaje");
             }
         }
         catch (Exception e)
