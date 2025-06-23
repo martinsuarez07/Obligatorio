@@ -34,21 +34,13 @@ namespace WebApp.Controllers
         [HttpGet]
         public IActionResult RegistrarClienteOcacional()
         {
-            string correo = CorreoLogueado();
-            if (correo == null)
-            {
-                return RedirectToAction("Login", "Login");
-            }
+           
             return View();
         }
         [HttpPost]
         public IActionResult RegistrarClienteOcacional(string ci, string nombre, string correo, string password, string nacionalidad)
         {
-            string corrreo = CorreoLogueado();
-            if (corrreo == null)
-            {
-                return RedirectToAction("Login", "Login");
-            }
+           
             try
             {
                 Ocacional o = new Ocacional(ci, nombre, correo, password, nacionalidad);

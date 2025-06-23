@@ -1,25 +1,31 @@
 ﻿<h1 class="text-center mb-5 text-dark">Login</h1>
 
-@if (ViewBag.mensaje != null)
+@if (ViewBag.ErrorMessage != null)
 {
     <div class="alert alert-danger text-center" role="alert">
-        @ViewBag.mensaje
+        @ViewBag.ErrorMessage
     </div>
 }
 
 <div class="d-flex justify-content-center align-items-center full-height">
     <div class="login-container col-md-6 col-lg-4">
-        <form method="post" class="login-form" >
+        <form method="post" class="login-form">
             <div class="form-group mb-3">
-                <input type="correo" name="Correo" placeholder="Correo electrónico" class="form-control form-control-teal" required />
+                <input type="email" name="correo" placeholder="Correo electrónico" class="form-control form-control-teal" required />
             </div>
             <div class="form-group mb-3">
-                <input type="password" name="Password" placeholder="Password" class="form-control form-control-teal" required />
+                <input type="password" name="password" placeholder="Contraseña" class="form-control form-control-teal" required />
             </div>
             <button type="submit" class="btn btn-submit">Ingresar</button>
         </form>
     </div>
 </div>
+
+<!-- Estilos (sin cambios) -->
+<style>
+    /* ... tus estilos originales ... */
+</style>
+
 
 <!-- Estilos para cambiar el color del borde a verde agua y agregar fondo -->
 <style>
