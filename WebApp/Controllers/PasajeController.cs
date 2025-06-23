@@ -24,9 +24,9 @@ namespace WebApp.Controllers
             catch (Exception ex)
             {
                 ViewBag.Mensaje = "Error al cargar los pasajes: " + ex.Message;
-              
+                return View();
             }
-            return View();
+       
         }
 
 
@@ -48,9 +48,9 @@ namespace WebApp.Controllers
             catch (Exception ex)
             {
                 ViewBag.Mensaje = "Error al cargar pasajes: " + ex.Message;
-               
-            }
             return View();
+
+            }
         }
 
 
@@ -82,9 +82,9 @@ namespace WebApp.Controllers
             catch (Exception ex)
             {
                 ViewBag.Mensaje = "Error al cargar la compra: " + ex.Message;
+            return View();
                 
             }
-            return View();
         }
 
 
@@ -174,9 +174,9 @@ namespace WebApp.Controllers
             catch (Exception ex)
             {
                 ViewBag.Mensaje = "Error al obtener los pasajes: " + ex.Message;
-               
-            }
             return View();
+
+            }
         }
 
 
@@ -206,9 +206,9 @@ namespace WebApp.Controllers
             catch (Exception ex)
             {
                 ViewBag.Mensaje = "Error al mostrar los pasajes: " + ex.Message;
-               
-            }
             return View();
+
+            }
         }
 
 

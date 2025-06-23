@@ -26,9 +26,9 @@ namespace WebApp.Controllers
             catch (Exception ex)
             {
                 ViewBag.Mensaje = "Error al cargar clientes: " + ex.Message;
-               
+                return View();
             }
-            return View("");
+          
         }
 
         [HttpGet]
@@ -87,9 +87,9 @@ namespace WebApp.Controllers
             catch (Exception ex)
             {
                 ViewBag.Mensaje = ex.Message;
-               
+                return View();
             }
-            return View(); //ver esto
+            
         }
 
 
@@ -163,9 +163,9 @@ namespace WebApp.Controllers
             catch (Exception ex)
             {
                 ViewBag.Mensaje = "Error al editar cliente: " + ex.Message;
-               
+                return View();
             }
-            return View();
+          
         }
 
         private string CorreoLogueado()

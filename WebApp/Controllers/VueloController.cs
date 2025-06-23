@@ -20,15 +20,17 @@ namespace WebApp.Controllers
             {
                 List<Vuelo> v = s.Vuelo;
                 ViewBag.Vuelo = v;
+                return View();
             }
             catch (Exception ex)
             {
                 ViewBag.Mensaje = "Error al cargar los vuelos: " + ex.Message;
                 ViewBag.ColorMensaje = "red";
                 ViewBag.Vuelo = new List<Vuelo>();
+                return View();
+
             }
 
-            return View();
         }
         [HttpGet]
         public IActionResult VerVuelos()
@@ -42,15 +44,16 @@ namespace WebApp.Controllers
             try
             {
                 ViewBag.Vuelo = s.Vuelo;
+                return View();
             }
             catch (Exception ex)
             {
                 ViewBag.Mensaje = "Error al cargar los vuelos: " + ex.Message;
                 ViewBag.ColorMensaje = "red";
-             
+                return View();
+
             }
 
-            return View();
         }
 
 
@@ -85,15 +88,17 @@ namespace WebApp.Controllers
                     ViewBag.Mensaje = "No se encontraron vuelos para esa ruta.";
                     ViewBag.ColorMensaje = "orange";
                 }
+                return View("BuscarRuta");
             }
             catch (Exception ex)
             {
-                
+
                 ViewBag.Mensaje = "Error al buscar vuelos: " + ex.Message;
                 ViewBag.ColorMensaje = "red";
+                return View("BuscarRuta");
             }
 
-            return View("BuscarRuta");
+            
         }
 
         private string CorreoLogueado()
