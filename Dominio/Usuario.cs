@@ -50,6 +50,11 @@ namespace Dominio
                 throw new Exception("Ingrese password");
             }
         }
+        public override bool Equals(object? obj)
+        {
+            Usuario usu = obj as Usuario;
+            return usu != null && _correo.Equals(usu.Correo);
+        }
 
 
     }

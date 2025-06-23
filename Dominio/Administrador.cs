@@ -61,6 +61,11 @@ namespace Dominio
                 throw new Exception("La contraseña no puede ser nula");
             }
         }
+        public override bool Equals(object? obj)
+        {
+            Administrador admin = obj as Administrador;
+            return admin != null && base.Equals(obj);
+        }
     }
 }
 

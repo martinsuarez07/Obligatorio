@@ -42,7 +42,7 @@ namespace Dominio
         public override bool Equals(object? obj)
         {
             Cliente cliente = obj as Cliente;
-            return cliente != null && _ci == cliente.Ci;
+            return cliente != null && _ci == cliente.Ci || base.Equals(obj);
         }
 
         //  Implementación para ordenar por cédula
