@@ -88,7 +88,7 @@ namespace WebApp.Controllers
             }
             catch (Exception ex)
             {
-                ViewBag.VuelosFiltrados = new List<Vuelo>();
+                
                 ViewBag.Mensaje = "Error al buscar vuelos: " + ex.Message;
                 ViewBag.ColorMensaje = "red";
             }
