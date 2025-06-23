@@ -15,11 +15,23 @@ namespace WebApp.Controllers
             {
                 return RedirectToAction("Login", "Login");
             }
-            ViewBag.Pasaje = s.Pasaje;
+
+            try
+            {
+                ViewBag.Pasaje = s.Pasaje;
+                return View();
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Mensaje = "Error al cargar los pasajes: " + ex.Message;
+              
+            }
             return View();
         }
 
+
         [HttpGet]
+        
         public IActionResult VerPasajes()
         {
             string correo = CorreoLogueado();
@@ -27,9 +39,20 @@ namespace WebApp.Controllers
             {
                 return RedirectToAction("Login", "Login");
             }
-            ViewBag.Pasaje = s.PasajesOrdenadosFecha();
+
+            try
+            {
+                ViewBag.Pasaje = s.PasajesOrdenadosFecha();
+                return View();
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Mensaje = "Error al cargar pasajes: " + ex.Message;
+               
+            }
             return View();
         }
+
 
         [HttpGet]
         public IActionResult Comprar(string numeroVuelo)
@@ -39,20 +62,31 @@ namespace WebApp.Controllers
             {
                 return RedirectToAction("Login", "Login");
             }
-            Vuelo vuelo = s.ObtenerVueloPorNumero(numeroVuelo);
 
-            if (vuelo == null)
+            try
             {
-                ViewBag.Mensaje = "Vuelo no encontrado.";
-                return RedirectToAction("VerVuelos", "Vuelo");
+                Vuelo vuelo = s.ObtenerVueloPorNumero(numeroVuelo);
+
+                if (vuelo == null)
+                {
+                    ViewBag.Mensaje = "Vuelo no encontrado.";
+                    return RedirectToAction("VerVuelos", "Vuelo");
+                }
+
+                ViewBag.Vuelo = vuelo;
+                ViewBag.Frecuencias = vuelo.Frecuencia;
+                ViewBag.FechasDisponibles = vuelo.ObtenerProximasFechasDisponibles();
+
+                return View("Comprar", vuelo);
             }
-
-            ViewBag.Vuelo = vuelo;
-            ViewBag.Frecuencias = vuelo.Frecuencia; // Mostrar los días disponibles
-            ViewBag.FechasDisponibles = vuelo.ObtenerProximasFechasDisponibles();
-
-            return View("Comprar", vuelo);
+            catch (Exception ex)
+            {
+                ViewBag.Mensaje = "Error al cargar la compra: " + ex.Message;
+                
+            }
+            return View();
         }
+
 
         [HttpPost]
         public IActionResult ConfirmarCompra(string numeroVuelo, DateTime fecha, string tipoEquipaje)
@@ -62,40 +96,39 @@ namespace WebApp.Controllers
             {
                 return RedirectToAction("Login", "Login");
             }
-            Vuelo vuelo = s.ObtenerVueloPorNumero(numeroVuelo);
-            
-
-            if (vuelo == null)
-            {
-                ViewBag.Mensaje = "Vuelo no encontrado.";
-                ViewBag.ColorMensaje = "red";
-                return RedirectToAction("VerVuelos", "Vuelo");
-            }
-
-            if (!vuelo.contieneFrecuencia(fecha.DayOfWeek))
-            {
-                ViewBag.Mensaje = "No hay vuelos ese día.";
-                ViewBag.ColorMensaje = "red";
-                ViewBag.Vuelo = vuelo;
-                ViewBag.Frecuencias = vuelo.Frecuencia;
-                return View("Comprar", vuelo);
-            }
-
-            // Conversión del tipo de equipaje
-            TipoEquipaje tipo = TipoEquipaje.ligth;
-            if (tipoEquipaje == "cabina") tipo = TipoEquipaje.cabina;
-            else if (tipoEquipaje == "bodega") tipo = TipoEquipaje.bodega;
-            string correo = HttpContext.Session.GetString("correo");
-            Cliente clienteLogueado = s.ObtenerCliente(correo);
-            // Como no hay cliente logueado, se pasa null (el constructor debe permitirlo)
-            Pasaje nuevo = new Pasaje(0, vuelo, fecha, clienteLogueado, tipo, 0);
-            decimal precioCalculado = nuevo.CalcularPrecio();
-            nuevo.Precio = precioCalculado;
 
             try
             {
+                Vuelo vuelo = s.ObtenerVueloPorNumero(numeroVuelo);
+                if (vuelo == null)
+                {
+                    ViewBag.Mensaje = "Vuelo no encontrado.";
+                    ViewBag.ColorMensaje = "red";
+                    return RedirectToAction("VerVuelos", "Vuelo");
+                }
+
+                if (!vuelo.contieneFrecuencia(fecha.DayOfWeek))
+                {
+                    ViewBag.Mensaje = "No hay vuelos ese día.";
+                    ViewBag.ColorMensaje = "red";
+                    ViewBag.Vuelo = vuelo;
+                    ViewBag.Frecuencias = vuelo.Frecuencia;
+                    return View("Comprar", vuelo);
+                }
+
+                TipoEquipaje tipo = TipoEquipaje.ligth;
+                if (tipoEquipaje == "cabina") tipo = TipoEquipaje.cabina;
+                else if (tipoEquipaje == "bodega") tipo = TipoEquipaje.bodega;
+
+                string correo = HttpContext.Session.GetString("correo");
+                Cliente clienteLogueado = s.ObtenerCliente(correo);
+
+                Pasaje nuevo = new Pasaje(0, vuelo, fecha, clienteLogueado, tipo, 0);
+                decimal precioCalculado = nuevo.CalcularPrecio();
+                nuevo.Precio = precioCalculado;
+
                 s.AgregarPasaje(nuevo);
-                
+
                 ViewBag.Mensaje = "Pasaje comprado con éxito. Precio: $" + precioCalculado.ToString("F2");
                 ViewBag.ColorMensaje = "green";
             }
@@ -105,14 +138,15 @@ namespace WebApp.Controllers
                 ViewBag.Mensaje = "Error: " + e.Message;
             }
 
-            ViewBag.Vuelo = vuelo;
-            ViewBag.Frecuencias = vuelo.Frecuencia;
+            ViewBag.Vuelo = s.ObtenerVueloPorNumero(numeroVuelo);
+            ViewBag.Frecuencias = ViewBag.Vuelo?.Frecuencia;
 
-            return View("Comprar", vuelo);
+            return View("Comprar", ViewBag.Vuelo);
         }
 
-       
-      
+
+
+
         public IActionResult VerPasajesComprados()
         {
             string corrreo = CorreoLogueado();
@@ -120,16 +154,32 @@ namespace WebApp.Controllers
             {
                 return RedirectToAction("Login", "Login");
             }
-            string correo = HttpContext.Session.GetString("correo");
-            Cliente clienteLogueado = s.ObtenerCliente(correo);
 
-            List<Pasaje> pasajesCliente = s.PasajesOrdenadosDescPrecio(correo);
+            try
+            {
+                string correo = HttpContext.Session.GetString("correo");
+                Cliente clienteLogueado = s.ObtenerCliente(correo);
 
+                if (clienteLogueado == null)
+                {
+                    ViewBag.Mensaje = "Cliente no encontrado.";
+                    return View("Error");
+                }
 
-            ViewBag.Pasajes = pasajesCliente;
+                List<Pasaje> pasajesCliente = s.PasajesOrdenadosDescPrecio(correo);
+                ViewBag.Pasajes = pasajesCliente;
+
+                return View();
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Mensaje = "Error al obtener los pasajes: " + ex.Message;
+               
+            }
             return View();
         }
-       
+
+
         public IActionResult VerPasajesCompradosFecha()
         {
             string corrreo = CorreoLogueado();
@@ -137,18 +187,30 @@ namespace WebApp.Controllers
             {
                 return RedirectToAction("Login", "Login");
             }
-            string correo = HttpContext.Session.GetString("correo");
-            Administrador adminLogueado = s.ObtenerAdmin(correo);
 
-            if (adminLogueado == null)
+            try
             {
-                return RedirectToAction("Login", "Login");
-            }
+                string correo = HttpContext.Session.GetString("correo");
+                Administrador adminLogueado = s.ObtenerAdmin(correo);
 
-            List<Pasaje> pasajesOrdenados = s.PasajesOrdenadosFecha();
-            ViewBag.PasajesFecha = pasajesOrdenados;
+                if (adminLogueado == null)
+                {
+                    return RedirectToAction("Login", "Login");
+                }
+
+                List<Pasaje> pasajesOrdenados = s.PasajesOrdenadosFecha();
+                ViewBag.PasajesFecha = pasajesOrdenados;
+
+                return View();
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Mensaje = "Error al mostrar los pasajes: " + ex.Message;
+               
+            }
             return View();
         }
+
 
         private string CorreoLogueado()
         {

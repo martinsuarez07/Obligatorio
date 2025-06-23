@@ -8,6 +8,7 @@ namespace WebApp.Controllers
         
         Sistema s = Sistema.Instancia;
         [HttpGet]
+       
         public IActionResult Index()
         {
             string correo = CorreoLogueado();
@@ -15,11 +16,21 @@ namespace WebApp.Controllers
             {
                 return RedirectToAction("Login", "Login");
             }
-            List<Cliente> clientes = s.GetClientes();
-            ViewBag.Cliente = clientes;
-          
-            return View();
+
+            try
+            {
+                List<Cliente> clientes = s.GetClientes();
+                ViewBag.Cliente = clientes;
+                return View();
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Mensaje = "Error al cargar clientes: " + ex.Message;
+               
+            }
+            return View("");
         }
+
         [HttpGet]
         public IActionResult RegistrarClienteOcacional()
         {
@@ -50,18 +61,37 @@ namespace WebApp.Controllers
             ViewBag.Cliente = s.Cliente;
             return RedirectToAction("Login", "Login");
         }
-         public IActionResult VerPerfil()
+        public IActionResult VerPerfil()
         {
-            string corrreo = CorreoLogueado();
-            if (corrreo == null)
+            string correoSesion = CorreoLogueado();
+            if (correoSesion == null)
             {
                 return RedirectToAction("Login", "Login");
             }
-            string correo = HttpContext.Session.GetString("correo");
-            string contra = HttpContext.Session.GetString("password");
-            Cliente unU = (Cliente)s.LoguinRetUsuario(contra, correo);
-            return View(unU);
+
+            try
+            {
+                string correo = HttpContext.Session.GetString("correo");
+                string contra = HttpContext.Session.GetString("password");
+
+                Cliente unU = (Cliente)s.LoguinRetUsuario(contra, correo);
+
+                if (unU == null)
+                {
+                    ViewBag.Mensaje = "No se encontró el usuario.";
+                    return View("Error");
+                }
+
+                return View(unU);
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Mensaje = ex.Message;
+               
+            }
+            return View(); //ver esto
         }
+
 
         public IActionResult VerClienteCi()
         {
@@ -70,22 +100,33 @@ namespace WebApp.Controllers
             {
                 return RedirectToAction("Login", "Login");
             }
-            string correo = HttpContext.Session.GetString("correo");
-            Administrador adminLogueado = s.ObtenerAdmin(correo);
 
-            if (adminLogueado == null)
+            try
             {
-                return RedirectToAction("Login", "Login");
+                string correo = HttpContext.Session.GetString("correo");
+                Administrador adminLogueado = s.ObtenerAdmin(correo);
+
+                if (adminLogueado == null)
+                {
+                    return RedirectToAction("Login", "Login");
+                }
+
+                List<Cliente> clienteOrdenados = s.GetClientes();
+                clienteOrdenados.Sort();
+
+                return View(clienteOrdenados);
             }
-
-            // Obtener y ordenar los clientes por su cédula
-            List<Cliente> clienteOrdenados = s.GetClientes();
-            clienteOrdenados.Sort(); //  CompareTo de la clase Cliente
-
-            return View(clienteOrdenados); // Pasar el modelo a la vista
+            catch (Exception ex)
+            {
+                ViewBag.Mensaje = "Error al mostrar los clientes: " + ex.Message;
+               
+            }
+            return View("Error");
         }
 
-    
+
+
+        [HttpPost]
         [HttpPost]
         public IActionResult EditarCliente(string ci, int? nuevoPunto)
         {
@@ -94,21 +135,39 @@ namespace WebApp.Controllers
             {
                 return RedirectToAction("Login", "Login");
             }
-            Cliente cliente = s.ObtenerClientePorCi(ci);
-            if (cliente is Ocacional o)
-            {
-                o.CambiarEstadoRegalo(); // Alternar true/false
-            }
-            else if (cliente is Premium p)
-            {
-                if (nuevoPunto != null && nuevoPunto > 0)
-                {
-                    p.EditarPuntos(nuevoPunto.Value); // Método que agregaremos abajo
-                }
-            }
 
-            return RedirectToAction("VerClienteCi");
+            try
+            {
+                Cliente cliente = s.ObtenerClientePorCi(ci);
+
+                if (cliente == null)
+                {
+                    ViewBag.Mensaje = "Cliente no encontrado.";
+                    return View("Error");
+                }
+
+                if (cliente is Ocacional o)
+                {
+                    o.CambiarEstadoRegalo();
+                }
+                else if (cliente is Premium p)
+                {
+                    if (nuevoPunto != null && nuevoPunto > 0)
+                    {
+                        p.EditarPuntos(nuevoPunto.Value);
+                    }
+                }
+
+                return RedirectToAction("VerClienteCi");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Mensaje = "Error al editar cliente: " + ex.Message;
+               
+            }
+            return View();
         }
+
         private string CorreoLogueado()
         {
             return HttpContext.Session.GetString("correo");

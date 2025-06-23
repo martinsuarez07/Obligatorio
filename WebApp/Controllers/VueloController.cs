@@ -15,8 +15,19 @@ namespace WebApp.Controllers
             {
                 return RedirectToAction("Login", "Login");
             }
-            List<Vuelo> v = s.Vuelo;
-            ViewBag.Vuelo = v;
+
+            try
+            {
+                List<Vuelo> v = s.Vuelo;
+                ViewBag.Vuelo = v;
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Mensaje = "Error al cargar los vuelos: " + ex.Message;
+                ViewBag.ColorMensaje = "red";
+                ViewBag.Vuelo = new List<Vuelo>();
+            }
+
             return View();
         }
         [HttpGet]
@@ -27,11 +38,23 @@ namespace WebApp.Controllers
             {
                 return RedirectToAction("Login", "Login");
             }
-            ViewBag.Vuelo = s.Vuelo;
+
+            try
+            {
+                ViewBag.Vuelo = s.Vuelo;
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Mensaje = "Error al cargar los vuelos: " + ex.Message;
+                ViewBag.ColorMensaje = "red";
+             
+            }
+
             return View();
         }
 
-        
+
+
 
         public IActionResult BuscarRuta()
         {
@@ -51,10 +74,28 @@ namespace WebApp.Controllers
             {
                 return RedirectToAction("Login", "Login");
             }
-            var vuelosFiltrados = s.BuscarVuelosPorRuta(codOrigen, codDestino);
-            ViewBag.VuelosFiltrados = vuelosFiltrados;
+
+            try
+            {
+                var vuelosFiltrados = s.BuscarVuelosPorRuta(codOrigen, codDestino);
+                ViewBag.VuelosFiltrados = vuelosFiltrados;
+
+                if (vuelosFiltrados.Count == 0)
+                {
+                    ViewBag.Mensaje = "No se encontraron vuelos para esa ruta.";
+                    ViewBag.ColorMensaje = "orange";
+                }
+            }
+            catch (Exception ex)
+            {
+                ViewBag.VuelosFiltrados = new List<Vuelo>();
+                ViewBag.Mensaje = "Error al buscar vuelos: " + ex.Message;
+                ViewBag.ColorMensaje = "red";
+            }
+
             return View("BuscarRuta");
         }
+
         private string CorreoLogueado()
         {
             return HttpContext.Session.GetString("correo");
