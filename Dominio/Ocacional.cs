@@ -8,11 +8,7 @@ namespace Dominio
 {
     public class Ocacional : Cliente
     {
-        private string _ci;
-        private string _nombre;
-        private string _correo;
-        private string _password;
-        private string _nacionalidad;
+        
         private bool _regalos;
 
 

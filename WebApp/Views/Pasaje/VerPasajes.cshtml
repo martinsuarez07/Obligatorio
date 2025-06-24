@@ -9,6 +9,7 @@
             <th>ID</th>
             <th>Cliente</th>
             <th>Vuelo</th>
+            <th>Ruta</th>
             <th>Fecha</th>
             <th>Tipo de Equipaje</th>
             <th>Precio</th>
@@ -21,6 +22,7 @@
                 <td>@p.Id</td>
                 <td>@p.Cliente.Correo</td>
                 <td>@p.Vuelo.NumeroVuelo</td>
+                <td>@p.Vuelo.Ruta</td>
                 <td>@p.Fecha.ToString("dd/MM/yyyy")</td>
                 <td>@p.TipoEquipaje</td>
                 <td>$@p.Precio</td>

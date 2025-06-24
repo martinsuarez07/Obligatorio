@@ -24,38 +24,50 @@ namespace Dominio
 
 
 
-        public Usuario( string correo , string password)
+        public Usuario(string correo, string password)
         {
+            if (string.IsNullOrWhiteSpace(correo))
+            {
+                throw new Exception("Ingrese correo");
+            }
+
+            if (string.IsNullOrWhiteSpace(password))
+            {
+                throw new Exception("Ingrese password");
+            }
+
             _correo = correo.ToLower();
             _password = password;
         }
-
 
         public virtual void Validar()
         {
             ValidarCorreo();
             ValidarPassword();
         }
+
         public virtual void ValidarCorreo()
         {
-            if (string.IsNullOrEmpty(_correo))
+            if (string.IsNullOrWhiteSpace(_correo))
             {
                 throw new Exception("Ingrese correo");
             }
         }
+
         public virtual void ValidarPassword()
         {
-            if (string.IsNullOrEmpty(_password))
+            if (string.IsNullOrWhiteSpace(_password))
             {
                 throw new Exception("Ingrese password");
             }
         }
+
         public override bool Equals(object? obj)
         {
             Usuario usu = obj as Usuario;
             return usu != null && _correo.Equals(usu.Correo);
         }
-
-
     }
 }
+
+ 

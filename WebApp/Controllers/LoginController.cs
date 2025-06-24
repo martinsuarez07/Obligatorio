@@ -15,13 +15,13 @@ public class LoginController : Controller
     public IActionResult Login(string correo, string password)
     {
         // Validaciones básicas
-        if (string.IsNullOrEmpty(correo))
+        if(string.IsNullOrWhiteSpace(correo))
         {
             ViewBag.ErrorMessage = "Ingresar correo electrónico";
             return View();
         }
 
-        if (string.IsNullOrEmpty(password))
+        if (string.IsNullOrWhiteSpace(password))
         {
             ViewBag.ErrorMessage = "Ingresar contraseña";
             return View();
@@ -44,12 +44,12 @@ public class LoginController : Controller
             if (unU is Cliente)
             {
                 HttpContext.Session.SetString("rol", "cliente");
-                return RedirectToAction("VerVuelos", "Vuelo");
+                return RedirectToAction("Index", "Pasaje");
             }
             else
             {
                 HttpContext.Session.SetString("rol", "administrador");
-                return RedirectToAction("VerPasajes", "Pasaje");
+                return RedirectToAction("VerClienteCi", "Cliente");
             }
         }
         catch (Exception e)

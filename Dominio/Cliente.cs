@@ -15,15 +15,20 @@ namespace Dominio
         public string Nacionalidad => _nacionalidad;
 
         public Cliente(string ci, string nombre, string correo, string password, string nacionalidad)
-            : base(correo, password)
+    : base(correo, password)
         {
-            _ci = ci;
+            if (string.IsNullOrWhiteSpace(nombre))
+                throw new Exception("Ingrese nombre");
+
             _nombre = nombre.ToLower();
+            _ci = ci;
             _nacionalidad = nacionalidad;
         }
 
-        public virtual void Validar()
+
+        public override void Validar()
         {
+            base.Validar();
             if (string.IsNullOrEmpty(_ci) || _ci.Length != 8)
                 throw new Exception("La cédula es incorrecta, ingrésela nuevamente");
 

@@ -40,7 +40,31 @@ namespace WebApp.Controllers
         [HttpPost]
         public IActionResult RegistrarClienteOcacional(string ci, string nombre, string correo, string password, string nacionalidad)
         {
-           
+            if (string.IsNullOrWhiteSpace(ci))
+            {
+                ViewBag.Mensaje = "La cédula no puede estar vacía";
+                return View();
+            }
+            if (string.IsNullOrWhiteSpace(nombre))
+            {
+                ViewBag.Mensaje = "El nombre no puede estar vacío";
+                return View();
+            }
+            if (string.IsNullOrWhiteSpace(correo))
+            {
+                ViewBag.Mensaje = "El correo no puede estar vacío";
+                return View();
+            }
+            if (string.IsNullOrWhiteSpace(password))
+            {
+                ViewBag.Mensaje = "La contraseña no puede estar vacía";
+                return View();
+            }
+            if (string.IsNullOrWhiteSpace(nacionalidad))
+            {
+                ViewBag.Mensaje = "La nacionalidad no puede estar vacía";
+                return View();
+            }
             try
             {
                 Ocacional o = new Ocacional(ci, nombre, correo, password, nacionalidad);
