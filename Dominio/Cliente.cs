@@ -8,17 +8,49 @@ namespace Dominio
         private string _nombre;
         private string _nacionalidad;
 
-        public string Ci => _ci;
-        public string Nombre => _nombre;
-        public string Correo => base.Correo;
-        public string Password => base.Password;
-        public string Nacionalidad => _nacionalidad;
+        public string Ci
+        {
+            get
+            {
+                return _ci;
+            }
+        }
+
+        public string Nombre
+        {
+            get
+            {
+                return _nombre;
+            } 
+        }
+
+
+        public string Correo
+        {
+            get { return base.Correo; }
+
+        }
+
+        public string Password
+        {
+            get
+            {
+                return base.Password;
+            }
+        }
+
+        public string Nacionalidad
+        {
+            get
+            {
+                return _nacionalidad;
+            }
+        }
 
         public Cliente(string ci, string nombre, string correo, string password, string nacionalidad)
     : base(correo, password)
         {
-            if (string.IsNullOrWhiteSpace(nombre))
-                throw new Exception("Ingrese nombre");
+          
 
             _nombre = nombre.ToLower();
             _ci = ci;
@@ -53,7 +85,7 @@ namespace Dominio
         //  Implementación para ordenar por cédula
         public int CompareTo(Cliente otro)
         {
-        
+
             if (otro == null) return 1;
             return this.Ci.CompareTo(otro.Ci);
         }
