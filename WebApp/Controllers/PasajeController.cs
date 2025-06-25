@@ -31,7 +31,7 @@ namespace WebApp.Controllers
 
 
         [HttpGet]
-        
+
         public IActionResult VerPasajes()
         {
             string correo = CorreoLogueado();
@@ -42,16 +42,23 @@ namespace WebApp.Controllers
 
             try
             {
-                ViewBag.Pasaje = s.PasajesOrdenadosFecha();
+                var pasajes = s.PasajesOrdenadosFecha();
+
+                if (pasajes == null || pasajes.Count == 0)
+                {
+                    ViewBag.Mensaje = "No hay pasajes disponibles.";
+                }
+
+                ViewBag.Pasaje = pasajes;
                 return View();
             }
             catch (Exception ex)
             {
                 ViewBag.Mensaje = "Error al cargar pasajes: " + ex.Message;
-            return View();
-
+                return View();
             }
         }
+
 
 
         [HttpGet]
